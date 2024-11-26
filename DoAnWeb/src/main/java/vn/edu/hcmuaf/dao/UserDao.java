@@ -5,12 +5,10 @@ import org.jdbi.v3.core.statement.Query;
 
 import org.jdbi.v3.core.statement.Update;
 import vn.edu.hcmuaf.db.JDBIConnector;
-import vn.edu.hcmuaf.model.Products;
 import vn.edu.hcmuaf.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class UserDao {
 
@@ -175,7 +173,7 @@ public class UserDao {
 //
 //    }
 
-    public static void insertUser(int id, String name, String address, String phone, String email, String password, int roler, String status) {
+    public static boolean insertUser(int id, String name, String address, String phone, String email, String password, int roler, String status) {
         try (Handle handle = JDBIConnector.me().open()) {
             String query = "INSERT INTO user (user_id, name, email, phone, address, pass, roler, `create`, status) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?)";
@@ -191,8 +189,10 @@ public class UserDao {
             update.execute();
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
             // Có thể log lỗi hoặc xử lý thêm nếu cần
         }
+        return true;
     }
 
 

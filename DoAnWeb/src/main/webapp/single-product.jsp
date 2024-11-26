@@ -1,6 +1,6 @@
 <%@ page import="vn.edu.hcmuaf.model.Products" %>
 <%@ page import="java.util.List" %>
-<%@ page import="vn.edu.hcmuaf.model.Image" %>
+<%@ page import="vn.edu.hcmuaf.model.ProductImages" %>
 <%@ page import="vn.edu.hcmuaf.dao.ImageDao" %>
 <%@ page import="vn.edu.hcmuaf.dao.StatusDao" %>
 <%@ page import="vn.edu.hcmuaf.dao.KhoDao" %>
@@ -43,7 +43,7 @@
 <%
     Products products = (Products) session.getAttribute("de");
     if (products == null) products = new Products();
-    List<Image> images = ImageDao.getImageProductByID(products.getMaSP());
+    List<ProductImages> images = ImageDao.getImageProductByID(products.getMaSP());
     Cart cart = (Cart) session.getAttribute("cart");
     if (cart == null) cart = new Cart();
     TreeMap<String, Integer> list = cart.getList();
@@ -226,7 +226,7 @@
 
                                     <div class="product-gallery">
                                         <%
-                                            for (Image i:images) {%>
+                                            for (ProductImages i:images) {%>
                                         <img src="<%=i.getUrl()%>" alt="">
                                         <%    }
                                         %>

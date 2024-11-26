@@ -4,7 +4,7 @@
 <%@ page import="vn.edu.hcmuaf.model.Directorys" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.model.Status" %>
-<%@ page import="vn.edu.hcmuaf.model.Image" %>
+<%@ page import="vn.edu.hcmuaf.model.ProductImages" %>
 <%@ page import="vn.edu.hcmuaf.dao.ImageDao" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html class="no-js" lang="en">
@@ -81,7 +81,7 @@
         Products products = (Products) sessioan.getAttribute("pro");
         List<Directorys> dire =  DirectorysDao.getDirectorysAdmin();
         List<Status> statusList = StatusDao.getStatusDirectory();
-        List<Image> images = ImageDao.getImageProductByID(products.getMaSP());
+        List<ProductImages> images = ImageDao.getImageProductByID(products.getMaSP());
     %>
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
@@ -577,7 +577,7 @@
                                                         </div>
                                                     </div>
                                                     <%
-                                                        for (Image i : images){%>
+                                                        for (ProductImages i : images){%>
                                                     <div class="row">
                                                         <div class="col-lg-4">
                                                             <div class="pro-edt-img">

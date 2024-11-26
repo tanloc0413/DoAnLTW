@@ -39,40 +39,40 @@
     <![endif]-->
 </head>
 <body>
-<%
-    Cart cart = (Cart) session.getAttribute("cart");
-    if (cart == null) cart = new Cart();
-    TreeMap<String, Integer> list = cart.getList();
-    long total=0;
-    Set<String> setkey = list.keySet();
-    for (String k:setkey){
-        total += ProductsDao.getPriceProduct(k) * list.get(k);
-    }
+<%--<%--%>
+<%--    Cart cart = (Cart) session.getAttribute("cart");--%>
+<%--    if (cart == null) cart = new Cart();--%>
+<%--    TreeMap<String, Integer> list = cart.getList();--%>
+<%--    long total=0;--%>
+<%--    Set<String> setkey = list.keySet();--%>
+<%--    for (String k:setkey){--%>
+<%--        total += ProductsDao.getPriceProduct(k) * list.get(k);--%>
+<%--    }--%>
 
-    List<Directorys> directorys = DirectorysDao.getDirectorysAdmin();
+<%--    List<Directorys> directorys = DirectorysDao.getDirectorysAdmin();--%>
 
-    User user = (User) session.getAttribute("auth");
-    String url = "user.jsp";
-    String log = "Login.jsp";
-    if (user==null){
-        user = new User();
-        url = "Login.jsp";
-        log = "#";
-    }
+<%--    User user = (User) session.getAttribute("auth");--%>
+<%--    String url = "user.jsp";--%>
+<%--    String log = "Login.jsp";--%>
+<%--    if (user==null){--%>
+<%--        user = new User();--%>
+<%--        url = "Login.jsp";--%>
+<%--        log = "#";--%>
+<%--    }--%>
 
-%>
+<%--%>--%>
 <div class="header-area">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="<%=url%>"><i class="fa fa-user"></i> Tài khoản của tôi</a></li>
+<%--                        <li><a href="<%=url%>"><i class="fa fa-user"></i> Tài khoản của tôi</a></li>--%>
                         <li><a href="#"><i class="fa fa-heart"></i> Danh sách mong muốn</a></li>
                         <li><a href="cart.jsp"><i class="fa fa-user"></i> Giỏ hàng </a></li>
                         <li><a href="checkout.jsp"><i class="fa fa-user"></i> Thanh toán</a></li>
                         <li><a href="Login.jsp"><i class="fa fa-user"></i> Đăng nhập</a></li>
-                        <li><a href="<%=log%>"><i class="fa fa-user"></i> Đăng xuất</a></li>
+<%--                        <li><a href="<%=log%>"><i class="fa fa-user"></i> Đăng xuất</a></li>--%>
                     </ul>
                 </div>
             </div>
@@ -115,7 +115,7 @@
 
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="cart.jsp">Giỏ hàng - <span class="cart-amunt"><%=Products.priceFormat(total)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=cart.getList().size()%></span></a>
+<%--                    <a href="cart.jsp">Giỏ hàng - <span class="cart-amunt"><%=Products.priceFormat(total)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=cart.getList().size()%></span></a>--%>
                 </div>
             </div>
         </div>
@@ -330,34 +330,34 @@
                     </div>
                 </div></div>
             </div>
-        <%
-            for (Directorys d: directorys){
-            List<Products> pro = ProductsDao.getProductByDiretoryTop(d.getId());
-            if (pro != null || (pro.size()>0 && pro.size()==8) ){%>
-        <h2 class="section-title" style="margin-top: 30px"><%=d.getName()%></h2>
-        <%
-            for (Products p : pro) {%>
-        <div class="col-md-3 col-sm-6 ">
-            <div class="single-shop-product">
-                <div class="product-upper">
-                    <img src="<%=p.getUrl()%>" alt="">
-                </div>
-                <input name="maview" value="<%=p.getMaSP()%>" style="display: none">
-                <h2 class="h2-product"><a type="submit" ><%=p.getName()+" "+p.getVersion()%></a></h2>
-                <div class="product-carousel-price">
-                    <ins><%=Products.priceFormat(p.getPrice())%></ins>
-                </div>
+<%--        <%--%>
+<%--            for (Directorys d: directorys){--%>
+<%--            List<Products> pro = ProductsDao.getProductByDiretoryTop(d.getId());--%>
+<%--            if (pro != null || (pro.size()>0 && pro.size()==8) ){%>--%>
+<%--        <h2 class="section-title" style="margin-top: 30px"><%=d.getName()%></h2>--%>
+<%--        <%--%>
+<%--            for (Products p : pro) {%>--%>
+<%--        <div class="col-md-3 col-sm-6 ">--%>
+<%--            <div class="single-shop-product">--%>
+<%--                <div class="product-upper">--%>
+<%--                    <img src="<%=p.getUrl()%>" alt="">--%>
+<%--                </div>--%>
+<%--                <input name="maview" value="<%=p.getMaSP()%>" style="display: none">--%>
+<%--                <h2 class="h2-product"><a type="submit" ><%=p.getName()+" "+p.getVersion()%></a></h2>--%>
+<%--                <div class="product-carousel-price">--%>
+<%--                    <ins><%=Products.priceFormat(p.getPrice())%></ins>--%>
+<%--                </div>--%>
 
-                <div class="product-option-shop">
-                    <form action="./View" method="post">
-                        <input name="maview" value="<%=p.getMaSP()%>" style="display: none">
-                        <button   type="submit" style="width: 250px; color: white; background: #00acee">Xem</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-            <%    }%>
-        <%    }else {continue;}}%>
+<%--                <div class="product-option-shop">--%>
+<%--                    <form action="./View" method="post">--%>
+<%--                        <input name="maview" value="<%=p.getMaSP()%>" style="display: none">--%>
+<%--                        <button   type="submit" style="width: 250px; color: white; background: #00acee">Xem</button>--%>
+<%--                    </form>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--            <%    }%>--%>
+<%--        <%    }else {continue;}}%>--%>
 
 
 

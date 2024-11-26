@@ -28,7 +28,7 @@
     <!--===============================================================================================-->
 </head>
 <body>
-<form action="./Register" method="post">
+<form action="./register" method="post">
     <%
         String err = (String) request.getAttribute("err");
         if (err==null) err="";

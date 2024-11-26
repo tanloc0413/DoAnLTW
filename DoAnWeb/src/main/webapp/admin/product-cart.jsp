@@ -1,5 +1,5 @@
 <%@ page import="vn.edu.hcmuaf.model.Oders" %>
-<%@ page import="vn.edu.hcmuaf.model.OderDetail" %>
+<%@ page import="vn.edu.hcmuaf.model.OderItems" %>
 <%@ page import="vn.edu.hcmuaf.dao.OderDetailDao" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.model.Products" %>
@@ -77,7 +77,7 @@
     <%
         Oders oders = (Oders) request.getAttribute("oder");
         if (oders==null) oders = new Oders();
-        List<OderDetail> oder =  OderDetailDao.getOder(oders.getId());
+        List<OderItems> oder =  OderDetailDao.getOder(oders.getId());
         if (oder == null) oder = new ArrayList<>();
     %>
     <div class="left-sidebar-pro">
@@ -460,7 +460,7 @@
                                                     <th>Thành tiền</th>
                                                 </tr>
                                                 <%
-                                                    for (OderDetail o : oder){
+                                                    for (OderItems o : oder){
                                                         Products products = ProductsDao.getProduct(o.getMasp());
                                                 %>
                                                 <tr>

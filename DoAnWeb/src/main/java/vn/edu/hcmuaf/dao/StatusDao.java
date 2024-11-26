@@ -3,10 +3,8 @@ package vn.edu.hcmuaf.dao;
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.statement.Query;
 import vn.edu.hcmuaf.db.JDBIConnector;
-import vn.edu.hcmuaf.model.Directorys;
 import vn.edu.hcmuaf.model.Status;
 
-import javax.swing.plaf.PanelUI;
 import java.util.ArrayList;
 import java.util.List;
 
