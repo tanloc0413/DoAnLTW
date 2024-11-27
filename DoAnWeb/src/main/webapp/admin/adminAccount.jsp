@@ -514,15 +514,15 @@
                             %>
                             <tr>
                                 <td><img src="img/notification/picture.png" alt=""/></td>
-                                <td><%=user.getMaNv()%></td>
-                                <td><%=user.getUsername()%></td>
+                                <td><%=user.getId()%></td>
+                                <td><%=user.getName()%></td>
                                 <td><%=user.getEmail()%></td>
                                 <td><%=user.getPhone()%></td>
                                 <th><%=user.getDate()%></th>
                                 <td>Quản trị</td>
                                 <td>
                                     <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><a
-                                            href="account-edit.html"><i class="fa fa-pencil-square-o"
+                                            href="account-edit.jsp?id=<%=user.getId()%>"><i class="fa fa-pencil-square-o"
                                                                         aria-hidden="true"></i></a></button>
                                     <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i
                                             class="fa fa-trash-o" aria-hidden="true"></i></button>

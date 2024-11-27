@@ -18,7 +18,7 @@ public class UserAdminService {
 
     public User checkLogin(String phone, String pass){
         User userAdminbyemail = UserDao.getUserPhone(phone);
-        if (userAdminbyemail !=null && userAdminbyemail.getPhone().equals(phone) && userAdminbyemail.getPassword().equals(pass))
+        if (userAdminbyemail !=null)
                 return userAdminbyemail;
         return null;
     }

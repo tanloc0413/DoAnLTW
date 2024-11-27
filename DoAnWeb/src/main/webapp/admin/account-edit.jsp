@@ -1,14 +1,18 @@
-<%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.model.User" %>
-<%@ page import="vn.edu.hcmuaf.dao.UserDao" %>
+<%@ page import="vn.edu.hcmuaf.dao.UserDao" %><%--
+  Created by IntelliJ IDEA.
+  User: THINH
+  Date: 11/27/2024
+  Time: 9:21 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>tài khoản người dùng</title>
+    <title>Cập nhật tài khoản</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -68,10 +72,8 @@
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
-<%
-    List<User> userList = UserDao.getUserByLevel(2);
-%>
 <body>
+
 
 <div class="left-sidebar-pro">
     <nav id="sidebar" class="">
@@ -82,7 +84,7 @@
         <div class="nalika-profile">
             <div class="profile-dtl">
                 <a href="#"><img src="img/notification/picture.png" alt="" /></a>
-                <h2>Lakian <span class="min-dtn">Das</span></h2>
+                <h2>Họ <span class="min-dtn">Tên</span></h2>
             </div>
             <div class="profile-social-dtl">
                 <ul class="dtl-social">
@@ -98,12 +100,12 @@
                     <li class="active">
                         <a class="has-arrow" href="index.jsp">
                             <i class="icon nalika-home icon-wrap"></i>
-                            <span class="mini-click-non">Tổng quan</span>
+                            <span class="mini-click-non">Ecommerce</span>
                         </a>
                         <ul class="submenu-angle" aria-expanded="true">
                             <li><a  href="index.jsp"><span class="mini-sub-pro">Bảng điều khiển</span></a></li>
-                            <li><a  href="product-list.html"><span class="mini-sub-pro">Danh sách sản phẩm</span></a></li>
-                            <li><a  href="cart.jsp"><span class="mini-sub-pro">Danh sách đơn hàng</span></a></li>
+                            <li><a  href="ManagerProduct.jsp"><span class="mini-sub-pro">Danh sách sản phẩm</span></a></li>
+                            <li><a  href="product-list.html"><span class="mini-sub-pro">Danh sách đơn hàng</span></a></li>
                             <li><a  href="product-type.jsp"><span class="mini-sub-pro">Danh mục sản phẩm</span></a></li>
                             <li><a  href="analytics.html"><span class="mini-sub-pro">Phân tích</span></a></li>
                             <li><a  href="blog.html"><span class="mini-sub-pro">Tin tức</span></a></li>
@@ -111,13 +113,12 @@
                     </li>
 
                     <li>
-                        <a class="has-arrow" href="#" aria-expanded="false"><i class="fa big-icon fa-users icon-wrap"></i> <span class="mini-click-non">Tài Khoản</span></a>
+                        <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i class="fa big-icon fa-users icon-wrap"></i> <span class="mini-click-non">Tài Khoản</span></a>
                         <ul class="submenu-angle" aria-expanded="false">
                             <li><a  href="adminAccount.jsp"><span class="mini-sub-pro">Quản trị</span></a></li>
-                            <li><a  href="userAccount.html"><span class="mini-sub-pro">Người dùng</span></a></li>
+                            <li><a  href="userAccount.jsp"><span class="mini-sub-pro">NGười dùng</span></a></li>
                         </ul>
                     </li>
-
                 </ul>
             </nav>
         </div>
@@ -149,10 +150,10 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
-                                    <div class="header-top-menu tabl-d-n">
+                                    <div class="header-top-menu tabl-d-n hd-search-rp">
                                         <div class="breadcome-heading">
                                             <form role="search" class="">
-                                                <input type="text" placeholder="Tìm kiếm..." class="form-control">
+                                                <input type="text" placeholder="Tìm kiếm...." class="form-control">
                                                 <a href=""><i class="fa fa-search"></i></a>
                                             </form>
                                         </div>
@@ -224,7 +225,7 @@
                                                     </li>
                                                     <li><a href="#"><span class="icon nalika-settings author-log-ic"></span> Cài đặt</a>
                                                     </li>
-                                                    <li><a href="../Login.jsp"><span class="icon nalika-unlocked author-log-ic"></span> Đăng xuất</a>
+                                                    <li><a href="logi2n.jsp"><span class="icon nalika-unlocked author-log-ic"></span> Đăng xuất</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -404,6 +405,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Mobile Menu end -->
         <div class="breadcome-area" style="margin-top: 50px">
             <div class="container-fluid">
@@ -417,7 +419,7 @@
                                             <i class="icon nalika-user"></i>
                                         </div>
                                         <div class="breadcomb-ctn" style="margin-top: 13px">
-                                            <h2>Danh sách tài khoản</h2>
+                                            <h2>Cập nhật tài khoản</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -433,80 +435,87 @@
             </div>
         </div>
     </div>
-    <div class="product-status mg-b-30">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="product-status-wrap">
-                        <h4>Tài khoản người dùng</h4>
-                        <div class="add-product">
-                            <a href="product-edit.jsp">Thêm Tài khoản</a>
-                        </div>
-                        <table>
-                            <tr>
-                                <th>Ảnh</th>
-                                <th>ID</th>
-                                <th>Tên đăng nhập</th>
-                                <th>Email</th>
-                                <th>Số điện thoại</th>
-                                <th>Ngày tạo</th>
-                                <th>Cài đặt</th>
-                            </tr>
+    <!-- Single pro tab start-->
+    <div class="single-product-tab-area mg-b-30">
 
-                            <%
-                                for (User user: userList) {
-                            %>
-                            <tr>
-                                <td><img src="img/notification/picture.png" alt="" /></td>
-                                <td><%=user.getId()%></td>
-                                <td><%=user.getName()%></td>
-                                <td><%=user.getEmail()%>></td>
-                                <td><%=user.getPhone()%></td>
-                                <th><%=user.getDate()%></th>
-                                <td>
-                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" ><a href="account-edit.jsp?id=<%=user.getId()%>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>
-                                    <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                </td>
-                            </tr>
-                            <%}%>
-<%--                            <tr>--%>
-<%--                                <td><img src="img/notification/picture.png" alt="" /></td>--%>
-<%--                                <td>UA002</td>--%>
-<%--                                <td>Bien456</td>--%>
-<%--                                <td>456789</td>--%>
-<%--                                <td>bien@gmail.com</td>--%>
-<%--                                <td>0926xxxx65</td>--%>
-<%--                                <th>21/10/2023</th>--%>
-<%--                                <td>Người dùng</td>--%>
-<%--                                <td>--%>
-<%--                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" ><a href="account-edit.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>--%>
-<%--                                    <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>--%>
-<%--                                </td>--%>
-<%--                            </tr>--%>
-<%--                            <tr>--%>
-<%--                                <td><img src="img/notification/picture.png" alt="" /></td>--%>
-<%--                                <td>UA003</td>--%>
-<%--                                <td>tin789</td>--%>
-<%--                                <td>789123</td>--%>
-<%--                                <td>tin@gmail.com</td>--%>
-<%--                                <td>0962xxxx36</td>--%>
-<%--                                <th>22/10/2023</th>--%>
-<%--                                <td>Người dùng</td>--%>
-<%--                                <td>--%>
-<%--                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" ><a href="account-edit.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>--%>
-<%--                                    <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>--%>
-<%--                                </td>--%>
-<%--                            </tr>--%>
-                        </table>
-                        <!--                        <div class="custom-pagination">-->
-                        <!--                            <ul class="pagination">-->
-                        <!--                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
-                        <!--                                <li class="page-item"><a class="page-link" href="#">1</a></li>-->
-                        <!--                                <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-                        <!--                                <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-                        <!--                                <li class="page-item"><a class="page-link" href="#">Next</a></li>-->
-                        <!--                            </ul>-->
-                        <!--                        </div>-->
+        <%
+            int id = Integer.parseInt(request.getParameter("id"));
+            User user = (User) UserDao.getUserByID(id);
+        %>
+        <!-- Single pro tab review Start-->
+        <div class="single-pro-review-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="review-tab-pro-inner">
+                            <ul id="myTab3" class="tab-review-design">
+                                <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i> Cập nhật</a></li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content custom-product-edit">
+                                <div class="product-tab-list tab-pane fade active in" id="description">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="review-content-section">
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" placeholder="Tên" value="<%=user.getName()%>">
+                                                </div>
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" placeholder="Mã Người dùng" value="<%=user.getId()%>">
+                                                </div>
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="fa fa-eye" aria-hidden="true"></i></span>
+                                                    <input type="password" class="form-control" placeholder="Mật khẩu" value="<%=user.getPassword()%>">
+                                                </div>
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" placeholder="Email" value="<%=user.getEmail()%>">
+                                                </div>
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" placeholder="Số điện thoại" value="<%=user.getPhone()%>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="review-content-section">
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" placeholder="Họ">
+                                                </div>
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" placeholder="Ngày tạo tài khoản" value="<%= user.getDate()%>">
+                                                </div>
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" placeholder="Địa chỉ" value="<%=user.getAddress()%>">
+                                                </div>
+
+                                                <select name="select" class="form-control pro-edt-select form-control-primary">
+                                                    <option value="opt1">- - - chọn - - -</option>
+                                                    <option value="opt2">Tài khoản thường</option>
+                                                    <option value="opt3">Tài khoản quản trị</option>
+                                                    <
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="text-center custom-pro-edt-ds">
+                                                <button type="button" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Lưu
+                                                </button>
+                                                <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Quay lại
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -555,6 +564,9 @@
 <script src="js/calendar/moment.min.js"></script>
 <script src="js/calendar/fullcalendar.min.js"></script>
 <script src="js/calendar/fullcalendar-active.js"></script>
+<!-- tab JS
+    ============================================ -->
+<script src="js/tab.js"></script>
 <!-- plugins JS
     ============================================ -->
 <script src="js/plugins.js"></script>

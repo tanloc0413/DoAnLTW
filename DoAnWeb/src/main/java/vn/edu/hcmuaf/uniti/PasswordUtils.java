@@ -16,4 +16,17 @@ public class PasswordUtils {
     }
 
 
+    public static void main(String[] args) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        // Mã hóa mật khẩu
+        String rawPassword = "mySecretPassword";
+        String encryptedPassword = passwordEncoder.encode(rawPassword);
+
+        System.out.println("Mật khẩu đã mã hóa: " + encryptedPassword);
+
+        // Kiểm tra mật khẩu
+        boolean matches = passwordEncoder.matches("mySecretPassword", encryptedPassword);
+        System.out.println("Mật khẩu khớp: " + matches);
+    }
 }

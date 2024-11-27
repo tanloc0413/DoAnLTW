@@ -1,11 +1,9 @@
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.model.Products" %>
-<%@ page import="vn.edu.hcmuaf.dao.ProductsDao" %>
 <%@ page import="vn.edu.hcmuaf.model.Cart" %>
 <%@ page import="java.util.Set" %>
 <%@ page import="java.util.TreeMap" %>
-<%@ page import="vn.edu.hcmuaf.model.Directorys" %>
-<%@ page import="vn.edu.hcmuaf.dao.DirectorysDao" %>
 <%@ page import="vn.edu.hcmuaf.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -16,7 +14,8 @@
     <title>Ustora Demo</title>
 
     <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet'
+          type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
 
@@ -39,40 +38,26 @@
     <![endif]-->
 </head>
 <body>
-<%--<%--%>
-<%--    Cart cart = (Cart) session.getAttribute("cart");--%>
-<%--    if (cart == null) cart = new Cart();--%>
-<%--    TreeMap<String, Integer> list = cart.getList();--%>
-<%--    long total=0;--%>
-<%--    Set<String> setkey = list.keySet();--%>
-<%--    for (String k:setkey){--%>
-<%--        total += ProductsDao.getPriceProduct(k) * list.get(k);--%>
-<%--    }--%>
-
-<%--    List<Directorys> directorys = DirectorysDao.getDirectorysAdmin();--%>
-
-<%--    User user = (User) session.getAttribute("auth");--%>
-<%--    String url = "user.jsp";--%>
-<%--    String log = "Login.jsp";--%>
-<%--    if (user==null){--%>
-<%--        user = new User();--%>
-<%--        url = "Login.jsp";--%>
-<%--        log = "#";--%>
-<%--    }--%>
-
-<%--%>--%>
 <div class="header-area">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-<%--                        <li><a href="<%=url%>"><i class="fa fa-user"></i> Tài khoản của tôi</a></li>--%>
+                        <%--                        <li><a href="<%=url%>"><i class="fa fa-user"></i> Tài khoản của tôi</a></li>--%>
                         <li><a href="#"><i class="fa fa-heart"></i> Danh sách mong muốn</a></li>
                         <li><a href="cart.jsp"><i class="fa fa-user"></i> Giỏ hàng </a></li>
                         <li><a href="checkout.jsp"><i class="fa fa-user"></i> Thanh toán</a></li>
-                        <li><a href="Login.jsp"><i class="fa fa-user"></i> Đăng nhập</a></li>
-<%--                        <li><a href="<%=log%>"><i class="fa fa-user"></i> Đăng xuất</a></li>--%>
+                            <c:choose>
+                                <c:when test="${  sessionScope.currentUser}">
+                                    <li><a href="#"><i class="fa fa-user"></i> ${sessionScope.currentUser.name}</a></li>
+                                    <li><a href="./logOut"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li><a href="Login.jsp"><i class="fa fa-user"></i> Đăng nhập</a></li>
+                                </c:otherwise>
+                            </c:choose>
+                        <%--                        <li><a href="<%=log%>"><i class="fa fa-user"></i> Đăng xuất</a></li>--%>
                     </ul>
                 </div>
             </div>
@@ -81,7 +66,8 @@
                 <div class="header-right">
                     <ul class="list-unstyled list-inline">
                         <li class="dropdown dropdown-small">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">Tiền tệ :</span><span class="value">VNĐ </span><b class="caret"></b></a>
+                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span
+                                    class="key">Tiền tệ :</span><span class="value">VNĐ </span><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">VNĐ</a></li>
                                 <li><a href="#">INR</a></li>
@@ -90,7 +76,9 @@
                         </li>
 
                         <li class="dropdown dropdown-small">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">Ngôn ngữ :</span><span class="value">Tiếng việt</span><b class="caret"></b></a>
+                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span
+                                    class="key">Ngôn ngữ :</span><span class="value">Tiếng việt</span><b
+                                    class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Tiếng Việt</a></li>
                                 <li><a href="#">Tiếng Anh</a></li>
@@ -115,7 +103,7 @@
 
             <div class="col-sm-6">
                 <div class="shopping-item">
-<%--                    <a href="cart.jsp">Giỏ hàng - <span class="cart-amunt"><%=Products.priceFormat(total)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=cart.getList().size()%></span></a>--%>
+                    <%--                    <a href="cart.jsp">Giỏ hàng - <span class="cart-amunt"><%=Products.priceFormat(total)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=cart.getList().size()%></span></a>--%>
                 </div>
             </div>
         </div>
@@ -242,82 +230,100 @@
                             <div class="product-f-image">
                                 <img src="img/Giải trí_3/youtube-premium-1-thang.jpg" alt="">
                                 <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link" style="font-size: 11px" style="font-size: 11px"><i class="fa fa-shopping-cart" ></i> Thêm vào giỏ hàng</a>
-                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px" style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
+                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"
+                                       style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
+                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"
+                                       style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
                                 </div>
                             </div>
 
-                            <h2 ><a  href="single-product.jsp">Youtube premium</a></h2>
+                            <h2><a href="single-product.jsp">Youtube premium</a></h2>
 
                             <div class="product-carousel-price">
-                                <ins>700.000&#x20AB</ins> <del>799.000&#x20AB</del>
+                                <ins>700.000&#x20AB</ins>
+                                <del>799.000&#x20AB</del>
                             </div>
                         </div>
                         <div class="single-product">
                             <div class="product-f-image">
                                 <img src="img/Thiết kế_2/figma.png" alt="">
                                 <div class="product-hover">
-                                    <a href="#" type="submit" class="add-to-cart-link" style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
+                                    <a href="#" type="submit" class="add-to-cart-link" style="font-size: 11px"><i
+                                            class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
+                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i
+                                            class="fa fa-link"></i> Xem chi tiết</a>
                                 </div>
                             </div>
 
                             <h2>Figma</h2>
                             <div class="product-carousel-price">
-                                <ins>899.000&#x20AB</ins> <del>999.000&#x20AB</del>
+                                <ins>899.000&#x20AB</ins>
+                                <del>999.000&#x20AB</del>
                             </div>
                         </div>
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="img/Visual Studio_1/visual-studio-2022-enterprise.png" class="home_new_product" alt="">
+                                <img src="img/Visual Studio_1/visual-studio-2022-enterprise.png"
+                                     class="home_new_product" alt="">
                                 <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
+                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"><i
+                                            class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
+                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i
+                                            class="fa fa-link"></i> Xem chi tiết</a>
                                 </div>
                             </div>
 
                             <h2>Visual studio</h2>
 
                             <div class="product-carousel-price">
-                                <ins>400.000&#x20AB</ins> <del>425.000&#x20AB</del>
+                                <ins>400.000&#x20AB</ins>
+                                <del>425.000&#x20AB</del>
                             </div>
                         </div>
                         <div class="single-product">
                             <div class="product-f-image">
                                 <img src="img/Windows_1/win/windows-11-pro.jpg" alt="">
                                 <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
+                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"><i
+                                            class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
+                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i
+                                            class="fa fa-link"></i> Xem chi tiết</a>
                                 </div>
                             </div>
 
                             <h2><a href="single-product.jsp">Win 11 pro</a></h2>
 
                             <div class="product-carousel-price">
-                                <ins>200.000&#x20AB</ins> <del>225.000&#x20AB</del>
+                                <ins>200.000&#x20AB</ins>
+                                <del>225.000&#x20AB</del>
                             </div>
                         </div>
                         <div class="single-product">
                             <div class="product-f-image">
                                 <img src="img/Tiện Ích_2/navicat-premium.png" alt="">
                                 <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
+                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"><i
+                                            class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
+                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i
+                                            class="fa fa-link"></i> Xem chi tiết</a>
                                 </div>
                             </div>
 
                             <h2>Navicat</h2>
 
                             <div class="product-carousel-price">
-                                <ins>1200.000&#x20AB</ins> <del>1355.000&#x20AB</del>
+                                <ins>1200.000&#x20AB</ins>
+                                <del>1355.000&#x20AB</del>
                             </div>
                         </div>
                         <div class="single-product">
                             <div class="product-f-image">
                                 <img src="img/Tiện Ích_2/nang-cap-linkedin-premium-business-6-thang-1-nam.png" alt="">
                                 <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
+                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"><i
+                                            class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
+                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i
+                                            class="fa fa-link"></i> Xem chi tiết</a>
                                 </div>
                             </div>
 
@@ -328,45 +334,42 @@
                             </div>
                         </div>
                     </div>
-                </div></div>
-            </div>
-<%--        <%--%>
-<%--            for (Directorys d: directorys){--%>
-<%--            List<Products> pro = ProductsDao.getProductByDiretoryTop(d.getId());--%>
-<%--            if (pro != null || (pro.size()>0 && pro.size()==8) ){%>--%>
-<%--        <h2 class="section-title" style="margin-top: 30px"><%=d.getName()%></h2>--%>
-<%--        <%--%>
-<%--            for (Products p : pro) {%>--%>
-<%--        <div class="col-md-3 col-sm-6 ">--%>
-<%--            <div class="single-shop-product">--%>
-<%--                <div class="product-upper">--%>
-<%--                    <img src="<%=p.getUrl()%>" alt="">--%>
-<%--                </div>--%>
-<%--                <input name="maview" value="<%=p.getMaSP()%>" style="display: none">--%>
-<%--                <h2 class="h2-product"><a type="submit" ><%=p.getName()+" "+p.getVersion()%></a></h2>--%>
-<%--                <div class="product-carousel-price">--%>
-<%--                    <ins><%=Products.priceFormat(p.getPrice())%></ins>--%>
-<%--                </div>--%>
-
-<%--                <div class="product-option-shop">--%>
-<%--                    <form action="./View" method="post">--%>
-<%--                        <input name="maview" value="<%=p.getMaSP()%>" style="display: none">--%>
-<%--                        <button   type="submit" style="width: 250px; color: white; background: #00acee">Xem</button>--%>
-<%--                    </form>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--            <%    }%>--%>
-<%--        <%    }else {continue;}}%>--%>
-
-
-
-
-
-
+                </div>
             </div>
         </div>
+        <%--        <%--%>
+        <%--            for (Directorys d: directorys){--%>
+        <%--            List<Products> pro = ProductsDao.getProductByDiretoryTop(d.getId());--%>
+        <%--            if (pro != null || (pro.size()>0 && pro.size()==8) ){%>--%>
+        <%--        <h2 class="section-title" style="margin-top: 30px"><%=d.getName()%></h2>--%>
+        <%--        <%--%>
+        <%--            for (Products p : pro) {%>--%>
+        <%--        <div class="col-md-3 col-sm-6 ">--%>
+        <%--            <div class="single-shop-product">--%>
+        <%--                <div class="product-upper">--%>
+        <%--                    <img src="<%=p.getUrl()%>" alt="">--%>
+        <%--                </div>--%>
+        <%--                <input name="maview" value="<%=p.getMaSP()%>" style="display: none">--%>
+        <%--                <h2 class="h2-product"><a type="submit" ><%=p.getName()+" "+p.getVersion()%></a></h2>--%>
+        <%--                <div class="product-carousel-price">--%>
+        <%--                    <ins><%=Products.priceFormat(p.getPrice())%></ins>--%>
+        <%--                </div>--%>
+
+        <%--                <div class="product-option-shop">--%>
+        <%--                    <form action="./View" method="post">--%>
+        <%--                        <input name="maview" value="<%=p.getMaSP()%>" style="display: none">--%>
+        <%--                        <button   type="submit" style="width: 250px; color: white; background: #00acee">Xem</button>--%>
+        <%--                    </form>--%>
+        <%--                </div>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
+        <%--            <%    }%>--%>
+        <%--        <%    }else {continue;}}%>--%>
+
+
     </div>
+</div>
+</div>
 </div> <!-- End main content area -->
 
 <!--<div class="brands-area">-->
@@ -394,7 +397,8 @@
                     <h2 class="product-wid-title">Top bán chạy</h2>
                     <a href="" class="wid-view-more">xem tất cả</a>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Thiết kế_2/figma.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="img/Thiết kế_2/figma.png" alt=""
+                                                          class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Figma</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -404,11 +408,13 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins> <del>425.000&#x20AB</del>
+                            <ins>400.000&#x20AB</ins>
+                            <del>425.000&#x20AB</del>
                         </div>
                     </div>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Thiết kế_2/canva.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="img/Thiết kế_2/canva.png" alt=""
+                                                          class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Canva</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -418,11 +424,13 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins> <del>425.000&#x20AB</del>
+                            <ins>400.000&#x20AB</ins>
+                            <del>425.000&#x20AB</del>
                         </div>
                     </div>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Office_3/office-2021-professional-plus-win.jpg" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="img/Office_3/office-2021-professional-plus-win.jpg"
+                                                          alt="" class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Office 2021 professional</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -432,7 +440,8 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins> <del>425.000&#x20AB</del>
+                            <ins>400.000&#x20AB</ins>
+                            <del>425.000&#x20AB</del>
                         </div>
                     </div>
                 </div>
@@ -442,7 +451,8 @@
                     <h2 class="product-wid-title">Xem gần &#x20ABây</h2>
                     <a href="#" class="wid-view-more">xem tất cả</a>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Office_3/outlook-2021.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="img/Office_3/outlook-2021.png" alt=""
+                                                          class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Outlook 2021</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -452,11 +462,13 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins> <del>425.000&#x20AB</del>
+                            <ins>400.000&#x20AB</ins>
+                            <del>425.000&#x20AB</del>
                         </div>
                     </div>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Windows_1/win/windows-11-home.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="img/Windows_1/win/windows-11-home.png" alt=""
+                                                          class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Win 11 home</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -466,11 +478,13 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins> <del>425.000&#x20AB</del>
+                            <ins>400.000&#x20AB</ins>
+                            <del>425.000&#x20AB</del>
                         </div>
                     </div>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/navicat-premium.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/navicat-premium.png" alt=""
+                                                          class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Navicat premium</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -480,7 +494,8 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins> <del>425.000&#x20AB</del>
+                            <ins>400.000&#x20AB</ins>
+                            <del>425.000&#x20AB</del>
                         </div>
                     </div>
                 </div>
@@ -490,7 +505,8 @@
                     <h2 class="product-wid-title">Sản phẩm mới</h2>
                     <a href="#" class="wid-view-more">xem tất cả</a>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/VPN_1/Hotspot-VPN-1nam.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="img/VPN_1/Hotspot-VPN-1nam.png" alt=""
+                                                          class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Hotspot VPN</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -500,11 +516,13 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins> <del>425.000&#x20AB</del>
+                            <ins>400.000&#x20AB</ins>
+                            <del>425.000&#x20AB</del>
                         </div>
                     </div>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/PDF-Reader-Pro-for-Mac.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/PDF-Reader-Pro-for-Mac.png" alt=""
+                                                          class="product-thumb"></a>
                         <h2><a href="single-product.jsp">PDF Reader Pro for Mac</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -514,11 +532,13 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins> <del>425.000&#x20AB</del>
+                            <ins>400.000&#x20AB</ins>
+                            <del>425.000&#x20AB</del>
                         </div>
                     </div>
                     <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/linkedin-Careers-premium-6 thang.png" alt="" class="product-thumb"></a>
+                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/linkedin-Careers-premium-6 thang.png"
+                                                          alt="" class="product-thumb"></a>
                         <h2><a href="single-product.jsp">Linkedin Careers Premium</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i>
@@ -528,7 +548,8 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins> <del>425.000&#x20AB</del>
+                            <ins>400.000&#x20AB</ins>
+                            <del>425.000&#x20AB</del>
                         </div>
                     </div>
                 </div>
@@ -558,7 +579,7 @@
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">Thông tin</h2>
                     <ul>
-                        <li><a href="#">Chính sách giao hàng  </a></li>
+                        <li><a href="#">Chính sách giao hàng </a></li>
                         <li><a href="#">Điều khoản và điêù kiện</a></li>
                         <li><a href="#">Chính sách bảo hành</a></li>
                         <li><a href="#">Liên hệ với chúng tôi</a></li>
@@ -583,7 +604,8 @@
             <div class="col-md-3 col-sm-6">
                 <div class="footer-newsletter">
                     <h2 class="footer-wid-title">Tin tức</h2>
-                    <p>Đăng ký nhận bản tin của chúng tôi và nhận các ưu đãi độc quyền mà bạn sẽ không tìm thấy ở bất kỳ nơi nào khác trực tiếp vào hộp thư đến của mình!</p>
+                    <p>Đăng ký nhận bản tin của chúng tôi và nhận các ưu đãi độc quyền mà bạn sẽ không tìm thấy ở bất kỳ
+                        nơi nào khác trực tiếp vào hộp thư đến của mình!</p>
                     <div class="newsletter-form">
                         <form action="#">
                             <input type="email" placeholder="Nhập email của bạn">

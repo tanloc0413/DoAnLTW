@@ -95,18 +95,45 @@ public class UserDao {
         }
         return usersList;
     }
-    public static String getName(String id){
-        String result="";
+
+    public static User getUserByID(int userId) {
+        User user = new User();
         try (Handle handle = JDBIConnector.me().open()){
-            String query ="SELECT `name` FROM customers WHERE makh=?";
-            result = handle.createQuery(query)
-                    .bind(0, id)
-                    .mapTo(String.class)
-                    .findOne()
-                    .orElse(null);
+            String query ="SELECT user_id, name, email, phone, address, pass, roler, `create`, status FROM user WHERE user_id=?";
+            Query Ojb = handle.createQuery(query)
+                    .bind(0, userId);
+            user = Ojb.map((rs,ctx)->
+                    new User(
+                            rs.getInt("user_id"),         // ID người dùng (id)
+                            rs.getString("name"),         // Tên (name)
+                            rs.getString("address"),      // Địa chỉ (address)
+                            rs.getString("email"),        // Email (email)
+                            rs.getString("phone"),        // Số điện thoại (phone)
+                            rs.getString("pass"),         // Mật khẩu (password)
+                            rs.getInt("roler"),           // Vai trò (roler)
+                            rs.getTimestamp("create"),    // Ngày tạo (date)
+                            rs.getString("status")
+                    )).findOne().orElse(null);
+        }catch (Exception e){
+
         }
-        return result;
+        return user;
     }
+
+
+
+//    public static String getName(String id){
+//        String result="";
+//        try (Handle handle = JDBIConnector.me().open()){
+//            String query ="SELECT `name` FROM customers WHERE makh=?";
+//            result = handle.createQuery(query)
+//                    .bind(0, id)
+//                    .mapTo(String.class)
+//                    .findOne()
+//                    .orElse(null);
+//        }
+//        return result;
+//    }
 
     public static User getUserPhone(String phone){
         User user = new User();

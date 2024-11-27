@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/Login")
+@WebServlet(name = "Login", value = "/Login")
 public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
         // Lấy thông tin từ request
         String name = req.getParameter("username");
         String pass = req.getParameter("pass");
@@ -25,11 +26,9 @@ public class Login extends HttpServlet {
         if (user != null) {
             // So sánh mật khẩu đã nhập với mật khẩu đã mã hóa trong cơ sở dữ liệu
             boolean isPasswordMatch = PasswordUtils.matchPassword(pass, user.getPassword());
-
             if (isPasswordMatch) {
                 // Xác định quyền truy cập
-                HttpSession session = req.getSession();
-                session.setAttribute("auth", user);
+                session.setAttribute("currentUser", user);
 
                 if (user.getLevel() == 2) {
                     // Người dùng thường
