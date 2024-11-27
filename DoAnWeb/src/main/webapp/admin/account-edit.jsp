@@ -73,7 +73,7 @@
 </head>
 
 <body>
-
+<form action="././updateAccount" method="post">
 
 <div class="left-sidebar-pro">
     <nav id="sidebar" class="">
@@ -436,93 +436,99 @@
         </div>
     </div>
     <!-- Single pro tab start-->
+
     <div class="single-product-tab-area mg-b-30">
 
         <%
             int id = Integer.parseInt(request.getParameter("id"));
             User user = (User) UserDao.getUserByID(id);
+
+            String info = (String) request.getAttribute("info") != null ?  (String) request.getAttribute("info") : "";
         %>
         <!-- Single pro tab review Start-->
-        <div class="single-pro-review-area">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="review-tab-pro-inner">
-                            <ul id="myTab3" class="tab-review-design">
-                                <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i> Cập nhật</a></li>
-                            </ul>
-                            <div id="myTabContent" class="tab-content custom-product-edit">
-                                <div class="product-tab-list tab-pane fade active in" id="description">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <div class="review-content-section">
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Tên" value="<%=user.getName()%>">
-                                                </div>
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Mã Người dùng" value="<%=user.getId()%>">
-                                                </div>
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="fa fa-eye" aria-hidden="true"></i></span>
-                                                    <input type="password" class="form-control" placeholder="Mật khẩu" value="<%=user.getPassword()%>">
-                                                </div>
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Email" value="<%=user.getEmail()%>">
-                                                </div>
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Số điện thoại" value="<%=user.getPhone()%>">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <div class="review-content-section">
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Họ">
-                                                </div>
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Ngày tạo tài khoản" value="<%= user.getDate()%>">
-                                                </div>
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Địa chỉ" value="<%=user.getAddress()%>">
-                                                </div>
 
-                                                <select name="select" class="form-control pro-edt-select form-control-primary">
-                                                    <option value="opt1">- - - chọn - - -</option>
-                                                    <option value="opt2">Tài khoản thường</option>
-                                                    <option value="opt3">Tài khoản quản trị</option>
-                                                    <
-                                                </select>
+            <div class="single-pro-review-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="review-tab-pro-inner">
+                                <ul id="myTab3" class="tab-review-design">
+                                    <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i> Cập nhật</a></li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content custom-product-edit">
+                                    <div class="product-tab-list tab-pane fade active in" id="description">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name="name" placeholder="Tên" value="<%=user.getName()%>">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name="id" placeholder="Mã Người dùng" value="<%=user.getId()%>">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="fa fa-eye" aria-hidden="true"></i></span>
+                                                        <input type="password" class="form-control" name="password" placeholder="Mật khẩu" value="<%=user.getPassword()%>">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name="email" placeholder="Email" value="<%=user.getEmail()%>">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name="phone" placeholder="Số điện thoại" value="<%=user.getPhone()%>">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" placeholder="Họ">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" placeholder="Ngày tạo tài khoản" value="<%= user.getDate()%>">
+                                                    </div>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name="address" placeholder="Địa chỉ" value="<%=user.getAddress()%>">
+                                                    </div>
+
+                                                    <select name="roler" class="form-control pro-edt-select form-control-primary">
+                                                        <option value="opt1">- - - chọn - - -</option>
+                                                        <option value="opt2">Root</option>
+                                                        <option value="opt3">Admin</option>
+                                                        <option value="opt3">User</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="text-center custom-pro-edt-ds">
+                                                    <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Lưu</button>
+                                                    <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Quay lại
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="text-center custom-pro-edt-ds">
-                                                <button type="button" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Lưu
-                                                </button>
-                                                <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Quay lại
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
+
+        </div>
+
+</div>
+</form>
 <!-- jquery
     ============================================ -->
 <script src="js/vendor/jquery-1.12.4.min.js"></script>

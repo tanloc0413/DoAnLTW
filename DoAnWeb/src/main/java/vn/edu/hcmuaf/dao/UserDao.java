@@ -222,6 +222,20 @@ public class UserDao {
         return true;
     }
 
+    public static void updateUser(int id, String name, String email, String phone, String address) {
+        try (Handle handle = JDBIConnector.me().open()) {
+            String query = "UPDATE user SET name = ?, email = ?, phone = ?, address = ? WHERE user_id = ?";
+            Update update = handle.createUpdate(query)
+                    .bind(0, name)
+                    .bind(1,email)
+                    .bind(2, phone)
+                    .bind(3, address)
+                    .bind(4, id);
+            update.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public static void main(String[] args) {
