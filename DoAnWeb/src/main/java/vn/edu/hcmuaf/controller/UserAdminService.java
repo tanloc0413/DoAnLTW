@@ -1,12 +1,8 @@
-package vn.edu.hcmuaf.service;
+package vn.edu.hcmuaf.controller;
 
 
 import vn.edu.hcmuaf.dao.UserDao;
-import vn.edu.hcmuaf.db.JDBIConnector;
 import vn.edu.hcmuaf.model.User;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class UserAdminService {
     private static UserAdminService instance;

@@ -21,16 +21,12 @@
       <version>1.2</version>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>javax.servlet</groupId>-->
-<!--      <artifactId>jstl</artifactId>-->
-<!--      <version>1.2</version>-->
-<!--    </dependency>-->
     <dependency>
-      <groupId>javax.servlet.jsp.jstl</groupId>
-      <artifactId>javax.servlet.jsp.jstl-api</artifactId>
-      <version>1.2.2</version>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
     </dependency>
+
 
     <dependency>
       <groupId>org.springframework.security</groupId>
@@ -42,6 +38,7 @@
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>4.0.1</version>
+      <scope>provided</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.jdbi/jdbi3-core -->
     <dependency>
@@ -49,6 +46,14 @@
       <artifactId>jdbi3-core</artifactId>
       <version>3.41.3</version>
     </dependency>
+
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+      <version>1.5.0-b01</version>
+    </dependency>
+
+
     <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
     <dependency>
       <groupId>com.mysql</groupId>

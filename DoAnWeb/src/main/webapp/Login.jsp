@@ -1,3 +1,5 @@
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
 <%@ page import="vn.edu.hcmuaf.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -29,11 +31,25 @@
 <!--===============================================================================================-->
 </head>
 <body>
-<%
-	String err = (String) request.getAttribute("err");
-	if (err==null) err="";
+<%--<%--%>
+<%--	String err = (String) request.getAttribute("err");--%>
+<%--	if (err==null) err="";--%>
 
-%>
+<%--%>--%>
+<%--<c:choose>--%>
+<%--	<c:when test="${requestScope.err == null}">--%>
+<%--		<c:set var="err" value="" scope="request" />--%>
+<%--	</c:when>--%>
+<%--	<c:otherwise>--%>
+<%--		<c:set var="err" value="${requestScope.err}" scope="request" />--%>
+<%--	</c:otherwise>--%>
+<%--</c:choose>--%>
+
+<c:set var="err" value="${requestScope.err}" />
+<c:if test="${err == null}">
+	<c:set var="err" value="" />
+</c:if>
+
 	<form action="./Login" method="post">
 		<div class="limiter">
 			<div class="container-login100" style="background-image: url('img/bg-01.jpg');">
@@ -42,7 +58,9 @@
 					<span class="login100-form-title p-b-49" style="font-family:  Arial; font-size: 36px; font-weight: bold">
 						Đăng Nhập
 					</span>
-						<p style="color: red; margin-left: 70px"><%=err%></p>
+						<p style="color: red; margin-left: 70px">
+							${err}
+						</p>
 						<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
 							<span class="label-input100" style="font-family:  Arial; font-size: 16px">Số điện thoại</span>
 							<input class="input100" type="text" name="username" placeholder="Số điện thoại">
@@ -56,7 +74,7 @@
 						</div>
 
 						<div class="text-right p-t-8 p-b-31">
-							<a href="forgot_password.html">
+							<a href="forgot_password.jsp">
 								Quên mật khẩu?
 							</a>
 						</div>

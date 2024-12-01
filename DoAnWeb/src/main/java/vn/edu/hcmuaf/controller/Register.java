@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.service;
+package vn.edu.hcmuaf.controller;
 
 import vn.edu.hcmuaf.dao.UserDao;
 import vn.edu.hcmuaf.model.User;

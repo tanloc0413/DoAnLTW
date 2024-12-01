@@ -1,8 +1,7 @@
-package vn.edu.hcmuaf.service;
+package vn.edu.hcmuaf.controller;
 
 import vn.edu.hcmuaf.dao.UserDao;
 import vn.edu.hcmuaf.model.User;
-import vn.edu.hcmuaf.uniti.PasswordUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

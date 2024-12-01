@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.service;
+package vn.edu.hcmuaf.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

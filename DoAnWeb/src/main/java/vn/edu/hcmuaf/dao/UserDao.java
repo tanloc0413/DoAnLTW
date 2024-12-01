@@ -236,6 +236,25 @@ public class UserDao {
             e.printStackTrace();
         }
     }
+    public static boolean updatePassword(String email, String newPassword) {
+        try (Handle handle = JDBIConnector.me().open()) {
+            String query = "UPDATE user SET pass = ? WHERE email = ?";
+            Update update = handle.createUpdate(query)
+                    .bind(0, newPassword)  // Mật khẩu mới
+                    .bind(1, email);       // Email người dùng
+            int rowsUpdated = update.execute();
+
+            // Kiểm tra nếu có bản ghi được cập nhật
+            if (rowsUpdated > 0) {
+                return true;  // Cập nhật thành công
+            } else {
+                return false; // Không tìm thấy người dùng với email này
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;  // Lỗi khi cập nhật
+        }
+    }
 
 
     public static void main(String[] args) {

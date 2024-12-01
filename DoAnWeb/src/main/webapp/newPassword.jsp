@@ -1,7 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: THINH
+  Date: 12/1/2024
+  Time: 10:24 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <title>Xác thực</title>
+    <title>Mật khẩu mới</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -28,39 +37,49 @@
     <!--===============================================================================================-->
 </head>
 <body>
-
-<div class="limiter">
-    <div class="container-login100" style="background-image: url('img/bg-01.jpg');">
-        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form class="login100-form validate-form">
+<c:set var="err" value="${requestScope.errnew}">
+<form action="./NewPassword" method="post">
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('img/bg-01.jpg');">
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+                <form class="login100-form validate-form">
 					<span class="login100-form-title p-b-49" style="font-family:  Arial; font-size: 36px; font-weight: bold">
 						Xác thực
 					</span>
 
+                    <p style="color: red; margin-left: 70px">
+                        ${err}
+                    </p>
+                    <div class="wrap-input100 validate-input m-b-23" data-validate = "email is reauired">
+                        <span class="label-input100" style="font-family:  Arial; font-size: 16px">Mật khẩu mới</span>
+                        <input style="font-family:  Arial" class="input100" type="password" name="newPass" placeholder="Mật khẩu mới">
+                        <span class="focus" data-symbol="&#xf206;"></span>
 
-                <div class="wrap-input100 validate-input m-b-23" data-validate = "email is reauired">
-                    <span class="label-input100" style="font-family:  Arial; font-size: 16px">Nhập mã xác thực</span>
-                    <input style="font-family:  Arial" class="input100" type="text" name="email" placeholder="mã xác thực">
-                    <span class="focus" data-symbol="&#xf206;"></span>
-                </div>
-
-                <div class="text-right p-t-8 p-b-31">
-
-                </div>
-
-                <div class="container-login100-form-btn">
-                    <div class="wrap-login100-form-btn">
-                        <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn" style="font-family:  Arial">
-                            <a href="Create_pass.html" style="color: white; font-size: 18px">Đồng ý</a>
-                        </button>
+                        <span class="label-input100" style="font-family:  Arial; font-size: 16px">Nhập lại mật khẩu</span>
+                        <input style="font-family:  Arial" class="input100" type="password" name="rePass" placeholder="Nhập lại mật khẩu">
+                        <span class="focus" data-symbol="&#xf206;"></span>
                     </div>
-                </div>
 
-            </form>
+                    <div class="text-right p-t-8 p-b-31">
+
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button type="submit" class="login100-form-btn" style="font-family:  Arial; color: white; font-size: 18px">
+                                Đồng ý
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</form>
+
+
 
 
 <div id="dropDownSelect1"></div>
