@@ -6,14 +6,16 @@ public class Categories {
     private int id;
     private String name;
     private Date created;
+    private String status;
 
     public Categories() {
     }
 
-    public Categories(int id, String name, Date created) {
+    public Categories(int id, String name, Date created, String status) {
         this.id = id;
         this.name = name;
         this.created = created;
+        this.status = status;
     }
 
     public int getId() {return id;}
@@ -22,6 +24,8 @@ public class Categories {
     public void setName(String name) {this.name = name;}
     public Date getCreated() {return created;}
     public void setCreated(Date created) {this.created = created;}
+    public String getStatus() {return status;}
+    public void setStatus(String status) {this.status = status;}
 
     @Override
     public String toString() {
@@ -29,6 +33,7 @@ public class Categories {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", created=" + created +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

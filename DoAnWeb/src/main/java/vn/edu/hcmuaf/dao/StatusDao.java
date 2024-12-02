@@ -14,13 +14,13 @@ public class StatusDao {
         List<Status> statusList= new ArrayList<Status>();
         try (Handle handle = JDBIConnector.me().open()) {
             // Thực hiện truy vấn để lấy dữ liệu ID từ bảng staging
-            String query = "SELECT id, `name`, `create` FROM statu WHERE id LIKE \"KD%\"";
+            String query = "SELECT id, `status_name`, `create` FROM status WHERE id LIKE \"KD%\"";
 
             Query queryObj = handle.createQuery(query);
             statusList = queryObj.map((rs, ctx) ->
                     new Status(
                             rs.getString("id"),
-                            rs.getString("name"),
+                            rs.getString("status_name"),
                             rs.getTimestamp("create")
                     )
             ).list();
@@ -35,13 +35,13 @@ public class StatusDao {
         List<Status> statusList= new ArrayList<Status>();
         try (Handle handle = JDBIConnector.me().open()) {
             // Thực hiện truy vấn để lấy dữ liệu ID từ bảng staging
-            String query = "SELECT id, `name`, `create` FROM statu WHERE id LIKE \"DM%\"";
+            String query = "SELECT id, `status_name`, `create` FROM status WHERE id LIKE \"DM%\"";
 
             Query queryObj = handle.createQuery(query);
             statusList = queryObj.map((rs, ctx) ->
                     new Status(
                             rs.getString("id"),
-                            rs.getString("name"),
+                            rs.getString("status_name"),
                             rs.getTimestamp("create")
                     )
             ).list();
@@ -59,13 +59,13 @@ public class StatusDao {
         List<Status> statusList= new ArrayList<Status>();
         try (Handle handle = JDBIConnector.me().open()) {
             // Thực hiện truy vấn để lấy dữ liệu ID từ bảng staging
-            String query = "SELECT id, `name`, `create` FROM statu WHERE id IN (\"DH04\",\"DH05\",\"DH06\",\"DH07\")";
+            String query = "SELECT id, `status_name`, `create` FROM status WHERE id IN (\"DH04\",\"DH05\",\"DH06\",\"DH07\")";
 
             Query queryObj = handle.createQuery(query);
             statusList = queryObj.map((rs, ctx) ->
                     new Status(
                             rs.getString("id"),
-                            rs.getString("name"),
+                            rs.getString("status_name"),
                             rs.getTimestamp("create")
                     )
             ).list();
@@ -79,7 +79,7 @@ public class StatusDao {
     public  static String getName(String id){
         String result="";
         try (Handle handle = JDBIConnector.me().open()){
-            String query ="SELECT name FROM statu WHERE id=?";
+            String query ="SELECT status_name FROM status WHERE id=?";
 
             result = handle.createQuery(query).bind(0, id)
                     .mapTo(String.class)
@@ -96,7 +96,7 @@ public class StatusDao {
     public  static String getID(String name){
         String result="";
         try (Handle handle = JDBIConnector.me().open()){
-            String query ="SELECT id FROM statu WHERE name=?";
+            String query ="SELECT id FROM status WHERE status_name=?";
 
             result = handle.createQuery(query).bind(0, name)
                     .mapTo(String.class)

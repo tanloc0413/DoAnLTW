@@ -1,17 +1,8 @@
-<%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.dao.ProductsDao" %>
 <%@ page import="vn.edu.hcmuaf.model.Products" %>
-<%@ page import="vn.edu.hcmuaf.model.Directorys" %>
-<%@ page import="vn.edu.hcmuaf.dao.DirectorysDao" %>
-<%@ page import="vn.edu.hcmuaf.model.Status" %>
-<%@ page import="vn.edu.hcmuaf.dao.StatusDao" %>
-<%@ page import="vn.edu.hcmuaf.dao.KhoDao" %><%--
-  Created by IntelliJ IDEA.
-  User: THINH
-  Date: 1/9/2024
-  Time: 10:30 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.model.Categories" %>
+<%@ page import="vn.edu.hcmuaf.dao.CategoriesDao" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -82,11 +73,11 @@
     <%
             String cate = "all";
             List<Products> productsDaoList = ProductsDao.getProductAdmin();
-        List<Directorys> directorys = DirectorysDao.getDirectorysAdmin();
+        List<Categories> directorys = CategoriesDao.getDirectorysAdmin();
         String text = (String) request.getAttribute("caterogy");
         if ( text!=null && !text.equals(cate)){
-            cate = DirectorysDao.getName(text);
-            productsDaoList = (List<Products>) request.getAttribute("listProduct");
+            cate = CategoriesDao.getName(text);
+//            productsDaoList = (List<Products>) request.getAttribute("listProduct");
         }
     %>
 <div class="left-sidebar-pro">
@@ -520,7 +511,7 @@
                                <option ><%=cate%></option>
                                 <option value="all">all</option>
                                 <%
-                                        for (Directorys dir :directorys ){
+                                        for (Categories dir :directorys ){
                                 %>
                                 <option value="<%=dir.getId()%>"><%=dir.getName()%></option>
                                 <%}%>
@@ -541,14 +532,15 @@
                                     <th>Cài đặt</th>
                                 </tr>
                                 <% for (Products product: productsDaoList) {
-                                    String id = product.getMaSP();%>
+                                    int id = product.getId();%>
 
                                 <tr>
-                                    <td><img src="<%=product.getUrl()%>" alt=""/></td>
-                                    <td ><%=product.getMaSP()%></td>
+<%--                                    <td><img src="<%=product.getUrl()%>" alt=""/></td>--%>
+                                    <td><img src="" alt=""/></td>
+                                    <td ><%=product.getId()%></td>
                                     <td><%=product.getName()%></td>
                                     <%
-                                        if (product.getStatus().equals("Đang kinh doanh")){%>
+                                        if (product.getStatus().equals("KD01")){%>
                                     <td>
                                         <button class="pd-setting"><%= product.getStatus()%></button>
                                     </td>
@@ -558,17 +550,18 @@
                                     </td>
                                     <%}%>
 
-                                    <td><%=KhoDao.getNumberProduct(product.getMaSP())%></td>
-                                    <td class="large-column no-scientific-notation no-wrap" style="white-space: nowrap; width: 300px"><%=Products.priceFormat(product.getPrice())%></td>
+<%--                                    <td><%=KhoDao.getNumberProduct(product.getMaSP())%></td>--%>
+                                    <td>0</td>
+                                    <td class="large-column no-scientific-notation no-wrap" style="white-space: nowrap; width: 300px"><%=product.getPrice()%></td>
                                     <td>
                                         <form action="./ProductDetail" method="post" style="float: left">
-                                            <input type="hidden" name="productId" value="<%=product.getMaSP()%>">
+                                            <input type="hidden" name="productId" value="<%=product.getId()%>">
                                             <button data-toggle="tooltip" title="submit" class="pd-setting-ed"><a
                                                     href="product-edit.jsp?id=<%=id%>"><i class="fa fa-pencil-square-o"
                                                                                aria-hidden="true"></i></a></button>
                                         </form>
                                             <form action="./RemoveProduct" method="post" style="float: right">
-                                                <input name="idPr" value="<%=product.getMaSP()%>" style="display: none">
+                                                <input name="idPr" value="<%=product.getId()%>" style="display: none">
                                                 <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i
                                                         class="fa fa-trash-o" aria-hidden="true"></i></button>
                                             </form>

@@ -1,11 +1,10 @@
 <%@ page import="vn.edu.hcmuaf.model.Products" %>
-<%@ page import="vn.edu.hcmuaf.model.Directorys" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.model.Status" %>
 <%@ page import="vn.edu.hcmuaf.model.ProductImages" %>
-<%@ page import="vn.edu.hcmuaf.dao.ImageDao" %>
 <%@ page import="vn.edu.hcmuaf.dao.StatusDao" %>
-<%@ page import="vn.edu.hcmuaf.dao.DirectorysDao" %><%--
+<%@ page import="vn.edu.hcmuaf.dao.CategoriesDao" %>
+<%@ page import="vn.edu.hcmuaf.model.Categories" %><%--
   Created by IntelliJ IDEA.
   User: THINH
   Date: 1/21/2024
@@ -82,7 +81,7 @@
 
 <form action="./AddProduct" method="post">
     <%
-        List<Directorys> dire =  DirectorysDao.getDirectorysAdmin();
+        List<Categories> dire =  CategoriesDao.getDirectorysAdmin();
         List<Status> statusList = StatusDao.getStatusDirectory();
     %>
 
@@ -476,26 +475,26 @@
                                                         <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
                                                         <input type="text" class="form-control" name="price" placeholder="Giá bán" value=" ">
                                                     </div>
-                                                    <p>Bảo hành: </p>
-                                                    <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="tgbh" placeholder="Thời gian bảo hành" value=" ">
-                                                    </div>
+<%--                                                    <p>Bảo hành: </p>--%>
+<%--                                                    <div class="input-group mg-b-pro-edt">--%>
+<%--                                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>--%>
+<%--                                                        <input type="text" class="form-control" name="tgbh" placeholder="Thời gian bảo hành" value=" ">--%>
+<%--                                                    </div>--%>
                                                     <p>Hãng sản xuất: </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-home" aria-hidden="true"></i></span>
                                                         <input type="text" class="form-control" name="hang" placeholder="Hãng sản xuất" value=" ">
                                                     </div>
-                                                    <p>Phiên bản sản phẩm: </p>
-                                                    <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="version" placeholder="Phiên bản" value=" ">
-                                                    </div>
-                                                    <p>Số lượng sử dụng: </p>
-                                                    <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="number" placeholder="Số lượng thiết bị" value="">
-                                                    </div>
+<%--                                                    <p>Phiên bản sản phẩm: </p>--%>
+<%--                                                    <div class="input-group mg-b-pro-edt">--%>
+<%--                                                        <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>--%>
+<%--                                                        <input type="text" class="form-control" name="version" placeholder="Phiên bản" value=" ">--%>
+<%--                                                    </div>--%>
+<%--                                                    <p>Số lượng sử dụng: </p>--%>
+<%--                                                    <div class="input-group mg-b-pro-edt">--%>
+<%--                                                        <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>--%>
+<%--                                                        <input type="text" class="form-control" name="number" placeholder="Số lượng thiết bị" value="">--%>
+<%--                                                    </div>--%>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -505,11 +504,11 @@
                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
                                                         <input type="text" class="form-control" name="type" placeholder="Loại sản phẩm" value=" ">
                                                     </div>
-                                                    <p>Hạng sử dụng: </p>
-                                                    <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="time" placeholder="Hạng sử dụng" value=" ">
-                                                    </div>
+<%--                                                    <p>Hạng sử dụng: </p>--%>
+<%--                                                    <div class="input-group mg-b-pro-edt">--%>
+<%--                                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>--%>
+<%--                                                        <input type="text" class="form-control" name="time" placeholder="Hạng sử dụng" value=" ">--%>
+<%--                                                    </div>--%>
                                                     <p>Trạng thái: </p>
                                                     <div class="input-group mg-b-pro-edt" style="width: 100%">
                                                         <select name="select" class="form-control pro-edt-select form-control-primary">
@@ -522,7 +521,7 @@
                                                     <p>Danh mục: </p>
                                                     <select name="select2" class="form-control pro-edt-select form-control-primary">
                                                         <%
-                                                            for (Directorys d : dire){%>
+                                                            for (Categories d : dire){%>
                                                         <option value="<%=d.getId()%>"><%=d.getName()%></option>
                                                         <% }%>
                                                     </select>

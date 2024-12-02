@@ -6,29 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
-<%@ page import="vn.edu.hcmuaf.model.Products" %>
-<%@ page import="vn.edu.hcmuaf.model.Directorys" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.model.Status" %>
-<%@ page import="vn.edu.hcmuaf.model.ProductImages" %>
-<%@ page import="vn.edu.hcmuaf.dao.ImageDao" %>
 <%@ page import="vn.edu.hcmuaf.dao.StatusDao" %>
-<%@ page import="vn.edu.hcmuaf.dao.DirectorysDao" %><%--
-  Created by IntelliJ IDEA.
-  User: THINH
-  Date: 1/21/2024
-  Time: 9:00 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -474,12 +454,12 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
-                                                    <p>Mã sản phẩm: </p>
+                                                    <p>Mã danh mục: </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-tags" aria-hidden="true"></i></span>
                                                         <input type="text"  class="form-control" name="madm" placeholder="Mã danh mục" value=" ">
                                                     </div>
-                                                    <p>Tên sản phẩm: </p>
+                                                    <p>Tên danh mục: </p>
                                                     <div class="input-group mg-b-pro-edt">
 
                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>

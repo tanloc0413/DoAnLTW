@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.model.User" %>
 <%@ page import="vn.edu.hcmuaf.dao.UserDao" %>
@@ -469,34 +471,6 @@
                                 </td>
                             </tr>
                             <%}%>
-<%--                            <tr>--%>
-<%--                                <td><img src="img/notification/picture.png" alt="" /></td>--%>
-<%--                                <td>UA002</td>--%>
-<%--                                <td>Bien456</td>--%>
-<%--                                <td>456789</td>--%>
-<%--                                <td>bien@gmail.com</td>--%>
-<%--                                <td>0926xxxx65</td>--%>
-<%--                                <th>21/10/2023</th>--%>
-<%--                                <td>Người dùng</td>--%>
-<%--                                <td>--%>
-<%--                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" ><a href="account-edit.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>--%>
-<%--                                    <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>--%>
-<%--                                </td>--%>
-<%--                            </tr>--%>
-<%--                            <tr>--%>
-<%--                                <td><img src="img/notification/picture.png" alt="" /></td>--%>
-<%--                                <td>UA003</td>--%>
-<%--                                <td>tin789</td>--%>
-<%--                                <td>789123</td>--%>
-<%--                                <td>tin@gmail.com</td>--%>
-<%--                                <td>0962xxxx36</td>--%>
-<%--                                <th>22/10/2023</th>--%>
-<%--                                <td>Người dùng</td>--%>
-<%--                                <td>--%>
-<%--                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" ><a href="account-edit.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>--%>
-<%--                                    <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>--%>
-<%--                                </td>--%>
-<%--                            </tr>--%>
                         </table>
                         <!--                        <div class="custom-pagination">-->
                         <!--                            <ul class="pagination">-->

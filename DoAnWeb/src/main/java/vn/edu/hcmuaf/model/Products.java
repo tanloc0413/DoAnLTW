@@ -12,17 +12,21 @@ public class Products {
     private double price;
     private String description;
     private Date create;
+    private String status;
+    private String image;
 
     public Products() {
     }
 
-    public Products(int id, String name, String brand, double price, String description, Date create) {
+    public Products(int id, String name, String brand, double price, String description, Date create, String status, String image) {
         this.id = id;
         this.name = name;
         this.brand = brand;
         this.price = price;
         this.description = description;
         this.create = create;
+        this.status = status;
+        this.image = image;
     }
 
     public int getId() {return id;}
@@ -49,15 +53,25 @@ public class Products {
 
     public void setCreate(Date create) {this.create = create;}
 
+    public String getStatus() {return status;}
+
+    public void setStatus(String status) {this.status = status;}
+
+    public String getImage() {return image;}
+
+    public void setImage(String image) {this.image = image;}
+
     @Override
     public String toString() {
         return "Products{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", brand='" + brand + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
                 ", create=" + create +
+                ", status='" + status + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
 }

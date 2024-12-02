@@ -1,8 +1,7 @@
 <%@ page import="java.util.List" %>
-<%@ page import="vn.edu.hcmuaf.model.Directorys" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="vn.edu.hcmuaf.dao.DirectorysDao" %>
+<%@ page import="vn.edu.hcmuaf.dao.CategoriesDao" %>
 <%@ page import="vn.edu.hcmuaf.dao.ProductsDao" %>
+<%@ page import="vn.edu.hcmuaf.model.Categories" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -81,7 +80,7 @@
     </style>
 </head>
 <%
-    List<Directorys> directorysList = DirectorysDao.getDirectorysAdmin();
+    List<Categories> directorysList = CategoriesDao.getDirectorysAdmin();
 %>
 <body>
 
@@ -466,7 +465,7 @@
                                 <th>Cài đặt</th>
                             </tr>
                             <%
-                                for(Directorys directorys: directorysList){
+                                for(Categories directorys: directorysList){
                                 String coler = directorys.getStatus().equals("Ẩn")? "ys-setting" : "ps-setting";
                             %>
                             <tr>
@@ -475,10 +474,11 @@
                                 <td>
                                     <button class="<%=coler%>"><%=directorys.getStatus()%></button>
                                 </td>
-                                <%
-                                    int number = ProductsDao.numberProductByDirectory(directorys.getId());
-                                %>
-                                <td><%=number%></td>
+<%--                                <%--%>
+<%--                                    int number = ProductsDao.numberProductByDirectory(directorys.getId());--%>
+<%--                                %>--%>
+<%--                                <td><%=number%></td>--%>
+                                <td>0</td>
                                 <td>
                                     <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" ><a href="product-edit.jsp"><i class="fa fa-pencil-square-o" aria-hidden="true" style="float: left"></i></a></button>
                                     <form action="./RemoveCategory" method="post" style="float: right">

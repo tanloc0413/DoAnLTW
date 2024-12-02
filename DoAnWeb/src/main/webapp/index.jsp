@@ -5,6 +5,8 @@
 <%@ page import="java.util.Set" %>
 <%@ page import="java.util.TreeMap" %>
 <%@ page import="vn.edu.hcmuaf.model.User" %>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -49,7 +51,7 @@
                         <li><a href="cart.jsp"><i class="fa fa-user"></i> Giỏ hàng </a></li>
                         <li><a href="checkout.jsp"><i class="fa fa-user"></i> Thanh toán</a></li>
                             <c:choose>
-                                <c:when test="${  sessionScope.currentUser}">
+                                <c:when test="${ not empty  sessionScope.currentUser}">
                                     <li><a href="#"><i class="fa fa-user"></i> ${sessionScope.currentUser.name}</a></li>
                                     <li><a href="./logOut"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
                                 </c:when>
@@ -145,41 +147,41 @@
     <div class="block-slider block-slider4">
         <ul class="" id="bxslider-home4">
             <li>
-                <img src="img/google-one-100GB-400GB-1TB-2TB.png" alt="Slide">
-                <div class="caption-group">
-                    <h2 class="caption title">
-                        <span class="primary"> <strong>Google Drive</strong></span>
-                    </h2>
-                    <h4 class="caption subtitle">2TB</h4>
-                    <a class="caption button-radius" href="single-product.jsp"><span class="icon"></span>Mua ngay</a>
-                </div>
+                <img src="img/OIP.jpg" alt="Slide">
+<%--                <div class="caption-group">--%>
+<%--                    <h2 class="caption title">--%>
+<%--                        <span class="primary"> <strong>Google Drive</strong></span>--%>
+<%--                    </h2>--%>
+<%--                    <h4 class="caption subtitle">2TB</h4>--%>
+<%--                    <a class="caption button-radius" href="single-product.jsp"><span class="icon"></span>Mua ngay</a>--%>
+<%--                </div>--%>
             </li>
-            <li><img src="img/office-2021-professional-plus-win.jpg" alt="Slide">
-                <div class="caption-group">
-                    <h2 class="caption title">
-                        Microsoft <span class="primary">30% <strong>Off</strong></span>
-                    </h2>
-                    <h4 class="caption subtitle">Microsoft Office 2021 professional</h4>
-                    <a class="caption button-radius" href="single-product.jsp"><span class="icon"></span>Mua ngay</a>
-                </div>
+            <li><img src="img/OIP (1).jpg" alt="Slide">
+<%--                <div class="caption-group">--%>
+<%--                    <h2 class="caption title">--%>
+<%--                        Microsoft <span class="primary">30% <strong>Off</strong></span>--%>
+<%--                    </h2>--%>
+<%--                    <h4 class="caption subtitle">Microsoft Office 2021 professional</h4>--%>
+<%--                    <a class="caption button-radius" href="single-product.jsp"><span class="icon"></span>Mua ngay</a>--%>
+<%--                </div>--%>
             </li>
-            <li><img src="img/windows-11-home.png" alt="Slide">
-                <div class="caption-group">
-                    <h2 class="caption title">
-                        <span class="primary"><strong>Win 11 </strong></span>
-                    </h2>
-                    <h4 class="caption subtitle">Home</h4>
-                    <a class="caption button-radius" href="single-product.jsp"><span class="icon"></span>Mua ngay</a>
-                </div>
+            <li><img src="img/download.jpg" alt="Slide">
+<%--                <div class="caption-group">--%>
+<%--                    <h2 class="caption title">--%>
+<%--                        <span class="primary"><strong>Win 11 </strong></span>--%>
+<%--                    </h2>--%>
+<%--                    <h4 class="caption subtitle">Home</h4>--%>
+<%--                    <a class="caption button-radius" href="single-product.jsp"><span class="icon"></span>Mua ngay</a>--%>
+<%--                </div>--%>
             </li>
-            <li><img src="img/Netflix.png" alt="Slide">
-                <div class="caption-group">
-                    <h2 class="caption title">
-                        Netflix <span class="primary"> <strong>Movie</strong></span>
-                    </h2>
-                    <h4 class="caption subtitle"></h4>
-                    <a class="caption button-radius" href="single-product.jsp"><span class="icon"></span>Mua ngay</a>
-                </div>
+            <li><img src="img/OIP (1).jpg" alt="Slide">
+<%--                <div class="caption-group">--%>
+<%--                    <h2 class="caption title">--%>
+<%--                        Netflix <span class="primary"> <strong>Movie</strong></span>--%>
+<%--                    </h2>--%>
+<%--                    <h4 class="caption subtitle"></h4>--%>
+<%--                    <a class="caption button-radius" href="single-product.jsp"><span class="icon"></span>Mua ngay</a>--%>
+<%--                </div>--%>
             </li>
         </ul>
     </div>

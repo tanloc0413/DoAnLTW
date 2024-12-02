@@ -1,5 +1,5 @@
 <%@ page import="vn.edu.hcmuaf.model.Products" %>
-<%@ page import="vn.edu.hcmuaf.dao.DirectorysDao" %>
+<%@ page import="vn.edu.hcmuaf.dao.CategoriesDao" %>
 <%@ page import="vn.edu.hcmuaf.dao.StatusDao" %>
 <%@ page import="vn.edu.hcmuaf.model.Directorys" %>
 <%@ page import="java.util.List" %>
@@ -79,7 +79,7 @@
     <%
         HttpSession sessioan = request.getSession();
         Products products = (Products) sessioan.getAttribute("pro");
-        List<Directorys> dire =  DirectorysDao.getDirectorysAdmin();
+        List<Directorys> dire =  CategoriesDao.getDirectorysAdmin();
         List<Status> statusList = StatusDao.getStatusDirectory();
         List<ProductImages> images = ImageDao.getImageProductByID(products.getMaSP());
     %>
@@ -525,7 +525,7 @@
                                                     </div>
                                                     <p>Danh mục: </p>
                                                     <select name="select1" class="form-control pro-edt-select form-control-primary">
-                                                        <option value="<%=products.getMaDM()%>" > <%=DirectorysDao.getName(products.getMaDM())%></option>
+                                                        <option value="<%=products.getMaDM()%>" > <%=CategoriesDao.getName(products.getMaDM())%></option>
                                                         <%
                                                             for (Directorys d : dire){%>
                                                          <option value="<%=d.getId()%>"><%=d.getName()%></option>
