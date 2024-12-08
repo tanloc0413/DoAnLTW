@@ -230,7 +230,7 @@
                     <div class="product-carousel">
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="img/Giải trí_3/youtube-premium-1-thang.jpg" alt="">
+                                <img src="admin/img/product/CT01.jpg" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link" style="font-size: 11px"
                                        style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>

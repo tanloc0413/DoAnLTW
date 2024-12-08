@@ -2,6 +2,7 @@
 <%@ page import="vn.edu.hcmuaf.dao.CategoriesDao" %>
 <%@ page import="vn.edu.hcmuaf.dao.ProductsDao" %>
 <%@ page import="vn.edu.hcmuaf.model.Categories" %>
+<%@ page import="vn.edu.hcmuaf.dao.ProductCategoryDao" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -117,7 +118,7 @@
                             <li><a  href="cart.jsp"><span class="mini-sub-pro">Danh sách đơn hàng</span></a></li>
                             <li><a  href="product-type.jsp"><span class="mini-sub-pro">Danh mục sản phẩm</span></a></li>
                             <li><a  href="analytics.html"><span class="mini-sub-pro">Phân tích</span></a></li>
-                            <li><a  href="blog.html"><span class="mini-sub-pro">Tin tức</span></a></li>
+
                         </ul>
                     </li>
 
@@ -474,13 +475,13 @@
                                 <td>
                                     <button class="<%=coler%>"><%=directorys.getStatus()%></button>
                                 </td>
-<%--                                <%--%>
-<%--                                    int number = ProductsDao.numberProductByDirectory(directorys.getId());--%>
-<%--                                %>--%>
-<%--                                <td><%=number%></td>--%>
-                                <td>0</td>
+                                <%
+                                    int number = ProductCategoryDao.getNum(directorys.getId());
+                                %>
+                                <td><%=number%></td>
+
                                 <td>
-                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" ><a href="product-edit.jsp"><i class="fa fa-pencil-square-o" aria-hidden="true" style="float: left"></i></a></button>
+                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed" ><a href="addcategory.jsp?id=<%=directorys.getId()%>"><i class="fa fa-pencil-square-o" aria-hidden="true" style="float: left"></i></a></button>
                                     <form action="./RemoveCategory" method="post" style="float: right">
                                         <input name="ma" value="<%=directorys.getId()%>" style="display: none">
                                         <button data-toggle="tooltip" title="Trash" class="pd-setting-ed" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>

@@ -151,42 +151,36 @@ public class ProductsDao {
 //        return number;
 //    }
 //
-//    /*
-//    lấy thông tin 1 sản phẩm
-//     */
-//    public static Products getProduct(String id){
-//        Products product;
-//        try (Handle handle = JDBIConnector.me().open()){
-//            String query = "SELECT masp, danhmuc, tensp, loaisp, mota, giaban, phienban, hangsx, hinhanh, hangdung, baohanh, ngaydang, soluongthietbi, trangthai FROM sanpham WHERE masp = ?";
-//            Query queryObj = handle.createQuery(query)
-//                    .bind(0, id);
-//
-//            product = (Products) queryObj.map((rs, ctx)->
-//                    new Products(
-//                            rs.getString("masp"),
-//                            rs.getString("danhmuc"),
-//                            rs.getString("tensp"),
-//                            rs.getString("loaisp"),
-//                            rs.getString("mota"),
-//                            rs.getLong("giaban"),
-//                            rs.getString("phienban"),
-//                            rs.getString("hangsx"),
-//                            rs.getString("hinhanh"),
-//                            rs.getString("hangdung"),
-//                            rs.getString("baohanh"),
-//                            rs.getDate("ngaydang"),
-//                            rs.getInt("soluongthietbi"),
-//                            rs.getString("trangthai")
-//                    )).findOne().orElse(null);
-//        }
-//
-//        return product;
-//    }
+    /*
+    lấy thông tin 1 sản phẩm
+     */
+    public static Products getProduct(int id){
+        Products product;
+        try (Handle handle = JDBIConnector.me().open()){
+            String query = "SELECT product_id, product_name, brand, price, description, `create`, status, image FROM product WHERE product_id = ?";
+            Query queryObj = handle.createQuery(query)
+                    .bind(0, id);
 
-    public static void insertProductNew(int product_id, String product_name, String brand, double price, String description,int status, String image){
+            product = (Products) queryObj.map((rs, ctx)->
+                    new Products(
+                            rs.getInt("product_id"),
+                            rs.getString("product_name"),
+                            rs.getString("brand"),
+                            rs.getDouble("price"),
+                            rs.getString("description"),
+                            rs.getTimestamp("create"),
+                            rs.getString("status_name"),
+                            rs.getString("image")
+                    )).findOne().orElse(null);
+        }
+
+        return product;
+    }
+
+    public static void insertProductNew(int product_id, String product_name, String brand, double price, String description,String status, String image){
 
         try (Handle handle = JDBIConnector.me().open()){
-            String query = "INSERT INTO product(product_id, product_name, brand, price, description, create, status, image) VALUES (?,?,?,?,?,NOW(),?,?)";
+            String query = "INSERT INTO product(product_id, product_name, brand, price, description, `create`, status, image) VALUES (?,?,?,?,?,NOW(),?,?)";
             Update update = handle.createUpdate(query)
                     .bind(0, product_id)
                     .bind(1, product_name)
@@ -219,9 +213,9 @@ public class ProductsDao {
         }
     }
 
-    public static void removeProduct(String id){
+    public static void removeProduct(int id){
         try (Handle handle = JDBIConnector.me().open()){
-            String query = "DELETE FROM sanpham WHERE masp=?";
+            String query = "DELETE FROM product WHERE product_id=?";
             Update update = handle.createUpdate(query)
                     .bind(0,id);
             update.execute();

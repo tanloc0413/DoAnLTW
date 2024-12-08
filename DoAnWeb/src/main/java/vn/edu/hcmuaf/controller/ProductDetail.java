@@ -1,6 +1,6 @@
-//package vn.edu.hcmuaf.service;
+//package vn.edu.hcmuaf.controller;
 //
-//import vn.edu.hcmuaf.dao.DirectorysDao;
+//import vn.edu.hcmuaf.dao.CategoriesDao;
 //import vn.edu.hcmuaf.dao.ProductsDao;
 //import vn.edu.hcmuaf.dao.StatusDao;
 //import vn.edu.hcmuaf.model.Products;

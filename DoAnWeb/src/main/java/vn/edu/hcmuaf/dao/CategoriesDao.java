@@ -34,6 +34,30 @@ public class CategoriesDao {
         return productsList;
     }
 
+    public static Categories get(int id) {
+        Categories categories= null;
+        try (Handle handle = JDBIConnector.me().open()) {
+            // Thực hiện truy vấn để lấy dữ liệu ID từ bảng staging
+            String query = "SELECT categories.id, categories.name, categories.`create`, status.status_name  FROM categories JOIN status on categories.status = status.id  WHERE categories.id=?" ;
+
+            Query queryObj = handle.createQuery(query)
+                    .bind(0, id);
+            categories = queryObj.map((rs, ctx) ->
+                    new Categories(
+                            rs.getInt("id"),
+                            rs.getString("name"),
+                            rs.getTimestamp("create"),
+                            rs.getString("status_name")
+                    )
+            ).one();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Nếu có lỗi, trả về một danh sách trống
+            return null;
+        }
+        return categories;
+    }
+
 
     public static String getName(String id) {
         String name ="";
@@ -52,22 +76,22 @@ public class CategoriesDao {
         return name;
     }
 
-//    public static String getID(String name) {
-//        String result ="";
-//        try (Handle handle = JDBIConnector.me().open()) {
-//            // Thực hiện truy vấn để lấy dữ liệu ID từ bảng staging
-//            String query = "SELECT madanhmuc FROM danhmuc WHERE tendanhmuc=?";
-//
-//            result = handle.createQuery(query).bind(0, name)
-//                    .mapTo(String.class)
-//                    .one();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            // Nếu có lỗi, trả về một danh sách trống
-//            return "";
-//        }
-//        return result;
-//    }
+    public static String getID(String name) {
+        String result ="";
+        try (Handle handle = JDBIConnector.me().open()) {
+            // Thực hiện truy vấn để lấy dữ liệu ID từ bảng staging
+            String query = "SELECT id FROM categories WHERE name=?";
+
+            result = handle.createQuery(query).bind(0, name)
+                    .mapTo(String.class)
+                    .one();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Nếu có lỗi, trả về một danh sách trống
+            return "";
+        }
+        return result;
+    }
 
     public static void insertCategoryNew(String id, String ten, String status){
         try (Handle handle = JDBIConnector.me().open()){
@@ -80,11 +104,11 @@ public class CategoriesDao {
         }
     }
 
-    public static void removeCategory(String name){
+    public static void removeCategory(int id){
         try (Handle handle = JDBIConnector.me().open()){
-            String query = "DELETE FROM categories WHERE name=?";
+            String query = "DELETE FROM categories WHERE id=?";
             Update update = handle.createUpdate(query)
-                    .bind(0, name);
+                    .bind(0, id);
             update.execute();
         }
     }

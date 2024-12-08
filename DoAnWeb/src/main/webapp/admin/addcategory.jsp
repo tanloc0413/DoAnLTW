@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: THINH
@@ -9,6 +10,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.model.Status" %>
 <%@ page import="vn.edu.hcmuaf.dao.StatusDao" %>
+<%@ page import="vn.edu.hcmuaf.model.Categories" %>
+<%@ page import="vn.edu.hcmuaf.dao.CategoriesDao" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -114,7 +117,7 @@
                                 <li><a  href="cart.jsp"><span class="mini-sub-pro">Danh sách đơn hàng</span></a></li>
                                 <li><a  href="product-type.jsp"><span class="mini-sub-pro">Danh mục sản phẩm</span></a></li>
                                 <li><a  href="analytics.html"><span class="mini-sub-pro">Phân tích</span></a></li>
-                                <li><a  href="blog.html"><span class="mini-sub-pro">Tin tức</span></a></li>
+
                             </ul>
                         </li>
 
@@ -440,6 +443,11 @@
         </div>
         <!-- Single pro tab start-->
         <div class="single-product-tab-area mg-b-30">
+            <%
+              int id = Integer.parseInt(request.getParameter("edit"));
+                Categories categories = CategoriesDao.get(id);
+
+            %>
             <!-- Single pro tab review Start-->
             <div class="single-pro-review-area">
                 <div class="container-fluid">
@@ -454,26 +462,52 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
-                                                    <p>Mã danh mục: </p>
-                                                    <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i class="fa fa-tags" aria-hidden="true"></i></span>
-                                                        <input type="text"  class="form-control" name="madm" placeholder="Mã danh mục" value=" ">
-                                                    </div>
-                                                    <p>Tên danh mục: </p>
-                                                    <div class="input-group mg-b-pro-edt">
+                                                    <%
+                                                        if(categories!=null){%>
+                                                            <p>Mã danh mục: </p>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <span class="input-group-addon"><i class="fa fa-tags" aria-hidden="true"></i></span>
+                                                                <input type="text"  class="form-control" name="madm" placeholder="Mã danh mục" value="<%=categories.getId()%>">
+                                                            </div>
+                                                            <p>Tên danh mục: </p>
+                                                            <div class="input-group mg-b-pro-edt">
 
-                                                        <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="ten" placeholder="Tên danh mục" value=" ">
-                                                    </div>
-                                                    <p>Trạng thái: </p>
-                                                    <div class="input-group mg-b-pro-edt" style="width: 100%">
-                                                        <select name="select" class="form-control pro-edt-select form-control-primary">
-                                                            <%
-                                                                for (Status s : statusList){%>
-                                                            <option value="<%=s.getId()%>" ><%=s.getName()%></option>
-                                                            <% }%>
-                                                        </select>
-                                                    </div>
+                                                                <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" name="ten" placeholder="Tên danh mục" value="<%=categories.getName()%>">
+                                                            </div>
+                                                                <p>Trạng thái: </p>
+                                                            <div class="input-group mg-b-pro-edt" style="width: 100%">
+                                                                <select name="select" class="form-control pro-edt-select form-control-primary">
+                                                                    <option value="<%=categories.getId()%>" ><%=categories.getStatus()%></option>
+                                                                <%
+                                                                    for (Status s : statusList){%>
+                                                                 <option value="<%=s.getId()%>" ><%=s.getName()%></option>
+                                                                <% }%>
+                                                                </select>
+                                                            </div>
+                                                        <%}else{%>
+                                                            <p>Mã danh mục: </p>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <span class="input-group-addon"><i class="fa fa-tags" aria-hidden="true"></i></span>
+                                                                <input type="text"  class="form-control" name="madm" placeholder="Mã danh mục" value=" ">
+                                                            </div>
+                                                            <p>Tên danh mục: </p>
+                                                            <div class="input-group mg-b-pro-edt">
+
+                                                                <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
+                                                                <input type="text" class="form-control" name="ten" placeholder="Tên danh mục" value=" ">
+                                                            </div>
+                                                            <p>Trạng thái: </p>
+                                                            <div class="input-group mg-b-pro-edt" style="width: 100%">
+                                                                <select name="select" class="form-control pro-edt-select form-control-primary">
+                                                                    <%
+                                                                        for (Status s : statusList){%>
+                                                                            <option value="<%=s.getId()%>" ><%=s.getName()%></option>
+                                                                    <% }%>
+                                                                </select>
+                                                            </div>
+                                                        <%}%>
+
 
                                                 </div>
                                             </div>

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -74,7 +76,7 @@
         <div class="nalika-profile">
             <div class="profile-dtl">
                 <a href="#"><img src="img/notification/picture.png" alt="" /></a>
-                <h2>Họ <span class="min-dtn">Tên</span></h2>
+                <h2>${sessionScope.currentUser.name}</h2>
             </div>
             <div class="profile-social-dtl">
                 <ul class="dtl-social">
@@ -98,7 +100,6 @@
                             <li><a  href="cart.jsp"><span class="mini-sub-pro">Danh sách đơn hàng</span></a></li>
                             <li><a  href="product-type.jsp"><span class="mini-sub-pro">Danh mục sản phẩm</span></a></li>
                             <li><a  href="analytics.html"><span class="mini-sub-pro">Phân tích</span></a></li>
-                            <li><a  href="blog.html"><span class="mini-sub-pro">Tin tức</span></a></li>
                         </ul>
                     </li>
                     <li>

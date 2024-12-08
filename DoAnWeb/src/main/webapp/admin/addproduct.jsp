@@ -79,7 +79,7 @@
 <body>
 
 
-<form action="./AddProduct" method="post">
+<form action="./AddProduct" method="post" enctype="multipart/form-data">
     <%
         List<Categories> dire =  CategoriesDao.getDirectorysAdmin();
         List<Status> statusList = StatusDao.getStatusDirectory();
@@ -118,7 +118,7 @@
                                 <li><a  href="cart.jsp"><span class="mini-sub-pro">Danh sách đơn hàng</span></a></li>
                                 <li><a  href="product-type.jsp"><span class="mini-sub-pro">Danh mục sản phẩm</span></a></li>
                                 <li><a  href="analytics.html"><span class="mini-sub-pro">Phân tích</span></a></li>
-                                <li><a  href="blog.html"><span class="mini-sub-pro">Tin tức</span></a></li>
+
                             </ul>
                         </li>
 
@@ -452,6 +452,7 @@
                             <div class="review-tab-pro-inner">
                                 <ul id="myTab3" class="tab-review-design">
                                     <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i> Thêm sản phẩm</a></li>
+                                    <li><a href="#reviews"><i class="icon nalika-picture" aria-hidden="true"></i> Hình ảnh</a></li>
                                     <li><a href="#INFORMATION"><i class="icon nalika-chat" aria-hidden="true"></i> Mô tả</a></li>
                                 </ul>
                                 <div id="myTabContent" class="tab-content custom-product-edit">
@@ -490,11 +491,11 @@
 <%--                                                        <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>--%>
 <%--                                                        <input type="text" class="form-control" name="version" placeholder="Phiên bản" value=" ">--%>
 <%--                                                    </div>--%>
-<%--                                                    <p>Số lượng sử dụng: </p>--%>
-<%--                                                    <div class="input-group mg-b-pro-edt">--%>
-<%--                                                        <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>--%>
-<%--                                                        <input type="text" class="form-control" name="number" placeholder="Số lượng thiết bị" value="">--%>
-<%--                                                    </div>--%>
+                                                    <p>Số lượng: </p>
+                                                    <div class="input-group mg-b-pro-edt">
+                                                        <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
+                                                        <input type="text" class="form-control" name="number" placeholder="Số lượng thiết bị" value="">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -528,14 +529,57 @@
                                                     <p style="margin-top: 20px">Hình ảnh: </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="url" placeholder="url" value=" ">
+                                                        <input type="file" class="form-control" name="url" placeholder="url" value=" ">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                     </div>
+                                    <div class="product-tab-list tab-pane fade" id="reviews">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="review-content-section ">
+                                                    <div class="text-center custom-pro-edt-ds" >
 
+                                                        <form action="./ImageSerive" method="post">
+                                                            <input name="masp"  style="display: none;" value="">
+                                                            <input type="file" name="url" class="form-control" placeholder="Đường dẫn hình ảnh " style="width: 1200px; float: left">
+                                                            <button type="submit" class="btn btn-ctl-bt waves-effect waves-light" style="margin-bottom: 30px; margin-left:30px;float: left">Thêm ảnh
+                                                            </button>
+                                                        </form>
+
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="pro-edt-img">
+                                                                <img src="" alt="" />
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-lg-8">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <div class="product-edt-pix-wrap">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="product-edt-remove">
+                                                                                    <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Xóa
+                                                                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="product-tab-list tab-pane fade" id="INFORMATION">
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

@@ -69,7 +69,7 @@
 </head>
 <body>
 
-<form action="./ProductManager" method="post">
+<%--<form action="./ProductManager" method="post">--%>
     <%
             String cate = "all";
             List<Products> productsDaoList = ProductsDao.getProductAdmin();
@@ -115,7 +115,7 @@
                             <li><a href="cart.jsp"><span class="mini-sub-pro">Danh sách đơn hàng</span></a></li>
                             <li><a href="product-type.jsp"><span class="mini-sub-pro">Danh mục sản phẩm</span></a></li>
                             <li><a href="analytics.html"><span class="mini-sub-pro">Phân tích</span></a></li>
-                            <li><a href="blog.html"><span class="mini-sub-pro">Tin tức</span></a></li>
+
                         </ul>
                     </li>
                     <li>
@@ -535,14 +535,13 @@
                                     int id = product.getId();%>
 
                                 <tr>
-<%--                                    <td><img src="<%=product.getUrl()%>" alt=""/></td>--%>
-                                    <td><img src="" alt=""/></td>
+                                    <td><img src="<%=product.getImage().substring(6)%>" alt=""/></td>
                                     <td ><%=product.getId()%></td>
                                     <td><%=product.getName()%></td>
                                     <%
-                                        if (product.getStatus().equals("KD01")){%>
+                                        if (product.getStatus().equals("Đang kinh doanh")){%>
                                     <td>
-                                        <button class="pd-setting"><%= product.getStatus()%></button>
+                                        <button class="ps-setting"><%= product.getStatus()%></button>
                                     </td>
                                     <% }else {%>
                                     <td>
@@ -554,20 +553,20 @@
                                     <td>0</td>
                                     <td class="large-column no-scientific-notation no-wrap" style="white-space: nowrap; width: 300px"><%=product.getPrice()%></td>
                                     <td>
-                                        <form action="./ProductDetail" method="post" style="float: left">
-                                            <input type="hidden" name="productId" value="<%=product.getId()%>">
+<%--                                        <form action="./ProductDetail" method="post" style="float: left">--%>
+                                            <input type="hidden" name="productId" value="">
                                             <button data-toggle="tooltip" title="submit" class="pd-setting-ed"><a
-                                                    href="product-edit.jsp?id=<%=id%>"><i class="fa fa-pencil-square-o"
+                                                    href="product-edit.jsp"><i class="fa fa-pencil-square-o"
                                                                                aria-hidden="true"></i></a></button>
+<%--                                        </form>--%>
+
+                                    </td>
+                                    <td>
+                                        <form action="./RemoveProduct" method="post" style="float: right">
+                                            <input name="idPr" value="<%=product.getId()%>" style="display: none">
+                                            <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i
+                                                    class="fa fa-trash-o" aria-hidden="true"></i></button>
                                         </form>
-                                            <form action="./RemoveProduct" method="post" style="float: right">
-                                                <input name="idPr" value="<%=product.getId()%>" style="display: none">
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i
-                                                        class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </form>
-
-
-
                                     </td>
                                 </tr>
 
@@ -583,7 +582,7 @@
     </div>
 
 </div>
-</form>
+<%--</form>--%>
 
 <!-- jquery
     ============================================ -->

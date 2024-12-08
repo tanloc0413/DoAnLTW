@@ -1,11 +1,10 @@
 <%@ page import="vn.edu.hcmuaf.model.Products" %>
 <%@ page import="vn.edu.hcmuaf.dao.CategoriesDao" %>
 <%@ page import="vn.edu.hcmuaf.dao.StatusDao" %>
-<%@ page import="vn.edu.hcmuaf.model.Directorys" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.model.Status" %>
 <%@ page import="vn.edu.hcmuaf.model.ProductImages" %>
-<%@ page import="vn.edu.hcmuaf.dao.ImageDao" %>
+<%@ page import="vn.edu.hcmuaf.model.Categories" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html class="no-js" lang="en">
 
@@ -79,9 +78,9 @@
     <%
         HttpSession sessioan = request.getSession();
         Products products = (Products) sessioan.getAttribute("pro");
-        List<Directorys> dire =  CategoriesDao.getDirectorysAdmin();
+        List<Categories> dire =  CategoriesDao.getDirectorysAdmin();
         List<Status> statusList = StatusDao.getStatusDirectory();
-        List<ProductImages> images = ImageDao.getImageProductByID(products.getMaSP());
+//        List<ProductImages> images = ImageDao.getImageProductByID(products.getId());
     %>
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
@@ -116,7 +115,7 @@
                                 <li><a  href="cart.jsp"><span class="mini-sub-pro">Danh sách đơn hàng</span></a></li>
                                 <li><a  href="product-type.jsp"><span class="mini-sub-pro">Danh mục sản phẩm</span></a></li>
                                 <li><a  href="analytics.html"><span class="mini-sub-pro">Phân tích</span></a></li>
-                                <li><a  href="blog.html"><span class="mini-sub-pro">Tin tức</span></a></li>
+
                             </ul>
                         </li>
 
@@ -461,38 +460,38 @@
                                                     <p>Mã sản phẩm: </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-tags" aria-hidden="true"></i></span>
-                                                        <input type="text"  class="form-control" name="masp" placeholder="Mã sản phẩm" value="<%=products.getMaSP()%>">
+                                                        <input type="text"  class="form-control" name="masp" placeholder="Mã sản phẩm" value="">
                                                     </div>
                                                     <p>Tên sản phẩm: </p>
                                                     <div class="input-group mg-b-pro-edt">
 
                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="ten" placeholder="Tên sản phẩm" value="<%=products.getName()%>">
+                                                        <input type="text" class="form-control" name="ten" placeholder="Tên sản phẩm" value="">
                                                     </div>
                                                     <p>Giá sản phẩm(Vnđ): </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="price" placeholder="Giá bán" value="<%=products.getPrice() %>">
+                                                        <input type="text" class="form-control" name="price" placeholder="Giá bán" value="">
                                                     </div>
                                                     <p>Bảo hành: </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="tgbh" placeholder="Thời gian bảo hành" value="<%=products.getBaoHanh()%>">
+                                                        <input type="text" class="form-control" name="tgbh" placeholder="Thời gian bảo hành" value="">
                                                     </div>
                                                     <p>Hãng sản xuất: </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-home" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="hang" placeholder="Hãng sản xuất" value="<%=products.getHangSX()%>">
+                                                        <input type="text" class="form-control" name="hang" placeholder="Hãng sản xuất" value="">
                                                     </div>
                                                     <p>Phiên bản sản phẩm: </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="version" placeholder="Phiên bản" value="<%=products.getVersion()%>">
+                                                        <input type="text" class="form-control" name="version" placeholder="Phiên bản" value="">
                                                     </div>
                                                     <p>Số lượng sử dụng: </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="number" placeholder="Số lượng thiết bị" value="<%=products.getNumberUser()%>">
+                                                        <input type="text" class="form-control" name="number" placeholder="Số lượng thiết bị" value="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -501,34 +500,34 @@
                                                     <p>Loại sản phẩm: </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="type" placeholder="Loại sản phẩm" value="<%=products.getTypeProduct()%>">
+                                                        <input type="text" class="form-control" name="type" placeholder="Loại sản phẩm" value="">
                                                     </div>
                                                     <p>Ngày thêm sản phẩm: </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" placeholder="Ngày tạo" value="<%=products.getCreate()%>">
+                                                        <input type="text" class="form-control" placeholder="Ngày tạo" value="">
                                                     </div>
                                                     <p>Hạng sử dụng: </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="time" placeholder="Hạng sử dụng" value="<%=products.getHangDung()%>">
+                                                        <input type="text" class="form-control" name="time" placeholder="Hạng sử dụng" value="">
                                                     </div>
                                                     <p>Trạng thái: </p>
                                                     <div class="input-group mg-b-pro-edt" style="width: 100%">
                                                         <select name="select" class="form-control pro-edt-select form-control-primary">
-                                                            <option value="<%=products.getStatus()%>" > <%=StatusDao.getName(products.getStatus())%></option>
+                                                            <option value="" > </option>
                                                             <%
                                                                 for (Status s : statusList){%>
-                                                            <option value="<%=s.getId()%>"><%=s.getName()%></option>
+                                                            <option value="<%=s.getId()%>" ><%=s.getName()%></option>
                                                             <% }%>
                                                         </select>
                                                     </div>
                                                     <p>Danh mục: </p>
                                                     <select name="select1" class="form-control pro-edt-select form-control-primary">
-                                                        <option value="<%=products.getMaDM()%>" > <%=CategoriesDao.getName(products.getMaDM())%></option>
+                                                        <option value="" > </option>
                                                         <%
-                                                            for (Directorys d : dire){%>
-                                                         <option value="<%=d.getId()%>"><%=d.getName()%></option>
+                                                            for (Categories d : dire){%>
+                                                        <option value="<%=d.getId()%>"><%=d.getName()%></option>
                                                         <% }%>
                                                     </select>
                                                 </div>
@@ -543,8 +542,8 @@
                                                     <div class="text-center custom-pro-edt-ds" >
 
                                                         <form action="./ImageSerive" method="post">
-                                                            <input name="masp"  style="display: none;" value="<%=products.getMaSP()%>">
-                                                            <input type="text" name="url" class="form-control" placeholder="Đường dẫn hình ảnh " style="width: 1200px; float: left">
+                                                            <input name="masp"  style="display: none;" value="">
+                                                            <input type="file" name="url" class="form-control" placeholder="Đường dẫn hình ảnh " style="width: 1200px; float: left">
                                                             <button type="submit" class="btn btn-ctl-bt waves-effect waves-light" style="margin-bottom: 30px; margin-left:30px;float: left">Thêm ảnh
                                                             </button>
                                                         </form>
@@ -554,7 +553,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-4">
                                                             <div class="pro-edt-img">
-                                                                <img src="<%=products.getUrl()%>" alt="" />
+                                                                <img src="" alt="" />
                                                             </div>
 
                                                         </div>
@@ -576,34 +575,34 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <%
-                                                        for (ProductImages i : images){%>
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="pro-edt-img">
-                                                                <img src="<%=i.getUrl()%>" alt="" />
-                                                            </div>
+<%--                                                    <%--%>
+<%--                                                        for (ProductImages i : images){%>--%>
+<%--                                                    <div class="row">--%>
+<%--                                                        <div class="col-lg-4">--%>
+<%--                                                            <div class="pro-edt-img">--%>
+<%--                                                                <img src="<%=i.getUrl()%>" alt="" />--%>
+<%--                                                            </div>--%>
 
-                                                        </div>
-                                                        <div class="col-lg-8">
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    <div class="product-edt-pix-wrap">
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6">
-                                                                                <div class="product-edt-remove">
-                                                                                    <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Xóa
-                                                                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                                                                    </button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <%}%>
+<%--                                                        </div>--%>
+<%--                                                        <div class="col-lg-8">--%>
+<%--                                                            <div class="row">--%>
+<%--                                                                <div class="col-lg-12">--%>
+<%--                                                                    <div class="product-edt-pix-wrap">--%>
+<%--                                                                        <div class="row">--%>
+<%--                                                                            <div class="col-lg-6">--%>
+<%--                                                                                <div class="product-edt-remove">--%>
+<%--                                                                                    <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Xóa--%>
+<%--                                                                                        <i class="fa fa-times" aria-hidden="true"></i>--%>
+<%--                                                                                    </button>--%>
+<%--                                                                                </div>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </div>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+<%--                                                        </div>--%>
+<%--                                                    </div>--%>
+<%--                                                    <%}%>--%>
                                                 </div>
                                             </div>
                                         </div>
@@ -614,7 +613,7 @@
                                                 <div class="review-content-section">
                                                     <div class="card-block">
                                                         <div class="input-group mg-b-15">
-                                                            <textarea rows="20" name="text" cols="225"><%=products.getMoTa()%></textarea>
+                                                            <textarea rows="20" name="text" cols="225"></textarea>
                                                         </div>
 
                                                     </div>
