@@ -59,7 +59,7 @@ public class CategoriesDao {
     }
 
 
-    public static String getName(String id) {
+    public static String getName(int id) {
         String name ="";
         try (Handle handle = JDBIConnector.me().open()) {
             // Thực hiện truy vấn để lấy dữ liệu ID từ bảng staging
@@ -76,19 +76,20 @@ public class CategoriesDao {
         return name;
     }
 
-    public static String getID(String name) {
-        String result ="";
+    public static int getID(String name) {
+        int result = -1;  // Default value if ID is not found or an error occurs
         try (Handle handle = JDBIConnector.me().open()) {
-            // Thực hiện truy vấn để lấy dữ liệu ID từ bảng staging
-            String query = "SELECT id FROM categories WHERE name=?";
+            // Thực hiện truy vấn để lấy dữ liệu ID từ bảng categories
+            String query = "SELECT id FROM categories WHERE name = ?";
 
-            result = handle.createQuery(query).bind(0, name)
-                    .mapTo(String.class)
-                    .one();
+            result = handle.createQuery(query)
+                    .bind(0, name)
+                    .mapTo(int.class)  // Map result to int
+                    .one();  // This will return the first result or throw an exception if not found
         } catch (Exception e) {
             e.printStackTrace();
-            // Nếu có lỗi, trả về một danh sách trống
-            return "";
+            // If an error occurs, the result will remain as -1
+            return -1;
         }
         return result;
     }

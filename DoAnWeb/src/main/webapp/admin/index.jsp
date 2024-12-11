@@ -96,7 +96,7 @@
                         </a>
                         <ul class="submenu-angle" aria-expanded="true">
                             <li><a  href="index.jsp"><span class="mini-sub-pro">Bảng điều khiển</span></a></li>
-                            <li><a  href="ManagerProduct.jsp"><span class="mini-sub-pro">Danh sách sản phẩm</span></a></li>
+                            <li><a  href="./ListManagerProduct"><span class="mini-sub-pro">Danh sách sản phẩm</span></a></li>
                             <li><a  href="cart.jsp"><span class="mini-sub-pro">Danh sách đơn hàng</span></a></li>
                             <li><a  href="product-type.jsp"><span class="mini-sub-pro">Danh mục sản phẩm</span></a></li>
                             <li><a  href="analytics.html"><span class="mini-sub-pro">Phân tích</span></a></li>

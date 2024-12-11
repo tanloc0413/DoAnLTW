@@ -1,6 +1,8 @@
 package vn.edu.hcmuaf.controller;
 
 import vn.edu.hcmuaf.dao.*;
+import vn.edu.hcmuaf.db.ConfigProperties;
+import vn.edu.hcmuaf.uniti.FileUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -32,11 +34,16 @@ public class AddProduct extends HttpServlet {
         String mota = req.getParameter("text");
         String statusID = req.getParameter("select");
         int category = Integer.parseInt(req.getParameter("select2"));
+        String nameCategory = CategoriesDao.getName(category);
+
         Part filePart = req.getPart("url");
         String fileName = getFileName(filePart); // Lấy tên file từ header
-        String uploadfile =  "C:/Users/THINH/Documents/LTW/DoAnLTW/DoAnWeb/src/main/webapp/admin/img/product/" + fileName;
+        String uploadfile =  ConfigProperties.dir + nameCategory + "/" + fileName;
+        if(!FileUtil.checkDir(ConfigProperties.dir + nameCategory)){
+            return;
+        }
 
-        String relativePath = "admin/img/product/" + fileName; // Đường dẫn tương đối để lưu vào DB
+        String relativePath = "admin/img/product/" + nameCategory +"/" + fileName; // Đường dẫn tương đối để lưu vào DB
         try{
             FileOutputStream fos = new FileOutputStream(uploadfile);
             InputStream is = filePart.getInputStream();
@@ -49,7 +56,6 @@ public class AddProduct extends HttpServlet {
             fos.close();
 
         }catch (Exception e){
-
             e.printStackTrace();
             resp.getWriter().write("File upload failed");
             return;
@@ -62,7 +68,7 @@ public class AddProduct extends HttpServlet {
 
         InventoryDao.insertInventory( id, number);
 
-        req.getRequestDispatcher("/admin/ManagerProduct.jsp").forward(req,resp);
+        req.getRequestDispatcher("./ListManagerProduct").forward(req,resp);
 
 
     }
