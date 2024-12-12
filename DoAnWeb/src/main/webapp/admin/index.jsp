@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -22,8 +22,8 @@
     <!-- Bootstrap CSS
 		============================================ -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
-	<!-- nalika Icon CSS
-		============================================ -->
+    <!-- nalika Icon CSS
+        ============================================ -->
     <link rel="stylesheet" href="css/nalika-icon.css">
     <!-- owl.carousel CSS
 		============================================ -->
@@ -67,64 +67,11 @@
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
-<div class="left-sidebar-pro">
-    <nav id="sidebar" class="">
-        <div class="sidebar-header" style="height: 90px">
-            <a href="index.jsp"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
-            <strong><img src="img/logo/logo.png" alt="" /></strong>
-        </div>
-        <div class="nalika-profile">
-            <div class="profile-dtl">
-                <a href="#"><img src="img/notification/picture.png" alt="" /></a>
-                <h2>${sessionScope.currentUser.name}</h2>
-            </div>
-            <div class="profile-social-dtl">
-                <ul class="dtl-social">
-                    <li><a href="#"><i class="icon nalika-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon nalika-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon nalika-linkedin"></i></a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="left-custom-menu-adp-wrap comment-scrollbar">
-            <nav class="sidebar-nav left-sidebar-menu-pro">
-                <ul class="metismenu" id="menu1">
-                    <li class="active">
-                        <a class="has-arrow" href="index.jsp">
-                            <i class="icon nalika-home icon-wrap"></i>
-                            <span class="mini-click-non">Tổng quan</span>
-                        </a>
-                        <ul class="submenu-angle" aria-expanded="true">
-                            <li><a  href="index.jsp"><span class="mini-sub-pro">Bảng điều khiển</span></a></li>
-                            <li><a  href="./ListManagerProduct"><span class="mini-sub-pro">Danh sách sản phẩm</span></a></li>
-                            <li><a  href="cart.jsp"><span class="mini-sub-pro">Danh sách đơn hàng</span></a></li>
-                            <li><a  href="product-type.jsp"><span class="mini-sub-pro">Danh mục sản phẩm</span></a></li>
-                            <li><a  href="analytics.html"><span class="mini-sub-pro">Phân tích</span></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="#" aria-expanded="false"><i class="fa big-icon fa-users icon-wrap"></i> <span class="mini-click-non">Tài Khoản</span></a>
-                        <ul class="submenu-angle" aria-expanded="false">
-                            <li><a  href="adminAccount.jsp"><span class="mini-sub-pro">Quản trị</span></a></li>
-                            <li><a  href="userAccount.jsp"><span class="mini-sub-pro">Người dùng</span></a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </nav>
-        </div>
-    </nav>
-</div>
+<body>
+<jsp:include page="menu.jsp"/>
 <!-- Start Welcome area -->
 <div class="all-content-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="logo-pro">
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="header-advance-area">
         <div class="header-top-area">
             <div class="container-fluid">
@@ -134,7 +81,8 @@
                             <div class="row">
                                 <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
                                     <div class="menu-switcher-pro">
-                                        <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+                                        <button type="button" id="sidebarCollapse"
+                                                class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
                                             <i class="icon nalika-menu-task"></i>
                                         </button>
                                     </div>
@@ -153,8 +101,12 @@
                                     <div class="header-right-info" style="margin-right: 50px">
                                         <ul class="nav navbar-nav mai-top-nav header-right-menu">
                                             <li class="nav-item dropdown">
-                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="icon nalika-mail" aria-hidden="true"></i><span class="indicator-ms"></span></a>
-                                                <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
+                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                                                   class="nav-link dropdown-toggle"><i class="icon nalika-mail"
+                                                                                       aria-hidden="true"></i><span
+                                                        class="indicator-ms"></span></a>
+                                                <div role="menu"
+                                                     class="author-message-top dropdown-menu animated zoomIn">
                                                     <div class="message-single-top">
                                                         <h1>Tin Nhắn</h1>
                                                     </div>
@@ -177,8 +129,13 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="icon nalika-alarm" aria-hidden="true"></i><span class="indicator-nt"></span></a>
-                                                <div role="menu" class="notification-author dropdown-menu animated zoomIn">
+                                            <li class="nav-item"><a href="#" data-toggle="dropdown" role="button"
+                                                                    aria-expanded="false"
+                                                                    class="nav-link dropdown-toggle"><i
+                                                    class="icon nalika-alarm" aria-hidden="true"></i><span
+                                                    class="indicator-nt"></span></a>
+                                                <div role="menu"
+                                                     class="notification-author dropdown-menu animated zoomIn">
                                                     <div class="notification-single-top">
                                                         <h1>Thông báo</h1>
                                                     </div>
@@ -202,30 +159,43 @@
                                                 </div>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                                                   class="nav-link dropdown-toggle">
                                                     <i class="icon nalika-user"></i>
                                                     <i class="icon nalika-down-arrow nalika-angle-dw"></i>
                                                 </a>
-                                                <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                    <li><a href="register.html"><span class="icon nalika-home author-log-ic"></span> Đăng ký</a>
+                                                <ul role="menu"
+                                                    class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                    <li><a href="register.html"><span
+                                                            class="icon nalika-home author-log-ic"></span> Đăng ký</a>
                                                     </li>
-                                                    <li><a href="#"><span class="icon nalika-user author-log-ic"></span> Hồ sơ của tôi</a>
+                                                    <li><a href="#"><span class="icon nalika-user author-log-ic"></span>
+                                                        Hồ sơ của tôi</a>
                                                     </li>
-                                                    <li><a href="lock.html"><span class="icon nalika-diamond author-log-ic"></span> Khóa</a>
+                                                    <li><a href="lock.html"><span
+                                                            class="icon nalika-diamond author-log-ic"></span> Khóa</a>
                                                     </li>
-                                                    <li><a href="#"><span class="icon nalika-settings author-log-ic"></span> Cài đặt</a>
+                                                    <li><a href="#"><span
+                                                            class="icon nalika-settings author-log-ic"></span> Cài
+                                                        đặt</a>
                                                     </li>
                                                     <li>
-<%--                                                        <form action="./logOut" method="post">--%>
-<%--                                                            <button type="submit">Đăng xuất</button>--%>
-<%--                                                        </form> --%>
-                                                        <a href="../Login.jsp"><span class="icon nalika-unlocked author-log-ic"></span> Đăng xuất</a>
+                                                        <%--                                                        <form action="./logOut" method="post">--%>
+                                                        <%--                                                            <button type="submit">Đăng xuất</button>--%>
+                                                        <%--                                                        </form> --%>
+                                                        <a href="../Login.jsp"><span
+                                                                class="icon nalika-unlocked author-log-ic"></span> Đăng
+                                                            xuất</a>
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li class="nav-item nav-setting-open"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="icon nalika-menu-task"></i></a>
+                                            <li class="nav-item nav-setting-open"><a href="#" data-toggle="dropdown"
+                                                                                     role="button" aria-expanded="false"
+                                                                                     class="nav-link dropdown-toggle"><i
+                                                    class="icon nalika-menu-task"></i></a>
 
-                                                <div role="menu" class="admintab-wrap menu-setting-wrap menu-setting-wrap-bg dropdown-menu animated zoomIn">
+                                                <div role="menu"
+                                                     class="admintab-wrap menu-setting-wrap menu-setting-wrap-bg dropdown-menu animated zoomIn">
                                                     <ul class="nav nav-tabs custon-set-tab">
                                                         <li class="active"><a data-toggle="tab" href="#Notes">Mới</a>
                                                         </li>
@@ -239,7 +209,8 @@
                                                         <div id="Notes" class="tab-pane fade in active">
                                                             <div class="notes-area-wrap">
                                                                 <div class="note-heading-indicate">
-                                                                    <h2><i class="icon nalika-chat"></i> Tin mới nhất</h2>
+                                                                    <h2><i class="icon nalika-chat"></i> Tin mới nhất
+                                                                    </h2>
                                                                 </div>
                                                                 <div class="notes-list-area notes-menu-scrollbar">
                                                                     <ul class="notes-menu-list">
@@ -247,7 +218,8 @@
                                                                             <a href="#">
                                                                                 <div class="notes-list-flow">
                                                                                     <div class="notes-img">
-                                                                                        <img src="img/contact/4.jpg" alt="" />
+                                                                                        <img src="img/contact/4.jpg"
+                                                                                             alt=""/>
                                                                                     </div>
                                                                                     <div class="notes-content">
                                                                                         <p> Thông báo mới</p>
@@ -270,7 +242,8 @@
                                                                                 <div class="project-list-flow">
                                                                                     <div class="projects-st-heading">
                                                                                         <h2>Người ăng ký mới</h2>
-                                                                                        <p> Hãy thực hiện dự án này càng sớm càng tốt.</p>
+                                                                                        <p> Hãy thực hiện dự án này càng
+                                                                                            sớm càng tốt.</p>
                                                                                         <span class="project-st-time">1 giờ trước</span>
                                                                                     </div>
                                                                                 </div>
@@ -292,8 +265,12 @@
                                                                                 <h2>Hiển thị thông báo</h2>
                                                                                 <div class="ts-custom-check">
                                                                                     <div class="onoffswitch">
-                                                                                        <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example">
-                                                                                        <label class="onoffswitch-label" for="example">
+                                                                                        <input type="checkbox"
+                                                                                               name="collapsemenu"
+                                                                                               class="onoffswitch-checkbox"
+                                                                                               id="example">
+                                                                                        <label class="onoffswitch-label"
+                                                                                               for="example">
                                                                                             <span class="onoffswitch-inner"></span>
                                                                                             <span class="onoffswitch-switch"></span>
                                                                                         </label>
@@ -308,8 +285,12 @@
                                                                                 <h2>Tắt tính năng trò chuyện</h2>
                                                                                 <div class="ts-custom-check">
                                                                                     <div class="onoffswitch">
-                                                                                        <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example3">
-                                                                                        <label class="onoffswitch-label" for="example3">
+                                                                                        <input type="checkbox"
+                                                                                               name="collapsemenu"
+                                                                                               class="onoffswitch-checkbox"
+                                                                                               id="example3">
+                                                                                        <label class="onoffswitch-label"
+                                                                                               for="example3">
                                                                                             <span class="onoffswitch-inner"></span>
                                                                                             <span class="onoffswitch-switch"></span>
                                                                                         </label>
@@ -324,8 +305,12 @@
                                                                                 <h2>Bật lịch sử</h2>
                                                                                 <div class="ts-custom-check">
                                                                                     <div class="onoffswitch">
-                                                                                        <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example4">
-                                                                                        <label class="onoffswitch-label" for="example4">
+                                                                                        <input type="checkbox"
+                                                                                               name="collapsemenu"
+                                                                                               class="onoffswitch-checkbox"
+                                                                                               id="example4">
+                                                                                        <label class="onoffswitch-label"
+                                                                                               for="example4">
                                                                                             <span class="onoffswitch-inner"></span>
                                                                                             <span class="onoffswitch-switch"></span>
                                                                                         </label>
@@ -340,8 +325,12 @@
                                                                                 <h2>Hiển thị biểu đồ</h2>
                                                                                 <div class="ts-custom-check">
                                                                                     <div class="onoffswitch">
-                                                                                        <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example7">
-                                                                                        <label class="onoffswitch-label" for="example7">
+                                                                                        <input type="checkbox"
+                                                                                               name="collapsemenu"
+                                                                                               class="onoffswitch-checkbox"
+                                                                                               id="example7">
+                                                                                        <label class="onoffswitch-label"
+                                                                                               for="example7">
                                                                                             <span class="onoffswitch-inner"></span>
                                                                                             <span class="onoffswitch-switch"></span>
                                                                                         </label>
@@ -356,8 +345,13 @@
                                                                                 <h2>Cập nhật hàng ngày</h2>
                                                                                 <div class="ts-custom-check">
                                                                                     <div class="onoffswitch">
-                                                                                        <input type="checkbox" name="collapsemenu" checked="" class="onoffswitch-checkbox" id="example2">
-                                                                                        <label class="onoffswitch-label" for="example2">
+                                                                                        <input type="checkbox"
+                                                                                               name="collapsemenu"
+                                                                                               checked=""
+                                                                                               class="onoffswitch-checkbox"
+                                                                                               id="example2">
+                                                                                        <label class="onoffswitch-label"
+                                                                                               for="example2">
                                                                                             <span class="onoffswitch-inner"></span>
                                                                                             <span class="onoffswitch-switch"></span>
                                                                                         </label>
@@ -373,8 +367,13 @@
                                                                                 <h2>Người dùng ngoại tuyến</h2>
                                                                                 <div class="ts-custom-check">
                                                                                     <div class="onoffswitch">
-                                                                                        <input type="checkbox" name="collapsemenu" checked="" class="onoffswitch-checkbox" id="example5">
-                                                                                        <label class="onoffswitch-label" for="example5">
+                                                                                        <input type="checkbox"
+                                                                                               name="collapsemenu"
+                                                                                               checked=""
+                                                                                               class="onoffswitch-checkbox"
+                                                                                               id="example5">
+                                                                                        <label class="onoffswitch-label"
+                                                                                               for="example5">
                                                                                             <span class="onoffswitch-inner"></span>
                                                                                             <span class="onoffswitch-switch"></span>
                                                                                         </label>
@@ -421,7 +420,8 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="breadcomb-report">
-                                            <button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="icon nalika-download"></i></button>
+                                            <button data-toggle="tooltip" data-placement="left" title="Download Report"
+                                                    class="btn"><i class="icon nalika-download"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -440,7 +440,8 @@
                                 <h4 class="text-left text-uppercase"><b>Đặt hàng</b></h4>
                                 <div class="row vertical-center-box vertical-center-box-tablet">
                                     <div class="col-xs-3 mar-bot-15 text-left">
-                                        <label class="label bg-green">30% <i class="fa fa-level-up" aria-hidden="true"></i></label>
+                                        <label class="label bg-green">30% <i class="fa fa-level-up"
+                                                                             aria-hidden="true"></i></label>
                                     </div>
                                     <div class="col-xs-9 cus-gh-hd-pro">
                                         <h2 class="text-right no-margin">10,000</h2>
@@ -456,7 +457,8 @@
                                 <h4 class="text-left text-uppercase"><b>Khấu trừ thuế</b></h4>
                                 <div class="row vertical-center-box vertical-center-box-tablet">
                                     <div class="text-left col-xs-3 mar-bot-15">
-                                        <label class="label bg-red">15% <i class="fa fa-level-down" aria-hidden="true"></i></label>
+                                        <label class="label bg-red">15% <i class="fa fa-level-down"
+                                                                           aria-hidden="true"></i></label>
                                     </div>
                                     <div class="col-xs-9 cus-gh-hd-pro">
                                         <h2 class="text-right no-margin">5,000</h2>
@@ -472,7 +474,8 @@
                                 <h4 class="text-left text-uppercase"><b>Doanh thu</b></h4>
                                 <div class="row vertical-center-box vertical-center-box-tablet">
                                     <div class="text-left col-xs-3 mar-bot-15">
-                                        <label class="label bg-blue">50% <i class="fa fa-level-up" aria-hidden="true"></i></label>
+                                        <label class="label bg-blue">50% <i class="fa fa-level-up"
+                                                                            aria-hidden="true"></i></label>
                                     </div>
                                     <div class="col-xs-9 cus-gh-hd-pro">
                                         <h2 class="text-right no-margin">70.000.000</h2>
@@ -488,7 +491,8 @@
                                 <h4 class="text-left text-uppercase"><b>Doanh thu hàng năm</b></h4>
                                 <div class="row vertical-center-box vertical-center-box-tablet">
                                     <div class="text-left col-xs-3 mar-bot-15">
-                                        <label class="label bg-purple">80% <i class="fa fa-level-up" aria-hidden="true"></i></label>
+                                        <label class="label bg-purple">80% <i class="fa fa-level-up"
+                                                                              aria-hidden="true"></i></label>
                                     </div>
                                     <div class="col-xs-9 cus-gh-hd-pro">
                                         <h2 class="text-right no-margin">100.000.000</h2>
@@ -519,7 +523,8 @@
                                         <div class="actions graph-rp">
                                             <div class="btn-group" data-toggle="buttons">
                                                 <label class="btn btn-grey active">
-                                                    <input type="radio" name="options" class="toggle" id="option1" checked="">Hôm nay</label>
+                                                    <input type="radio" name="options" class="toggle" id="option1"
+                                                           checked="">Hôm nay</label>
                                                 <label class="btn btn-grey">
                                                     <input type="radio" name="options" class="toggle" id="option2">Tuần</label>
                                             </div>
@@ -537,7 +542,8 @@
                                 <li>
                                     <div id="sparklinedash"></div>
                                 </li>
-                                <li class="text-right sp-cn-r"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter sales-sts-ctn">8659</span></li>
+                                <li class="text-right sp-cn-r"><i class="fa fa-level-up" aria-hidden="true"></i> <span
+                                        class="counter sales-sts-ctn">8659</span></li>
                             </ul>
                         </div>
                         <div class="white-box analytics-info-cs mg-b-30">
@@ -546,7 +552,8 @@
                                 <li>
                                     <div id="sparklinedash2"></div>
                                 </li>
-                                <li class="text-right"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter sales-sts-ctn">7469</span></li>
+                                <li class="text-right"><i class="fa fa-level-up" aria-hidden="true"></i> <span
+                                        class="counter sales-sts-ctn">7469</span></li>
                             </ul>
                         </div>
                         <div class="white-box analytics-info-cs mg-b-30">
@@ -555,7 +562,8 @@
                                 <li>
                                     <div id="sparklinedash3"></div>
                                 </li>
-                                <li class="text-right"><i class="fa fa-level-up" aria-hidden="true"></i> <span class="counter sales-sts-ctn">6011</span></li>
+                                <li class="text-right"><i class="fa fa-level-up" aria-hidden="true"></i> <span
+                                        class="counter sales-sts-ctn">6011</span></li>
                             </ul>
                         </div>
                         <div class="white-box analytics-info-cs">
@@ -564,7 +572,8 @@
                                 <li>
                                     <div id="sparklinedash4"></div>
                                 </li>
-                                <li class="text-right"><i class="fa fa-level-down" aria-hidden="true"></i> <span class="sales-sts-ctn">18%</span></li>
+                                <li class="text-right"><i class="fa fa-level-down" aria-hidden="true"></i> <span
+                                        class="sales-sts-ctn">18%</span></li>
                             </ul>
                         </div>
                     </div>
@@ -576,7 +585,9 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <div class="white-box tranffic-als-inner">
-                            <h3 class="box-title"><small class="pull-right m-t-10 text-success last-month-sc cl-one"><i class="fa fa-sort-asc"></i> 18% Tháng trước</small> Lưu lượng truy cập trang web</h3>
+                            <h3 class="box-title"><small class="pull-right m-t-10 text-success last-month-sc cl-one"><i
+                                    class="fa fa-sort-asc"></i> 18% Tháng trước</small> Lưu lượng truy cập trang web
+                            </h3>
                             <div class="stats-row">
                                 <div class="stat-item">
                                     <h6>Tăng trưởng tổng thể</h6>
@@ -593,7 +604,8 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <div class="white-box tranffic-als-inner res-mg-t-30">
-                            <h3 class="box-title"><small class="pull-right m-t-10 text-danger last-month-sc cl-two"><i class="fa fa-sort-asc"></i> 18% Tháng trước</small>Số lượng đặt hàng</h3>
+                            <h3 class="box-title"><small class="pull-right m-t-10 text-danger last-month-sc cl-two"><i
+                                    class="fa fa-sort-asc"></i> 18% Tháng trước</small>Số lượng đặt hàng</h3>
                             <div class="stats-row">
                                 <div class="stat-item">
                                     <h6>Tăng trưởng tổng thể</h6>
@@ -610,7 +622,9 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <div class="white-box tranffic-als-inner res-mg-t-30">
-                            <h3 class="box-title"><small class="pull-right m-t-10 text-success last-month-sc cl-three"><i class="fa fa-sort-asc"></i> 18% Doanh thu</small>Doanh thu</h3>
+                            <h3 class="box-title"><small
+                                    class="pull-right m-t-10 text-success last-month-sc cl-three"><i
+                                    class="fa fa-sort-asc"></i> 18% Doanh thu</small>Doanh thu</h3>
                             <div class="stats-row">
                                 <div class="stat-item">
                                     <h6>Tăng trưởng tổng thể</h6>
@@ -642,13 +656,16 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="actions graph-rp">
-                                            <a href="#" class="btn btn-dark-blue btn-circle active tip-top" data-toggle="tooltip" title="Upload">
+                                            <a href="#" class="btn btn-dark-blue btn-circle active tip-top"
+                                               data-toggle="tooltip" title="Upload">
                                                 <i class="fa fa-cloud-download" aria-hidden="true"></i>
                                             </a>
-                                            <a href="#" class="btn btn-dark btn-circle active tip-top" data-toggle="tooltip" title="Refresh">
+                                            <a href="#" class="btn btn-dark btn-circle active tip-top"
+                                               data-toggle="tooltip" title="Refresh">
                                                 <i class="fa fa-reply" aria-hidden="true"></i>
                                             </a>
-                                            <a href="#" class="btn btn-blue-grey btn-circle active tip-top" data-toggle="tooltip" title="Delete">
+                                            <a href="#" class="btn btn-blue-grey btn-circle active tip-top"
+                                               data-toggle="tooltip" title="Delete">
                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                                             </a>
                                         </div>

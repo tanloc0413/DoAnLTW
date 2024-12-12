@@ -1,11 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
-<%@ page import="vn.edu.hcmuaf.dao.ProductsDao" %>
-<%@ page import="vn.edu.hcmuaf.model.Products" %>
-<%@ page import="java.util.List" %>
-<%@ page import="vn.edu.hcmuaf.model.Categories" %>
-<%@ page import="vn.edu.hcmuaf.dao.CategoriesDao" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -73,342 +68,14 @@
 <body>
 <c:set var="categories" value="${requestScope.categories}"/>
 <c:set var="cate" value="${requestScope.catego}"/>
-<c:if test="${ not empty cate }">
+<c:if test="${empty cate }">
     <c:set var="cate" value="all"/>
 </c:if>
-<jsp:include page="header.jsp"/>
+
+<jsp:include page="menu.jsp"/>
 <div class="all-content-wrapper">
-<%--    <div class="container-fluid">--%>
-<%--        <div class="row">--%>
-<%--            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--%>
-<%--                <div class="logo-pro">--%>
-
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
     <div class="header-advance-area">
-        <div class="header-top-area">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="header-top-wraper">
-                            <div class="row">
-                                <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
-                                    <div class="menu-switcher-pro">
-                                        <button type="button" id="sidebarCollapse"
-                                                class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
-                                            <i class="icon nalika-menu-task"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
-                                    <div class="header-top-menu tabl-d-n">
-                                        <div class="breadcome-heading">
-                                            <form role="search" class="">
-                                                <input type="text" placeholder="Tìm kiếm..." class="form-control" style="color: white">
-                                                <a href=""><i class="fa fa-search"></i></a>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                                    <div class="header-right-info">
-                                        <ul class="nav navbar-nav mai-top-nav header-right-menu">
-                                            <li class="nav-item dropdown">
-                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
-                                                   class="nav-link dropdown-toggle"><i class="icon nalika-mail"
-                                                                                       aria-hidden="true"></i><span
-                                                        class="indicator-ms"></span></a>
-                                                <div role="menu"
-                                                     class="author-message-top dropdown-menu animated zoomIn">
-                                                    <div class="message-single-top">
-                                                        <h1>Tin Nhắn</h1>
-                                                    </div>
-                                                    <ul class="message-menu">
-                                                        <li>
-                                                            <a href="#">
-                                                                <div class="message-img">
-                                                                    <img src="img/contact/1.jpg" alt="">
-                                                                </div>
-                                                                <div class="message-content">
-                                                                    <span class="message-date">16/10</span>
-                                                                    <h2>Thịnh</h2>
-                                                                    <p>Hãy thực hiện dự án này càng sớm càng tốt.</p>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="message-view">
-                                                        <a href="#">Hiển thị tất cả</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="nav-item"><a href="#" data-toggle="dropdown" role="button"
-                                                                    aria-expanded="false"
-                                                                    class="nav-link dropdown-toggle"><i
-                                                    class="icon nalika-alarm" aria-hidden="true"></i><span
-                                                    class="indicator-nt"></span></a>
-                                                <div role="menu"
-                                                     class="notification-author dropdown-menu animated zoomIn">
-                                                    <div class="notification-single-top">
-                                                        <h1>Thông báo</h1>
-                                                    </div>
-                                                    <ul class="notification-menu">
-                                                        <li>
-                                                            <a href="#">
-                                                                <div class="notification-icon">
-                                                                    <i class="icon nalika-tick" aria-hidden="true"></i>
-                                                                </div>
-                                                                <div class="notification-content">
-                                                                    <span class="notification-date">16/10</span>
-                                                                    <h2>Thịnh</h2>
-                                                                    <p>Hãy thực hiện dự án này càng sớm càng tốt.</p>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="notification-view">
-                                                        <a href="#">Hiển thị tất cả</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
-                                                   class="nav-link dropdown-toggle">
-                                                    <i class="icon nalika-user"></i>
-                                                    <i class="icon nalika-down-arrow nalika-angle-dw"></i>
-                                                </a>
-                                                <ul role="menu"
-                                                    class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                    <li><a href="register.html"><span
-                                                            class="icon nalika-home author-log-ic"></span> Đăng ký</a>
-                                                    </li>
-                                                    <li><a href="#"><span class="icon nalika-user author-log-ic"></span>
-                                                        Hồ sơ của tôi</a>
-                                                    </li>
-                                                    <li><a href="lock.html"><span
-                                                            class="icon nalika-diamond author-log-ic"></span> Khóa</a>
-                                                    </li>
-                                                    <li><a href="#"><span
-                                                            class="icon nalika-settings author-log-ic"></span> Cài
-                                                        đặt</a>
-                                                    </li>
-                                                    <li><a href="../Login.jsp"><span
-                                                            class="icon nalika-unlocked author-log-ic"></span> Đăng xuất</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="nav-item nav-setting-open"><a href="#" data-toggle="dropdown"
-                                                                                     role="button" aria-expanded="false"
-                                                                                     class="nav-link dropdown-toggle"><i
-                                                    class="icon nalika-menu-task"></i></a>
-
-                                                <div role="menu"
-                                                     class="admintab-wrap menu-setting-wrap menu-setting-wrap-bg dropdown-menu animated zoomIn">
-                                                    <ul class="nav nav-tabs custon-set-tab">
-                                                        <li class="active"><a data-toggle="tab" href="#Notes">Mới</a>
-                                                        </li>
-                                                        <li><a data-toggle="tab" href="#Projects">Hoạt động</a>
-                                                        </li>
-                                                        <li><a data-toggle="tab" href="#Settings">Cài đặt</a>
-                                                        </li>
-                                                    </ul>
-
-                                                    <div class="tab-content custom-bdr-nt">
-                                                        <div id="Notes" class="tab-pane fade in active">
-                                                            <div class="notes-area-wrap">
-                                                                <div class="note-heading-indicate">
-                                                                    <h2><i class="icon nalika-chat"></i> Tin mới nhất
-                                                                    </h2>
-                                                                </div>
-                                                                <div class="notes-list-area notes-menu-scrollbar">
-                                                                    <ul class="notes-menu-list">
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <div class="notes-list-flow">
-                                                                                    <div class="notes-img">
-                                                                                        <img src="img/contact/4.jpg"
-                                                                                             alt=""/>
-                                                                                    </div>
-                                                                                    <div class="notes-content">
-                                                                                        <p> Thông báo mới</p>
-                                                                                        <span>Hôm nay 2:45 pm</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div id="Projects" class="tab-pane fade">
-                                                            <div class="projects-settings-wrap">
-
-                                                                <div class="project-st-list-area project-st-menu-scrollbar">
-                                                                    <ul class="projects-st-menu-list">
-                                                                        <li>
-                                                                            <a href="#">
-                                                                                <div class="project-list-flow">
-                                                                                    <div class="projects-st-heading">
-                                                                                        <h2>Người ăng ký mới</h2>
-                                                                                        <p> Hãy thực hiện dự án này càng
-                                                                                            sớm càng tốt.</p>
-                                                                                        <span class="project-st-time">1 giờ trước</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div id="Settings" class="tab-pane fade">
-                                                            <div class="setting-panel-area">
-                                                                <div class="note-heading-indicate">
-                                                                    <h2><i class="icon nalika-gear"></i> Cài đặt</h2>
-                                                                </div>
-                                                                <ul class="setting-panel-list">
-                                                                    <li>
-                                                                        <div class="checkbox-setting-pro">
-                                                                            <div class="checkbox-title-pro">
-                                                                                <h2>Hiển thị thông báo</h2>
-                                                                                <div class="ts-custom-check">
-                                                                                    <div class="onoffswitch">
-                                                                                        <input type="checkbox"
-                                                                                               name="collapsemenu"
-                                                                                               class="onoffswitch-checkbox"
-                                                                                               id="example">
-                                                                                        <label class="onoffswitch-label"
-                                                                                               for="example">
-                                                                                            <span class="onoffswitch-inner"></span>
-                                                                                            <span class="onoffswitch-switch"></span>
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li>
-                                                                        <div class="checkbox-setting-pro">
-                                                                            <div class="checkbox-title-pro">
-                                                                                <h2>Tắt tính năng trò chuyện</h2>
-                                                                                <div class="ts-custom-check">
-                                                                                    <div class="onoffswitch">
-                                                                                        <input type="checkbox"
-                                                                                               name="collapsemenu"
-                                                                                               class="onoffswitch-checkbox"
-                                                                                               id="example3">
-                                                                                        <label class="onoffswitch-label"
-                                                                                               for="example3">
-                                                                                            <span class="onoffswitch-inner"></span>
-                                                                                            <span class="onoffswitch-switch"></span>
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li>
-                                                                        <div class="checkbox-setting-pro">
-                                                                            <div class="checkbox-title-pro">
-                                                                                <h2>Bật lịch sử</h2>
-                                                                                <div class="ts-custom-check">
-                                                                                    <div class="onoffswitch">
-                                                                                        <input type="checkbox"
-                                                                                               name="collapsemenu"
-                                                                                               class="onoffswitch-checkbox"
-                                                                                               id="example4">
-                                                                                        <label class="onoffswitch-label"
-                                                                                               for="example4">
-                                                                                            <span class="onoffswitch-inner"></span>
-                                                                                            <span class="onoffswitch-switch"></span>
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li>
-                                                                        <div class="checkbox-setting-pro">
-                                                                            <div class="checkbox-title-pro">
-                                                                                <h2>Hiển thị biểu đồ</h2>
-                                                                                <div class="ts-custom-check">
-                                                                                    <div class="onoffswitch">
-                                                                                        <input type="checkbox"
-                                                                                               name="collapsemenu"
-                                                                                               class="onoffswitch-checkbox"
-                                                                                               id="example7">
-                                                                                        <label class="onoffswitch-label"
-                                                                                               for="example7">
-                                                                                            <span class="onoffswitch-inner"></span>
-                                                                                            <span class="onoffswitch-switch"></span>
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li>
-                                                                        <div class="checkbox-setting-pro">
-                                                                            <div class="checkbox-title-pro">
-                                                                                <h2>Cập nhật hàng ngày</h2>
-                                                                                <div class="ts-custom-check">
-                                                                                    <div class="onoffswitch">
-                                                                                        <input type="checkbox"
-                                                                                               name="collapsemenu"
-                                                                                               checked=""
-                                                                                               class="onoffswitch-checkbox"
-                                                                                               id="example2">
-                                                                                        <label class="onoffswitch-label"
-                                                                                               for="example2">
-                                                                                            <span class="onoffswitch-inner"></span>
-                                                                                            <span class="onoffswitch-switch"></span>
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <div class="checkbox-setting-pro">
-                                                                            <div class="checkbox-title-pro">
-                                                                                <h2>Người dùng ngoại tuyến</h2>
-                                                                                <div class="ts-custom-check">
-                                                                                    <div class="onoffswitch">
-                                                                                        <input type="checkbox"
-                                                                                               name="collapsemenu"
-                                                                                               checked=""
-                                                                                               class="onoffswitch-checkbox"
-                                                                                               id="example5">
-                                                                                        <label class="onoffswitch-label"
-                                                                                               for="example5">
-                                                                                            <span class="onoffswitch-inner"></span>
-                                                                                            <span class="onoffswitch-switch"></span>
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <jsp:include page="header.jsp"/>
 
         <div class="breadcome-area">
 
@@ -451,9 +118,20 @@
                             <form action="./ProductFiltering" method="post">
                                 <button type="submit" style="float: right; margin-right: 150px;  margin-top: 1px; width: 50px; height: 30px;border-radius: 5px">lọc</button>
                                 <select name="selectm" style="float: right;border-radius: 5px; margin-right: 10px; margin-top: 1px; width: 200px; height: 30px ">
-                                    <option value="all" >${cate}</option>
+                                    <c:choose>
+                                        <c:when test="${cate != 'all'}">
+                                            <option value="" >${cate}</option>
+                                            <option value="all" >all</option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="all" >${cate}</option>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                     <c:forEach var="catetory" items="${requestScope.categories}">
-                                        <option value="${catetory.id}">${catetory.name}</option>
+                                        <c:if test="${catetory.name != cate}">
+                                            <option value="${catetory.id}">${catetory.name}</option>
+                                        </c:if>
                                     </c:forEach>
                                 </select>
                             </form>

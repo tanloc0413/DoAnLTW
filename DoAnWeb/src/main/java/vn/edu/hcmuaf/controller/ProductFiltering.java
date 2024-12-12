@@ -34,7 +34,7 @@ public class ProductFiltering extends HttpServlet {
             List<Categories> categories = CategoriesDao.getDirectorysAdmin();
             req.setAttribute("categories", categories);
             req.setAttribute("productsDaoList", productsList);
-            req.setAttribute("catego", name);
+            req.setAttribute("catego", CategoriesDao.getName(Integer.parseInt(name)));
             req.getRequestDispatcher("/admin/ManagerProduct.jsp").forward(req,resp);
         }catch (Exception e){
             e.printStackTrace();
