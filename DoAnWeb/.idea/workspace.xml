@@ -75,7 +75,6 @@
         </TomcatInfo>
       </option>
       <option name="vmOptions" value="" />
-      <module name="DoAnWeb" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -104,6 +103,7 @@
       <updated>1733971909692</updated>
       <workItem from="1733971910720" duration="1163000" />
       <workItem from="1735892325358" duration="608000" />
+      <workItem from="1736081435439" duration="281000" />
     </task>
     <servers />
   </component>
