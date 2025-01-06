@@ -49,6 +49,35 @@ public class ProductsDao {
         return productsList;
     }
 
+    public static List<Products> getNewProduct() {
+        List<Products> productsList= new ArrayList<Products>();
+        try (Handle handle = JDBIConnector.me().open()) {
+            // Thực hiện truy vấn để lấy dữ liệu ID từ bảng staging
+            String query = "SELECT  product.product_id, product.product_name, product.brand, product.price, product.description, product.create,  status.`status_name`, product.image FROM product JOIN status  ON product.status = status.id LIMIT 5";
+
+            Query queryObj = handle.createQuery(query);
+            productsList = queryObj.map((rs, ctx) ->
+                    new Products(
+                            rs.getInt("product_id"),
+                            rs.getString("product_name"),
+                            rs.getString("brand"),
+                            rs.getDouble("price"),
+                            rs.getString("description"),
+                            rs.getTimestamp("create"),
+                            rs.getString("status_name"),
+                            rs.getString("image")
+                    )
+            ).list();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Nếu có lỗi, trả về một danh sách trống
+            return List.of();
+        }
+        return productsList;
+    }
+
 //    public static List<Products> getProducts() {
 //        List<Products> productsList= new ArrayList<Products>();
 //        try (Handle handle = JDBIConnector.me().open()) {

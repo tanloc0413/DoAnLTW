@@ -5,6 +5,9 @@
 <%@ page import="java.util.Set" %>
 <%@ page import="java.util.TreeMap" %>
 <%@ page import="vn.edu.hcmuaf.model.User" %>
+<%@ page import="vn.edu.hcmuaf.model.Categories" %>
+<%@ page import="vn.edu.hcmuaf.dao.CategoriesDao" %>
+<%@ page import="vn.edu.hcmuaf.dao.ProductsDao" %>
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -188,38 +191,57 @@
     <!-- ./Slider -->
 </div> <!-- End slider area -->
 
+
+<%
+    List<Categories> categories = CategoriesDao.getDirectorysAdmin();
+%>
+
 <div class="promo-area">
     <div class="zigzag-bottom"></div>
     <div class="container">
         <div class="row">
+            <%
+                for (Categories cate: categories){%>
             <div class="col-md-3 col-sm-6">
                 <div class="single-promo promo1">
-                    <i class="fa fa-refresh"></i>
-                    <p>30 Ngày Đổi trả</p>
+                    <p><%=cate.getName()%></p>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-promo promo2">
-                    <i class="fa fa-truck"></i>
-                    <p>Miễn phí ship</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-promo promo3">
-                    <i class="fa fa-lock"></i>
-                    <p>Thanh toán an toàn</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-promo promo4">
-                    <i class="fa fa-gift"></i>
-                    <p>Sản phẩm mới</p>
-                </div>
-            </div>
+            <%   }%>
+
+
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-promo promo1">--%>
+<%--                    <i class="fa fa-refresh"></i>--%>
+<%--                    <p>30 Ngày Đổi trả</p>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-promo promo2">--%>
+<%--                    <i class="fa fa-truck"></i>--%>
+<%--                    <p>Miễn phí ship</p>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-promo promo3">--%>
+<%--                    <i class="fa fa-lock"></i>--%>
+<%--                    <p>Thanh toán an toàn</p>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-3 col-sm-6">--%>
+<%--                <div class="single-promo promo4">--%>
+<%--                    <i class="fa fa-gift"></i>--%>
+<%--                    <p>Sản phẩm mới</p>--%>
+<%--                </div>--%>
+<%--            </div>--%>
         </div>
     </div>
 </div> <!-- End promo area -->
 
+
+<%
+    List<Products> newProduct = ProductsDao.getNewProduct();
+%>
 <div class="maincontent-area">
     <div class="zigzag-bottom"></div>
     <div class="container">
@@ -228,9 +250,11 @@
                 <div class="latest-product">
                     <h2 class="section-title">Sản phẩm mới nhất</h2>
                     <div class="product-carousel">
+                        <%
+                            for (Products p: newProduct){%>
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="admin/img/product/CT01.jpg" alt="">
+                                <img src="<%=p.getImage()%>" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link" style="font-size: 11px"
                                        style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
@@ -239,326 +263,221 @@
                                 </div>
                             </div>
 
-                            <h2><a href="single-product.jsp">Youtube premium</a></h2>
+                            <h2><a href="single-product.jsp"><%=p.getName()%></a></h2>
 
                             <div class="product-carousel-price">
-                                <ins>700.000&#x20AB</ins>
+                                <ins><%=p.getPrice()%></ins>
                                 <del>799.000&#x20AB</del>
                             </div>
                         </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="img/Thiết kế_2/figma.png" alt="">
-                                <div class="product-hover">
-                                    <a href="#" type="submit" class="add-to-cart-link" style="font-size: 11px"><i
-                                            class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i
-                                            class="fa fa-link"></i> Xem chi tiết</a>
-                                </div>
-                            </div>
+                        <%    }%>
 
-                            <h2>Figma</h2>
-                            <div class="product-carousel-price">
-                                <ins>899.000&#x20AB</ins>
-                                <del>999.000&#x20AB</del>
-                            </div>
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="img/Visual Studio_1/visual-studio-2022-enterprise.png"
-                                     class="home_new_product" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"><i
-                                            class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i
-                                            class="fa fa-link"></i> Xem chi tiết</a>
-                                </div>
-                            </div>
-
-                            <h2>Visual studio</h2>
-
-                            <div class="product-carousel-price">
-                                <ins>400.000&#x20AB</ins>
-                                <del>425.000&#x20AB</del>
-                            </div>
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="img/Windows_1/win/windows-11-pro.jpg" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"><i
-                                            class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i
-                                            class="fa fa-link"></i> Xem chi tiết</a>
-                                </div>
-                            </div>
-
-                            <h2><a href="single-product.jsp">Win 11 pro</a></h2>
-
-                            <div class="product-carousel-price">
-                                <ins>200.000&#x20AB</ins>
-                                <del>225.000&#x20AB</del>
-                            </div>
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="img/Tiện Ích_2/navicat-premium.png" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"><i
-                                            class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i
-                                            class="fa fa-link"></i> Xem chi tiết</a>
-                                </div>
-                            </div>
-
-                            <h2>Navicat</h2>
-
-                            <div class="product-carousel-price">
-                                <ins>1200.000&#x20AB</ins>
-                                <del>1355.000&#x20AB</del>
-                            </div>
-                        </div>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="img/Tiện Ích_2/nang-cap-linkedin-premium-business-6-thang-1-nam.png" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"><i
-                                            class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"><i
-                                            class="fa fa-link"></i> Xem chi tiết</a>
-                                </div>
-                            </div>
-
-                            <h2><a href="single-product.jsp">Linkedin</a></h2>
-
-                            <div class="product-carousel-price">
-                                <ins>400.000&#x20AB</ins>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <%--        <%--%>
-        <%--            for (Directorys d: directorys){--%>
-        <%--            List<Products> pro = ProductsDao.getProductByDiretoryTop(d.getId());--%>
-        <%--            if (pro != null || (pro.size()>0 && pro.size()==8) ){%>--%>
-        <%--        <h2 class="section-title" style="margin-top: 30px"><%=d.getName()%></h2>--%>
-        <%--        <%--%>
-        <%--            for (Products p : pro) {%>--%>
-        <%--        <div class="col-md-3 col-sm-6 ">--%>
-        <%--            <div class="single-shop-product">--%>
-        <%--                <div class="product-upper">--%>
-        <%--                    <img src="<%=p.getUrl()%>" alt="">--%>
-        <%--                </div>--%>
-        <%--                <input name="maview" value="<%=p.getMaSP()%>" style="display: none">--%>
-        <%--                <h2 class="h2-product"><a type="submit" ><%=p.getName()+" "+p.getVersion()%></a></h2>--%>
-        <%--                <div class="product-carousel-price">--%>
-        <%--                    <ins><%=Products.priceFormat(p.getPrice())%></ins>--%>
-        <%--                </div>--%>
+        <br>
+        <h2 class="section-title">Danh Sách Sản phẩm</h2>
+        <%
+            List<Products> productsList = ProductsDao.getProductAdmin();
+            for (Products p: productsList){%>
+        <div class="col-md-3 col-sm-6 " style="margin-bottom: 50px">
+            <div class="single-shop-product">
+                <div class="product-upper" >
+                    <img src="<%=p.getImage()%>" alt="" style="height: 40%; width: 100%">
+                </div>
+                <input name="maview" value="<%=p.getId()%>" style="display: none">
+                <h2><a href="single-product.jsp" style="color: black"><%=p.getName()%></a></h2>
+                <div class="product-carousel-price">
+                    <ins><%=p.getPrice()%></ins>
+                </div>
 
-        <%--                <div class="product-option-shop">--%>
-        <%--                    <form action="./View" method="post">--%>
-        <%--                        <input name="maview" value="<%=p.getMaSP()%>" style="display: none">--%>
-        <%--                        <button   type="submit" style="width: 250px; color: white; background: #00acee">Xem</button>--%>
-        <%--                    </form>--%>
-        <%--                </div>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
-        <%--            <%    }%>--%>
-        <%--        <%    }else {continue;}}%>--%>
+                <div class="product-option-shop" style="padding-bottom: 0">
+                    <form action="./View" method="post">
+                        <input name="maview" value="<%=p.getId()%>" style="display: none">
+                        <button   type="submit" style="width: 250px; color: white; background: #00acee; ">Xem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <%    }%>
+
 
 
     </div>
-</div>
-</div>
 </div> <!-- End main content area -->
 
-<!--<div class="brands-area">-->
-<!--    <div class="zigzag-bottom"></div>-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col-md-12">-->
-<!--                <div class="brand-wrapper">-->
-<!--                    <div class="brand-list">-->
-<!--                        <img src="img/microsoft_logo.png" alt="">-->
-<!--                        <img src="img/Figma_logo.png" alt="">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div> &lt;!&ndash; End brands area &ndash;&gt;-->
 
-<div class="product-widget-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="single-product-widget">
-                    <h2 class="product-wid-title">Top bán chạy</h2>
-                    <a href="" class="wid-view-more">xem tất cả</a>
-                    <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Thiết kế_2/figma.png" alt=""
-                                                          class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Figma</a></h2>
-                        <div class="product-wid-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins>
-                            <del>425.000&#x20AB</del>
-                        </div>
-                    </div>
-                    <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Thiết kế_2/canva.png" alt=""
-                                                          class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Canva</a></h2>
-                        <div class="product-wid-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins>
-                            <del>425.000&#x20AB</del>
-                        </div>
-                    </div>
-                    <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Office_3/office-2021-professional-plus-win.jpg"
-                                                          alt="" class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Office 2021 professional</a></h2>
-                        <div class="product-wid-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins>
-                            <del>425.000&#x20AB</del>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="single-product-widget">
-                    <h2 class="product-wid-title">Xem gần &#x20ABây</h2>
-                    <a href="#" class="wid-view-more">xem tất cả</a>
-                    <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Office_3/outlook-2021.png" alt=""
-                                                          class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Outlook 2021</a></h2>
-                        <div class="product-wid-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins>
-                            <del>425.000&#x20AB</del>
-                        </div>
-                    </div>
-                    <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Windows_1/win/windows-11-home.png" alt=""
-                                                          class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Win 11 home</a></h2>
-                        <div class="product-wid-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins>
-                            <del>425.000&#x20AB</del>
-                        </div>
-                    </div>
-                    <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/navicat-premium.png" alt=""
-                                                          class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Navicat premium</a></h2>
-                        <div class="product-wid-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins>
-                            <del>425.000&#x20AB</del>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="single-product-widget">
-                    <h2 class="product-wid-title">Sản phẩm mới</h2>
-                    <a href="#" class="wid-view-more">xem tất cả</a>
-                    <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/VPN_1/Hotspot-VPN-1nam.png" alt=""
-                                                          class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Hotspot VPN</a></h2>
-                        <div class="product-wid-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins>
-                            <del>425.000&#x20AB</del>
-                        </div>
-                    </div>
-                    <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/PDF-Reader-Pro-for-Mac.png" alt=""
-                                                          class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">PDF Reader Pro for Mac</a></h2>
-                        <div class="product-wid-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins>
-                            <del>425.000&#x20AB</del>
-                        </div>
-                    </div>
-                    <div class="single-wid-product">
-                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/linkedin-Careers-premium-6 thang.png"
-                                                          alt="" class="product-thumb"></a>
-                        <h2><a href="single-product.jsp">Linkedin Careers Premium</a></h2>
-                        <div class="product-wid-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-wid-price">
-                            <ins>400.000&#x20AB</ins>
-                            <del>425.000&#x20AB</del>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End product widget area -->
+<%--<div class="product-widget-area">--%>
+<%--    <div class="zigzag-bottom"></div>--%>
+<%--    <div class="container">--%>
+<%--        <div class="row">--%>
+<%--            <div class="col-md-4">--%>
+<%--                <div class="single-product-widget">--%>
+<%--                    <h2 class="product-wid-title">Top bán chạy</h2>--%>
+<%--                    <a href="" class="wid-view-more">xem tất cả</a>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Thiết kế_2/figma.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Figma</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Thiết kế_2/canva.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Canva</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Office_3/office-2021-professional-plus-win.jpg"--%>
+<%--                                                          alt="" class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Office 2021 professional</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-4">--%>
+<%--                <div class="single-product-widget">--%>
+<%--                    <h2 class="product-wid-title">Xem gần &#x20ABây</h2>--%>
+<%--                    <a href="#" class="wid-view-more">xem tất cả</a>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Office_3/outlook-2021.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Outlook 2021</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Windows_1/win/windows-11-home.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Win 11 home</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/navicat-premium.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Navicat premium</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-4">--%>
+<%--                <div class="single-product-widget">--%>
+<%--                    <h2 class="product-wid-title">Sản phẩm mới</h2>--%>
+<%--                    <a href="#" class="wid-view-more">xem tất cả</a>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/VPN_1/Hotspot-VPN-1nam.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Hotspot VPN</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/PDF-Reader-Pro-for-Mac.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">PDF Reader Pro for Mac</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/linkedin-Careers-premium-6 thang.png"--%>
+<%--                                                          alt="" class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Linkedin Careers Premium</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div> <!-- End product widget area -->--%>
 
 <div class="footer-top-area">
     <div class="zigzag-bottom"></div>

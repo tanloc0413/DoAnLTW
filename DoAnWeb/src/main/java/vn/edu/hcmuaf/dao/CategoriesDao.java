@@ -59,6 +59,7 @@ public class CategoriesDao {
     }
 
 
+
     public static String getName(int id) {
         String name ="";
         try (Handle handle = JDBIConnector.me().open()) {
