@@ -39,6 +39,26 @@ public class ProductCategoryDao {
         return productsList;
     }
 
+    public static int getIDCategory(int id) {
+        int idCa= 0;
+        try (Handle handle = JDBIConnector.me().open()) {
+            // Thực hiện truy vấn để lấy dữ liệu ID từ bảng staging
+            String query = "SELECT  categories_id FROM product_categories WHERE product_id = ?";
+
+            // Thực hiện truy vấn
+            idCa = handle.createQuery(query)
+                    .bind(0, id) // Gán tham số cho product_id
+                    .mapTo(Integer.class) // Map kết quả vào kiểu Integer
+                    .findOne() // Lấy giá trị đầu tiên nếu có
+                    .orElse(0); // Nếu không tìm thấy, trả về 0
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return idCa;
+    }
+
+
+
     public static boolean addProductCategory(int categoryId, int productID) {
         try (Handle handle = JDBIConnector.me().open()) {
             // SQL query to insert a new record into the product_categories table

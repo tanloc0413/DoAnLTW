@@ -1,10 +1,5 @@
-<%@ page import="java.util.List" %>
-<%@ page import="vn.edu.hcmuaf.model.Oders" %>
-<%@ page import="vn.edu.hcmuaf.dao.OdersDao" %>
-<%@ page import="vn.edu.hcmuaf.dao.UserDao" %>
-<%@ page import="vn.edu.hcmuaf.dao.StatusDao" %>
-<%@ page import="vn.edu.hcmuaf.model.Products" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html class="no-js" lang="en">
 
@@ -73,14 +68,14 @@
 
 <body>
 
-<%
-    List<Oders> oders1 = OdersDao.getOdersAdmin();
-    if (oders1 == null) oders1 = new ArrayList<>();
-    List<Oders> oders2 = OdersDao.getOdersStatusNews();
-    if (oders2 == null) oders2 = new ArrayList<>();
-    List<Oders> oders3 = OdersDao.getOdersStatusCanel();
-    if (oders3 == null) oders3 = new ArrayList<>();
-%>
+<%--<%--%>
+<%--    List<Oders> oders1 = OdersDao.getOdersAdmin();--%>
+<%--    if (oders1 == null) oders1 = new ArrayList<>();--%>
+<%--    List<Oders> oders2 = OdersDao.getOdersStatusNews();--%>
+<%--    if (oders2 == null) oders2 = new ArrayList<>();--%>
+<%--    List<Oders> oders3 = OdersDao.getOdersStatusCanel();--%>
+<%--    if (oders3 == null) oders3 = new ArrayList<>();--%>
+<%--%>--%>
 
 <jsp:include page="menu.jsp"/>
 <!-- Start Welcome area -->
@@ -101,6 +96,7 @@
                             <li><a href="#all"><i class="" aria-hidden="true"></i> Tất cả đơn hàng</a></li>
                             <li><a href="#cancel"><i class="" aria-hidden="true"></i> Đã hủy</a></li>
                         </ul>
+
                         <div id="myTabContent" class="tab-content custom-product-edit">
                             <div class="product-tab-list tab-pane fade active in" id="description">
                                 <div class="row">
@@ -117,6 +113,7 @@
                                         </tr>
                                         <%
                                             for (Oders o : oders2) {%>
+<%--                                        <c:forEach var="c" items="${sessionScope.}"--%>
                                         <tr>
                                             <td><%=o.getId()%>
                                             </td>

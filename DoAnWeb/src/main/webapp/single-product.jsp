@@ -1,13 +1,6 @@
-<%@ page import="vn.edu.hcmuaf.model.Products" %>
-<%@ page import="java.util.List" %>
-<%@ page import="vn.edu.hcmuaf.model.ProductImages" %>
-<%@ page import="vn.edu.hcmuaf.dao.ImageDao" %>
-<%@ page import="vn.edu.hcmuaf.dao.StatusDao" %>
-<%@ page import="vn.edu.hcmuaf.dao.KhoDao" %>
-<%@ page import="vn.edu.hcmuaf.model.Cart" %>
-<%@ page import="java.util.TreeMap" %>
-<%@ page import="java.util.Set" %>
-<%@ page import="vn.edu.hcmuaf.dao.ProductsDao" %>
+
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -40,62 +33,9 @@
     <![endif]-->
 </head>
 <body>
-<%
-    Products products = (Products) session.getAttribute("de");
-    if (products == null) products = new Products();
-    List<ProductImages> images = ImageDao.getImageProductByID(products.getMaSP());
-    Cart cart = (Cart) session.getAttribute("cart");
-    if (cart == null) cart = new Cart();
-    TreeMap<String, Integer> list = cart.getList();
-    long total=0;
-    Set<String> setkey = list.keySet();
-    for (String k:setkey){
-        total += ProductsDao.getPriceProduct(k) * list.get(k);
-    }
-%>
 
-    <div class="header-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="user-menu">
-                        <ul>
-                            <li><a href="user.jsp"><i class="fa fa-user"></i> Tài khoản của tôi</a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i> Danh sách mong muốn</a></li>
-                            <li><a href="cart.jsp"><i class="fa fa-user"></i> Giỏ hàng </a></li>
-                            <li><a href="checkout.jsp"><i class="fa fa-user"></i> Thanh toán</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> Đăng nhập</a></li>
-                            <li><a href="Login.jsp"><i class="fa fa-user"></i> Đăng xuất</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="header-right">
-                        <ul class="list-unstyled list-inline">
-                            <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">Tiền tệ :</span><span class="value">VNĐ </span><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">VNĐ</a></li>
-                                    <li><a href="#">INR</a></li>
-                                    <li><a href="#">GBP</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">Ngôn ngữ :</span><span class="value">Tiếng việt</span><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Tiếng Việt</a></li>
-                                    <li><a href="#">Tiếng Anh</a></li>
-                                    <li><a href="#">Tiếng Pháp</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End header area -->
+    <c:set var="p" value="${requestScope.de}" />
+    <jsp:include page="header.jsp"/>
 
     <div class="site-branding-area">
         <div class="container">
@@ -108,7 +48,7 @@
 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.jsp">Giỏ hàng - <span class="cart-amunt"><%=Products.priceFormat(total)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=list.size()%></span></a>
+<%--                        <a href="cart.jsp">Giỏ hàng - <span class="cart-amunt"><%=Products.priceFormat(total)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=list.size()%></span></a>--%>
                     </div>
                 </div>
             </div>
@@ -167,45 +107,15 @@
 
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Sản phẩm</h2>
-                        <div class="thubmnail-recent">
-                            <img src="img/Windows_1/win/windows-11-education.png" class="recent-thumb" alt="">
-                            <h2><a href="">Window 11 Education</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>239.000đ</ins> <del> 2.790.000đ</del>
+                        <c:forEach var="list" items="${requestScope.listP}">
+                            <div class="thubmnail-recent">
+                                <img src="${list.image}" class="recent-thumb" alt="">
+                                <h2><a href="">${list.name}</a></h2>
+                                <div class="product-sidebar-price">
+                                    <ins>${list.price}</ins> <del></del>
+                                </div>
                             </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/may ao_3/VMware-Workstation-17-Pro.png" class="recent-thumb" alt="">
-                            <h2><a href="">VMware Workstation 17 Pro</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>849.000₫</ins> <del>3.700.000₫</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/Tiện Ích_2/parallels-19-pro-1nam.png" class="recent-thumb" alt="">
-                            <h2><a href="">Parallels Desktop for Mac</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>990.000₫</ins> <del> 3.490.000₫</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/Lưu Trữ_3/dropbox-plus-2tb.png" class="recent-thumb" alt="">
-                            <h2><a href="">Dropbox Professional (3TB)</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>1.690.000₫</ins> <del>4.600.000₫</del>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="single-sidebar">
-                        <h2 class="sidebar-title">Bài đăng gần đây</h2>
-                        <ul>
-                            <li><a href="">Hotspot Shield VPN 1 Năm</a></li>
-                            <li><a href="">Nâng cấp Google One (Drive, Photos, Gmail…)</a></li>
-                            <li><a href="">Tài khoản CyberGhost VPN 1 Năm</a></li>
-                            <li><a href="">Betterzip 5 for Mac</a></li>
-                            <li><a href="">Microsoft 365 (1 Năm) – 1TB</a></li>
-                        </ul>
+                        </c:forEach>
                     </div>
                 </div>
 
@@ -214,46 +124,46 @@
                         <div class="product-breadcroumb">
                             <a href="">Trang chủ</a>
                             <a href="">Sản pẩm</a>
-                            <a href=""><%=products.getName() +" "+products.getVersion()%></a>
+                            <a href="">${p.name}</a>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="product-images">
                                     <div class="product-main-img">
-                                        <img src="<%=products.getUrl()%>" alt="">
+                                        <img src="${p.image}" alt="">
                                     </div>
 
                                     <div class="product-gallery">
-                                        <%
-                                            for (ProductImages i:images) {%>
-                                        <img src="<%=i.getUrl()%>" alt="">
-                                        <%    }
-                                        %>
+<%--                                        <%--%>
+<%--                                            for (ProductImages i:images) {%>--%>
+<%--                                        <img src="<%=i.getUrl()%>" alt="">--%>
+<%--                                        <%    }--%>
+<%--                                        %>--%>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="product-inner">
-                                    <h2 class="product-name"><%=products.getName()+" "+products.getVersion()%></h2>
+                                    <h2 class="product-name">${p.name}</h2>
                                     <div class="product-inner-price">
-                                        <ins><%=Products.priceFormat(products.getPrice())%></ins>
+                                        <ins>${p.price}</ins>
                                     </div>
 
                                     <form action="./CartServlet" class="cart" method="post">
-                                        <input name="ma" value="<%=products.getMaSP()%>" style="display: none">
+                                        <input name="productId" value="${p.id}" style="display: none">
                                         <div class="quantity">
-                                            <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quan" min="1" step="1">
+                                            <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
                                         </div>
-                                        <button name="command" value="insert"  class="add_to_cart_button" type="submit" >Thêm vào giỏ hàng</button>
+                                        <button name="command"  class="add_to_cart_button" type="submit" >Thêm vào giỏ hàng</button>
                                     </form>
 
                                     <div class="product-inner-category">
-                                        <p>Hãng: <a href=""><%=products.getHangSX()%></a></p>
-                                        <p>Bảo hành: <a href=""><%=products.getBaoHanh()%></a> </p>
-                                        <p>Hạng sử dụng: <a href=""><%=products.getBaoHanh()%></a> </p>
-                                        <p>Thiết bị: <a href=""><%=products.getNumberUser()%></a> </p>
+<%--                                        <p>Hãng: <a href=""><%=products.getHangSX()%></a></p>--%>
+<%--                                        <p>Bảo hành: <a href=""><%=products.getBaoHanh()%></a> </p>--%>
+<%--                                        <p>Hạng sử dụng: <a href=""><%=products.getBaoHanh()%></a> </p>--%>
+<%--                                        <p>Thiết bị: <a href=""><%=products.getNumberUser()%></a> </p>--%>
 
                                     </div>
 
@@ -265,7 +175,7 @@
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane fade in active" id="home">
                                                 <h2>Mô tả sản phẩm</h2>
-                                                <p><%=products.getMoTa()%></p>
+                                                <p>${p.description}</p>
                                             </div>
                                             <div role="tabpanel" class="tab-pane fade" id="profile">
                                                 <h2>Đánh giá</h2>
@@ -297,94 +207,27 @@
 
                         <div class="related-products-wrapper">
                             <h2 class="related-products-title">Các sản phẩm tương tự</h2>
-                            <div class="related-products-carousel">
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="img/Giải trí_3/spotify-4-thang.png" alt="">
-                                        <div class="product-hover">
-                                            <a href="" class="add-to-cart-link" style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                            <a href="" class="view-details-link" style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
+                            <div class="product-carousel">
+                                <c:forEach var="list" items="${requestScope.listCate}">
+                                    <div class="single-product">
+                                        <div class="product-f-image">
+                                            <img src="${list.image}" alt="">
+                                            <div class="product-hover">
+                                                <a href="#" class="add-to-cart-link" style="font-size: 11px"
+                                                   style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
+                                                <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"
+                                                   style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
+                                            </div>
+                                        </div>
+
+                                        <h2><a href="single-product.jsp">${list.name}</a></h2>
+
+                                        <div class="product-carousel-price">
+                                            <ins>${list.price}</ins>
+                                            <del>799.000&#x20AB</del>
                                         </div>
                                     </div>
-                                    <h2><a href="">Spotify Premium</a></h2>
-                                    <div class="product-carousel-price">
-                                        <ins>299.000₫</ins> <del>690.000₫</del>
-                                    </div>
-                                </div>
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="img/Giải trí_3/discord-nitro-code-1-thang.png" alt="">
-                                        <div class="product-hover">
-                                            <a href="" class="add-to-cart-link" style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                            <a href="" class="view-details-link" style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
-                                        </div>
-                                    </div>
-
-                                    <h2><a href="">Discord Nitro (code 1 tháng)</a></h2>
-                                    <div class="product-carousel-price">
-                                        <ins>109.000 ₫</ins>
-                                    </div>
-                                </div>
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="img/Giải trí_3/discord-nitro-basic.png" alt="">
-                                        <div class="product-hover">
-                                            <a href="" class="add-to-cart-link" style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                            <a href="" class="view-details-link" style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
-                                        </div>
-                                    </div>
-
-                                    <h2><a href="">Discord Nitro Basic 1 tháng</a></h2>
-
-                                    <div class="product-carousel-price">
-                                        <ins>90.000 ₫</ins>
-                                    </div>
-                                </div>
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="img/product-thumb-13.png" alt="">
-                                        <div class="product-hover">
-                                            <a href="" class="add-to-cart-link" style="font-size: 11px"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
-                                            <a href="" class="view-details-link" style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
-                                        </div>
-                                    </div>
-
-                                    <h2><a href="">Sony playstation microsoft</a></h2>
-
-                                    <div class="product-carousel-price">
-                                        <ins>$200.00</ins> <del>$225.00</del>
-                                    </div>
-                                </div>
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="img/product-thumb-13.png" alt="">
-                                        <div class="product-hover">
-                                            <a href="" class="add-to-cart-link" style="font-size: 11px"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
-                                            <a href="" class="view-details-link" style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
-                                        </div>
-                                    </div>
-
-                                    <h2><a href="">Sony Smart Air Condtion</a></h2>
-
-                                    <div class="product-carousel-price">
-                                        <ins>$1200.00</ins> <del>$1355.00</del>
-                                    </div>
-                                </div>
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="img/product-6.jpg" alt="">
-                                        <div class="product-hover">
-                                            <a href="" class="add-to-cart-link" style="font-size: 11px"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
-                                            <a href="" class="view-details-link" style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
-                                        </div>
-                                    </div>
-
-                                    <h2><a href="">Samsung gallaxy note 4</a></h2>
-
-                                    <div class="product-carousel-price">
-                                        <ins>$400.00</ins>
-                                    </div>
-                                </div>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>

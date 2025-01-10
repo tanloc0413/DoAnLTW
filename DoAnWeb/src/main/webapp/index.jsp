@@ -1,10 +1,6 @@
 <%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.model.Products" %>
-<%@ page import="vn.edu.hcmuaf.model.Cart" %>
-<%@ page import="java.util.Set" %>
-<%@ page import="java.util.TreeMap" %>
-<%@ page import="vn.edu.hcmuaf.model.User" %>
 <%@ page import="vn.edu.hcmuaf.model.Categories" %>
 <%@ page import="vn.edu.hcmuaf.dao.CategoriesDao" %>
 <%@ page import="vn.edu.hcmuaf.dao.ProductsDao" %>
@@ -43,107 +39,8 @@
     <![endif]-->
 </head>
 <body>
-<div class="header-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="user-menu">
-                    <ul>
-                        <%--                        <li><a href="<%=url%>"><i class="fa fa-user"></i> Tài khoản của tôi</a></li>--%>
-                        <li><a href="#"><i class="fa fa-heart"></i> Danh sách mong muốn</a></li>
-                        <li><a href="cart.jsp"><i class="fa fa-user"></i> Giỏ hàng </a></li>
-                        <li><a href="checkout.jsp"><i class="fa fa-user"></i> Thanh toán</a></li>
-                            <c:choose>
-                                <c:when test="${ not empty  sessionScope.currentUser}">
-                                    <li><a href="#"><i class="fa fa-user"></i> ${sessionScope.currentUser.name}</a></li>
-                                    <li><a href="./logOut"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
-                                </c:when>
-                                <c:otherwise>
-                                    <li><a href="Login.jsp"><i class="fa fa-user"></i> Đăng nhập</a></li>
-                                </c:otherwise>
-                            </c:choose>
-                        <%--                        <li><a href="<%=log%>"><i class="fa fa-user"></i> Đăng xuất</a></li>--%>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="header-right">
-                    <ul class="list-unstyled list-inline">
-                        <li class="dropdown dropdown-small">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span
-                                    class="key">Tiền tệ :</span><span class="value">VNĐ </span><b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">VNĐ</a></li>
-                                <li><a href="#">INR</a></li>
-                                <li><a href="#">GBP</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown dropdown-small">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span
-                                    class="key">Ngôn ngữ :</span><span class="value">Tiếng việt</span><b
-                                    class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Tiếng Việt</a></li>
-                                <li><a href="#">Tiếng Anh</a></li>
-                                <li><a href="#">Tiếng Pháp</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End header area -->
-
-<div class="site-branding-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="logo">
-                    <h1><a href="index.jsp"><img src="admin/img/logo/logo.png"></a></h1>
-                </div>
-            </div>
-
-            <div class="col-sm-6">
-                <div class="shopping-item">
-                    <%--                    <a href="cart.jsp">Giỏ hàng - <span class="cart-amunt"><%=Products.priceFormat(total)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=cart.getList().size()%></span></a>--%>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End site branding area -->
-
-<div class="mainmenu-area">
-    <div class="container">
-        <div class="row">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.jsp">Trang chủ</a></li>
-                    <li><a href="shop.jsp">Sản phẩm</a></li>
-                    <li><a href="cart.jsp">Giỏ hàng</a></li>
-                    <li><a href="#">Liên hệ</a></li>
-                </ul>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Tìm kiếm...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div> <!-- End mainmenu area -->
+<jsp:include page="header.jsp"/>
+<jsp:include page="menu.jsp"/>
 
 <div class="slider-area">
     <!-- Slider -->
@@ -286,8 +183,8 @@
                 <div class="product-upper" >
                     <img src="<%=p.getImage()%>" alt="" style="height: 40%; width: 100%">
                 </div>
-                <input name="maview" value="<%=p.getId()%>" style="display: none">
-                <h2><a href="single-product.jsp" style="color: black"><%=p.getName()%></a></h2>
+<%--                <input name="maview" value="<%=p.getId()%>" style="display: none">--%>
+                <h2><a href="single-product.jsp" style="color: black" ><%=p.getName()%></a></h2>
                 <div class="product-carousel-price">
                     <ins><%=p.getPrice()%></ins>
                 </div>

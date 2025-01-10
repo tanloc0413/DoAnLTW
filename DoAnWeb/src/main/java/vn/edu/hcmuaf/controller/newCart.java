@@ -1,6 +1,5 @@
 package vn.edu.hcmuaf.controller;
 
-
 import vn.edu.hcmuaf.dao.ProductsDao;
 import vn.edu.hcmuaf.model.Cart;
 import vn.edu.hcmuaf.model.Products;
@@ -15,49 +14,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "CartServlet", value = "/CartServlet")
-public class CartServlet extends HttpServlet {
+@WebServlet(name = "CartServlet", value = "/Cart")
+public class newCart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Lấy session hiện tại
         HttpSession session = req.getSession();
         List<Cart> cart = (List<Cart>) session.getAttribute("cart");
 
-        // Lấy thông tin sản phẩm từ request
-        int productId = Integer.parseInt(req.getParameter("productId"));
-        Products products = ProductsDao.getProduct(productId);
-        int quantity = Integer.parseInt(req.getParameter("quantity"));
-
-        System.out.println(productId + " " + quantity);
-
-
-        // Tạo đối tượng CartItem
-        Cart newItem = new Cart(productId, products.getName(), products.getImage(), products.getPrice(), quantity);
-
-
-
         // Nếu giỏ hàng chưa tồn tại, tạo mới
         if (cart == null) {
             cart = new ArrayList<>();
-            session.setAttribute("cart", cart);
         }
-
-        // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
-        boolean itemExists = false;
-        for (Cart item : cart) {
-            if (item.getProductId() == productId) {
-                // Cập nhật số lượng sản phẩm
-                item.setQuantity(quantity);
-                itemExists = true;
-                break;
-            }
-        }
-
-        // Nếu sản phẩm chưa có trong giỏ hàng, thêm mới
-        if (!itemExists) {
-            cart.add(newItem);
-        }
-        System.out.println(cart.size());
 
         // Cập nhật giỏ hàng vào session
         session.setAttribute("cart", cart);

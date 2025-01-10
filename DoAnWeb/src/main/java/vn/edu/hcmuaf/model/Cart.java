@@ -4,57 +4,60 @@ import java.util.TreeMap;
 
 public class Cart {
 
-    TreeMap<String, Integer> list;
+   private int productId;
+   private String productName;
+   private String imageUrl;
+   private double price;
+   private int quantity;
 
-    public Cart(){
-        this.list = new TreeMap<>();
+    public Cart() {
     }
 
-    public TreeMap<String, Integer> getList() {
-        return list;
+    public Cart(int productId, String productName, String imageUrl, double price, int quantity) {
+        this.productId = productId;
+        this.productName = productName;
+        this.imageUrl = imageUrl;
+        this.price = price;
+        this.quantity = quantity;
     }
 
-    public void setList(TreeMap<String, Integer> list) {
-        this.list = list;
+    public int getProductId() {
+        return productId;
     }
 
-    /*
-    thêm sản phẩm vào giỏ hàng
-     */
-    public void inserCart(String id, int number){
-        boolean check = list.containsKey(id);
-        if (check){
-            list.put(id, list.get(id) + number);
-        }else {
-            list.put(id, number);
-        }
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
-    /*
-    xóa sản phẩm khỏi giỏ hàng
-     */
-    public void removeProduct(String id){
-
-        if (list.containsKey(id)) list.remove(id);
+    public String getProductName() {
+        return productName;
     }
 
-    /*
-    cập nhật giỏ hàng
-     */
-    public void update(String id, int number){
-        if (list.containsKey(id)){
-            if (number >=0){
-                list.put(id, number);
-            }else {
-                list.put(id, 0);
-            }
-        }
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    /*
-    tinh gia san pham voi so luong dat mua
-     */
-//    public void total
+    public double getPrice() {
+        return price;
+    }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
