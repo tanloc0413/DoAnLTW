@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -62,7 +63,7 @@
                             </div>
                             <h2 class="h2-product"><a href="#">${p.name}</a></h2>
                             <div class="product-carousel-price">
-                                <ins>${p.price}</ins>
+                                <ins><fmt:formatNumber value="${p.price}" type="currency" currencySymbol="₫" groupingUsed="true" /></ins>
                             </div>
 
                             <div class="product-option-shop">

@@ -137,7 +137,6 @@
                             </form>
 
                             <div class="add-product">
-
                                 <a href="addproduct.jsp">Thêm sản phẩm</a>
                             </div>
                             <table>
@@ -170,7 +169,8 @@
                                         </c:choose>
 
                                         <td>0</td>
-                                        <td class="large-column no-scientific-notation no-wrap" style="white-space: nowrap; width: 400px"><fmt:formatNumber value="${product.price}" pattern="#,###"/></td>
+                                        <td class="large-column no-scientific-notation no-wrap" style="white-space: nowrap; width: 400px">
+                                            <fmt:formatNumber value="${product.price}" type="currency" currencySymbol="₫" groupingUsed="true" /></td>
                                         <td>
                                             <input type="hidden" name="productId" value="">
                                             <button data-toggle="tooltip" title="submit" class="pd-setting-ed"><a

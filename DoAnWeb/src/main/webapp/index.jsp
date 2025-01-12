@@ -5,6 +5,7 @@
 <%@ page import="vn.edu.hcmuaf.dao.CategoriesDao" %>
 <%@ page import="vn.edu.hcmuaf.dao.ProductsDao" %>
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -164,7 +165,11 @@
 <%--                <input name="maview" value="<%=p.getId()%>" style="display: none">--%>
                 <h2><a href="single-product.jsp" style="color: black" ><%=p.getName()%></a></h2>
                 <div class="product-carousel-price">
-                    <ins><%=p.getPrice()%></ins>
+                    <%
+                        double price = p.getPrice();
+                        request.setAttribute("price", price);
+                    %>
+                    <ins><fmt:formatNumber value="${price}" type="currency" currencySymbol="₫" groupingUsed="true" /></ins>
                 </div>
 
                 <div class="product-option-shop" style="padding-bottom: 0">

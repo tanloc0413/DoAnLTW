@@ -5,10 +5,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!-- Cấu hình bundle -->
-<fmt:setBundle basename="messages" var="bundle"/>
+<fmt:setBundle basename="messages" var="bundle" scope="session"/>
 
 <!-- Lấy Locale từ session -->
-<fmt:setLocale value="${sessionScope.lang != null ? sessionScope.lang : 'vi'}"/>
+<%--<fmt:setLocale value="${sessionScope.langName != null ? sessionScope.langName : 'vi'}"/>--%>
 
 <html lang="en">
 <head>
@@ -43,7 +43,7 @@
 </head>
 <body>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<%--<fmt:setLocale value="${sessionScope.lang}"/>--%>
 <form action="./Language" method="post">
     <div class="header-area">
         <div class="container">
@@ -52,26 +52,19 @@
                     <div class="user-menu">
                         <ul>
                             <%--                        <li><a href="<%=url%>"><i class="fa fa-user"></i> Tài khoản của tôi</a></li>--%>
-                                <li><a href="#"><i class="fa fa-heart"></i> <c:out value="${sessionScope.lang}"/>
                                 </a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i> <fmt:message key="wishlist" bundle="${bundle}"/>
+                            <li><a href="#"><i class="fa fa-heart"></i> Danh sách mong muốn
                             </a></li>
-                            <li><a href="cart.jsp"><i class="fa fa-user"></i> <fmt:message key="cart"
-                                                                                           bundle="${bundle}"/> </a>
-                            </li>
-                            <li><a href="checkout.jsp"><i class="fa fa-user"></i><fmt:message key="checkout"
-                                                                                              bundle="${bundle}"/></a>
+                            <li><a href="Order.jsp"><i class="fa fa-user"></i> Giỏ hàng </a>
                             </li>
                             <c:choose>
                                 <c:when test="${ not empty  sessionScope.currentUser}">
                                     <li><a href="#"><i class="fa fa-user"></i> ${sessionScope.currentUser.name}</a></li>
-                                    <li><a href="./logOut"><i class="fa fa-sign-out"></i> <fmt:message key="logout"
-                                                                                                       bundle="${bundle}"/></a>
+                                    <li><a href="./logOut"><i class="fa fa-sign-out"></i> Đăng xuất</a>
                                     </li>
                                 </c:when>
                                 <c:otherwise>
-                                    <li><a href="Login.jsp"><i class="fa fa-user"></i> <fmt:message key="login"
-                                                                                                    bundle="${bundle}"/></a>
+                                    <li><a href="Login.jsp"><i class="fa fa-user"></i> Đăng nhập</a>
                                     </li>
                                 </c:otherwise>
                             </c:choose>
@@ -98,8 +91,8 @@
                                     <!-- Hiển thị ngôn ngữ hiện tại -->
                                     <span class="value">
                                      <c:choose>
-                                        <c:when test="${sessionScope.lang.language == 'vi'}">Tiếng Việt</c:when>
-                                        <c:when test="${sessionScope.lang.language == 'en'}">English</c:when>
+                                        <c:when test="${sessionScope.langName == 'vi'}">Tiếng Việt</c:when>
+                                        <c:when test="${sessionScope.langName == 'en'}">English</c:when>
                                         <c:otherwise>Tiếng Việt</c:otherwise>
                                     </c:choose>
                                     </span>

@@ -70,7 +70,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="index.jsp">Trang chủ</a></li>
                         <li><a href="shop.jsp">Sản phẩm</a></li>
-                        <li><a href="cart.jsp">Giỏ hàng</a></li>
+                        <li><a href="Order.jsp">Giỏ hàng</a></li>
                         <li><a href="#">Liên Hệ</a></li>
 
                     </ul>
@@ -148,7 +148,7 @@
                                 <div class="product-inner">
                                     <h2 class="product-name">${p.name}</h2>
                                     <div class="product-inner-price">
-                                        <ins>${p.price}</ins>
+                                        <ins><fmt:formatNumber value="${p.price}" type="currency" currencySymbol="₫" groupingUsed="true" /></ins>
                                     </div>
 
                                     <form action="./CartServlet" class="cart" method="post">

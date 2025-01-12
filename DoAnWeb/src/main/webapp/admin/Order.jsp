@@ -112,7 +112,8 @@
                                                 </td>
                                                 <td>${o.orderDate}
                                                 </td>
-                                                <td>${o.totalPrice}
+                                                <td>
+                                                    <fmt:formatNumber value="${o.totalPrice}" type="currency" currencySymbol="₫" groupingUsed="true" />
                                                 </td>
                                                 <td>
                                                     <form action="./OderDetail" method="post">

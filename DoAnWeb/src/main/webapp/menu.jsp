@@ -45,7 +45,7 @@
             <c:set var="ca" value="${sessionScope.cart}"/>
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="cart.jsp">Giỏ hàng - <span class="cart-amunt">${ca.size()}</span> <i
+                    <a href="Order.jsp">Giỏ hàng - <span class="cart-amunt">${ca.size()}</span> <i
                             class="fa fa-shopping-cart"></i>
                         <span class="product-count">0</span></a>
                 </div>
@@ -70,7 +70,7 @@
                     <li class=""><a href="index.jsp">Trang chủ</a></li>
 <%--                    <li class="active"><a href="index.jsp">Trang chủ</a></li>--%>
                     <li><a href="./Shop">Sản phẩm</a></li>
-                    <li><a href="cart.jsp">Giỏ hàng</a></li>
+                    <li><a href="Order.jsp">Giỏ hàng</a></li>
                     <li><a href="#">Liên hệ</a></li>
                 </ul>
                 <form action="./Search" method="post">

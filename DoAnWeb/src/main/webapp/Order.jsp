@@ -2,6 +2,7 @@
 <%@ page import="vn.edu.hcmuaf.model.Cart" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -69,42 +70,42 @@
             <div class="col-md-4">
 
 
-                <div class="single-sidebar">
-                    <h2 class="sidebar-title">Sản phẩm</h2>
-                    <div class="thubmnail-recent">
-                        <img src="img/Tiện Ích_2/navicat-premium.png" class="recent-thumb" alt="">
-                        <h2><a href="single-product.jsp">Navicat Premium</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>790.000đ</ins>
-                            <del>820.000đ</del>
-                        </div>
-                    </div>
-                    <div class="thubmnail-recent">
-                        <img src="img/Windows_1/win_server/windows-server-2022-datacenter.png" class="recent-thumb"
-                             alt="">
-                        <h2><a href="single-product.jsp">Windows Server 2022 Datacenter</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>549.000đ</ins>
-                            <del>4.490.000đ</del>
-                        </div>
-                    </div>
-                    <div class="thubmnail-recent">
-                        <img src="img/Giải trí_3/discord-nitro-basic.png" class="recent-thumb" alt="">
-                        <h2><a href="single-product.jsp">Discord Nitro</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>949.000đ</ins>
-                            <del>1.130.000đ</del>
-                        </div>
-                    </div>
-                    <div class="thubmnail-recent">
-                        <img src="img/Tiện Ích_2/PDF-Reader-Pro-for-Mac.png" class="recent-thumb" alt="">
-                        <h2><a href="single-product.jsp">PDF Reader Pro for MAC</a></h2>
-                        <div class="product-sidebar-price">
-                            <ins>1.490.000đ</ins>
-                            <del>1.999.000đ</del>
-                        </div>
-                    </div>
-                </div>
+<%--                <div class="single-sidebar">--%>
+<%--                    <h2 class="sidebar-title">Sản phẩm</h2>--%>
+<%--                    <div class="thubmnail-recent">--%>
+<%--                        <img src="img/Tiện Ích_2/navicat-premium.png" class="recent-thumb" alt="">--%>
+<%--                        <h2><a href="single-product.jsp">Navicat Premium</a></h2>--%>
+<%--                        <div class="product-sidebar-price">--%>
+<%--                            <ins>790.000đ</ins>--%>
+<%--                            <del>820.000đ</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="thubmnail-recent">--%>
+<%--                        <img src="img/Windows_1/win_server/windows-server-2022-datacenter.png" class="recent-thumb"--%>
+<%--                             alt="">--%>
+<%--                        <h2><a href="single-product.jsp">Windows Server 2022 Datacenter</a></h2>--%>
+<%--                        <div class="product-sidebar-price">--%>
+<%--                            <ins>549.000đ</ins>--%>
+<%--                            <del>4.490.000đ</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="thubmnail-recent">--%>
+<%--                        <img src="img/Giải trí_3/discord-nitro-basic.png" class="recent-thumb" alt="">--%>
+<%--                        <h2><a href="single-product.jsp">Discord Nitro</a></h2>--%>
+<%--                        <div class="product-sidebar-price">--%>
+<%--                            <ins>949.000đ</ins>--%>
+<%--                            <del>1.130.000đ</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="thubmnail-recent">--%>
+<%--                        <img src="img/Tiện Ích_2/PDF-Reader-Pro-for-Mac.png" class="recent-thumb" alt="">--%>
+<%--                        <h2><a href="single-product.jsp">PDF Reader Pro for MAC</a></h2>--%>
+<%--                        <div class="product-sidebar-price">--%>
+<%--                            <ins>1.490.000đ</ins>--%>
+<%--                            <del>1.999.000đ</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
             </div>
             <form action="./CartServlet" method="post">
                 <div class="col-md-8">
@@ -146,7 +147,8 @@
                                             </td>
 
                                             <td class="product-price">
-                                                <span class="amount">${p.price}</span>
+                                                <span class="amount">
+                                                <fmt:formatNumber value="${p.price}" type="currency" currencySymbol="₫" groupingUsed="true" /></span>
                                             </td>
 
                                             <td class="product-quantity">
@@ -160,7 +162,8 @@
                                             </td>
 
                                             <td class="product-subtotal">
-                                                <span class="amount">${p.price * p.quantity}</span>
+                                                <span class="amount">
+                                                <fmt:formatNumber value="${p.price * p.quantity}" type="currency" currencySymbol="₫" groupingUsed="true" /></span>
                                             </td>
                                         </tr>
                                     </form>

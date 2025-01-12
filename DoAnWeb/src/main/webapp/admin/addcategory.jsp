@@ -1,17 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: THINH
-  Date: 1/21/2024
-  Time: 11:38 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.model.Status" %>
 <%@ page import="vn.edu.hcmuaf.dao.StatusDao" %>
 <%@ page import="vn.edu.hcmuaf.model.Categories" %>
 <%@ page import="vn.edu.hcmuaf.dao.CategoriesDao" %>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -77,8 +71,6 @@
 </head>
 
 <body>
-
-
 <form action="./AddCategory" method="post">
     <%
         List<Status> statusList = StatusDao.getStatusByDirectory();
@@ -90,6 +82,33 @@
 
         <jsp:include page="header.jsp"/>
         <!-- Single pro tab start-->
+        <div class="breadcome-area" style="margin-top: 50px">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="breadcome-list">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="breadcomb-wp">
+                                        <div class="breadcomb-icon">
+                                            <i class="icon nalika-home"></i>
+                                        </div>
+                                        <div class="breadcomb-ctn" style="margin-top: 13px">
+                                            <h2>Thêm danh mục</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="breadcomb-report">
+                                        <button name="button" value="them" data-toggle="tooltip" data-placement="left" title="Lưu" class="btn" style="color: white"><i class="icon nalika-upload" style="margin-right: 10px; margin-top: 10px"></i>Thêm danh mục</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="single-product-tab-area mg-b-30">
             <%
               int id = Integer.parseInt(request.getParameter("edit"));
@@ -155,14 +174,10 @@
                                                                 </select>
                                                             </div>
                                                         <%}%>
-
-
-                                                </div>
+                                                     </div>
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
