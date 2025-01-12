@@ -135,7 +135,45 @@ public class ProductsDao {
         }
         return productsList;
     }
-///*
+
+    public static List<Products> getProductSearch(String search) {
+        List<Products> productsList = new ArrayList<>();
+        try (Handle handle = JDBIConnector.me().open()) {
+            // Sử dụng từ khóa LIKE với CONCAT để tìm kiếm
+            String query = "SELECT product.product_id, product.product_name, product.brand, product.price, " +
+                    "product.description, product.create, status.status_name, product.image " +
+                    "FROM product " +
+                    "JOIN status ON product.status = status.id " +
+                    "WHERE product.product_name LIKE CONCAT('%', :search, '%')";
+
+            productsList = handle.createQuery(query)
+                    .bind("search", search) // Truyền giá trị tìm kiếm
+                    .map((rs, ctx) ->
+                            new Products(
+                                    rs.getInt("product_id"),
+                                    rs.getString("product_name"),
+                                    rs.getString("brand"),
+                                    rs.getDouble("price"),
+                                    rs.getString("description"),
+                                    rs.getTimestamp("create"),
+                                    rs.getString("status_name"),
+                                    rs.getString("image")
+                            )
+                    ).list();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Nếu có lỗi, trả về một danh sách trống
+            return List.of();
+        }
+        return productsList;
+    }
+
+
+
+
+
+    ///*
 //loc danh sach san pham theo danh muc : 5 san pham
 // */
 //
