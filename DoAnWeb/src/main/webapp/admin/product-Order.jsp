@@ -1,11 +1,5 @@
-<%@ page import="vn.edu.hcmuaf.model.Oders" %>
-<%@ page import="vn.edu.hcmuaf.model.OderItems" %>
-<%@ page import="vn.edu.hcmuaf.dao.OderDetailDao" %>
-<%@ page import="java.util.List" %>
-<%@ page import="vn.edu.hcmuaf.model.Products" %>
-<%@ page import="vn.edu.hcmuaf.dao.ProductsDao" %>
-<%@ page import="vn.edu.hcmuaf.dao.UserDao" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html class="no-js" lang="en">
 
@@ -73,17 +67,11 @@
 </head>
 
 <body>
-<form action="./OderDetail" method="post">
-    <%
-        Oders oders = (Oders) request.getAttribute("oder");
-        if (oders==null) oders = new Oders();
-        List<OderItems> oder =  OderDetailDao.getOder(oders.getId());
-        if (oder == null) oder = new ArrayList<>();
-    %>
     <jsp:include page="menu.jsp"/>
     <!-- Start Welcome area -->
+
     <div class="all-content-wrapper">
-        <jsp:include page="header.jsp"/>
+        <%--    <jsp:include page="header.jsp"/>--%>
         <div class="product-cart-area mg-b-30">
             <div class="container-fluid">
                 <div class="row">
@@ -103,23 +91,21 @@
                                                     <th>Giá bán</th>
                                                     <th>Thành tiền</th>
                                                 </tr>
-                                                <%
-                                                    for (OderItems o : oder){
-                                                        Products products = ProductsDao.getProduct(o.getMasp());
-                                                %>
-                                                <tr>
-                                                    <td><img src="<%=products.getUrl()%>" alt="" /></td>
-                                                    <td>
-                                                        <h3><%=products.getName()%></h3>
-                                                        <p> </p>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" value="2">
-                                                    </td>
-                                                    <td><%=Products.priceFormat(products.getPrice())%></td>
-                                                    <td><%=Products.priceFormat(o.getTotal())%></td>
-                                                </tr>
-                                                <%   }%>
+                                                <c:forEach var="pr" items="${requestScope.oderItemsList}">
+                                                    <tr>
+                                                        <td><img src="${pr.product.image.substring(6)}" alt="" /></td>
+                                                        <td>
+                                                            <h3>${pr.product.name}</h3>
+                                                            <p> </p>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control" value="${pr.quantity}">
+                                                        </td>
+                                                        <td>${pr.product.price}</td>
+                                                        <td>${pr.product.price * pr.quantity}</td>
+                                                    </tr>
+                                                </c:forEach>
+
                                             </table>
                                         </div>
                                     </div>
@@ -127,18 +113,19 @@
                                 <h3>Thông tin Khách hàng</h3>
                                 <section>
                                     <h3 class="product-cart-dn">Shopping</h3>
+                                    <c:set var="user" value="${requestScope.user}"/>
                                     <div class="product-delivary">
                                         <div class="form-group">
                                             <label  class="form-label">Tên *</label>
-                                            <input id="name-2" name="name" type="text" class="form-control" value="<%=UserDao.getName(oders.getMaKH())%>">
+                                            <input id="name-2" name="name" type="text" class="form-control" value="${user.name}">
                                         </div>
                                         <div class="form-group">
                                             <label for="address" class="form-label">Địa chỉ *</label>
-                                            <input id="address" name="address" type="text" class="form-control" value="<%=oders.getAddress()%>">
+                                            <input id="address" name="address" type="text" class="form-control" value="${user.address}">
                                         </div>
                                         <div class="form-group">
                                             <label for="phone-2" class="form-label">Điện thoại #</label>
-                                            <input id="phone-2" name="phone" type="number" class="form-control phone" value="<%=oders.getPhone()%>">
+                                            <input id="phone-2" name="phone" type="number" class="form-control phone" value="${user.phone}">
                                         </div>
                                     </div>
                                 </section>
@@ -151,7 +138,6 @@
 
     </div>
 
-</form>
 
 
     <!-- jquery

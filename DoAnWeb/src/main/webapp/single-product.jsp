@@ -48,7 +48,7 @@
 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-<%--                        <a href="cart.jsp">Giỏ hàng - <span class="cart-amunt"><%=Products.priceFormat(total)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=list.size()%></span></a>--%>
+<%--                        <a href="Order.jsp">Giỏ hàng - <span class="cart-amunt"><%=Products.priceFormat(total)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=list.size()%></span></a>--%>
                     </div>
                 </div>
             </div>

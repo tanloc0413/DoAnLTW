@@ -28,8 +28,6 @@ public class CartServlet extends HttpServlet {
         Products products = ProductsDao.getProduct(productId);
         int quantity = Integer.parseInt(req.getParameter("quantity"));
 
-        System.out.println(productId + " " + quantity);
-
 
         // Tạo đối tượng CartItem
         Cart newItem = new Cart(productId, products.getName(), products.getImage(), products.getPrice(), quantity);
@@ -57,13 +55,17 @@ public class CartServlet extends HttpServlet {
         if (!itemExists) {
             cart.add(newItem);
         }
-        System.out.println(cart.size());
+        double totalAmount = 0.0;
+        for (Cart item : cart) {
+            totalAmount += item.getPrice() * item.getQuantity();
+        }
 
         // Cập nhật giỏ hàng vào session
         session.setAttribute("cart", cart);
+        session.setAttribute("totalAmount", totalAmount);
 //
 //        // Chuyển hướng về trang giỏ hàng
-        req.getRequestDispatcher("./cart.jsp").forward(req,resp);
+        req.getRequestDispatcher("./Order.jsp").forward(req,resp);
     }
 
 

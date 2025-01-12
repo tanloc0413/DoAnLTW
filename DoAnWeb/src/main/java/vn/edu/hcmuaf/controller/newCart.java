@@ -31,7 +31,7 @@ public class newCart extends HttpServlet {
         session.setAttribute("cart", cart);
 //
 //        // Chuyển hướng về trang giỏ hàng
-        req.getRequestDispatcher("./cart.jsp").forward(req,resp);
+        req.getRequestDispatcher("./Order.jsp").forward(req,resp);
     }
 
 

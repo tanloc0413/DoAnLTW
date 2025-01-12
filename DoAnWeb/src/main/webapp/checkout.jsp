@@ -1,6 +1,5 @@
-<%@ page import="vn.edu.hcmuaf.model.User" %>
-<%@ page import="vn.edu.hcmuaf.model.Cart" %>
-<%@ page import="java.util.TreeMap" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <%@ page import="java.util.Set" %>
 <%@ page import="vn.edu.hcmuaf.dao.ProductsDao" %>
 <%@ page import="vn.edu.hcmuaf.model.Products" %>
@@ -41,107 +40,9 @@
     <![endif]-->
 </head>
 <body>
-<%
-    User user = (User) session.getAttribute("auth");
-    Cart cart = (Cart) session.getAttribute("cart");
-    if (cart==null) cart = new Cart();
-    TreeMap<String, Integer> list = cart.getList();
-    long total=0;
-    Set<String> setkey = list.keySet();
-    for (String k:setkey){
-        total += ProductsDao.getPriceProduct(k) * list.get(k);
-    }
-%>
 <form action="./Oder" method="post">
-    <div class="header-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="user-menu">
-                        <ul>
-                            <li><a href="user.jsp"><i class="fa fa-user"></i> Tài khoản của tôi</a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i> Danh sách mong muốn</a></li>
-                            <li><a href="cart.jsp"><i class="fa fa-user"></i> Giỏ hàng </a></li>
-                            <li><a href="checkout.jsp"><i class="fa fa-user"></i> Thanh toán</a></li>
-                            <li><a href="Login.jsp"><i class="fa fa-user"></i> Đăng nhập</a></li>
-                            <li><a href="Login.jsp"><i class="fa fa-user"></i> Đăng xuất</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="header-right">
-                        <ul class="list-unstyled list-inline">
-                            <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">Tiền tệ :</span><span class="value">VNĐ </span><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">VNĐ</a></li>
-                                    <li><a href="#">INR</a></li>
-                                    <li><a href="#">GBP</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">Ngôn ngữ :</span><span class="value">Tiếng việt</span><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Tiếng Việt</a></li>
-                                    <li><a href="#">Tiếng Anh</a></li>
-                                    <li><a href="#">Tiếng Pháp</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End header area -->
-
-    <div class="site-branding-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="logo">
-                        <h1><a href="index.jsp"><img src="admin/img/logo/logo.png"></a></h1>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="shopping-item">
-                        <a href="cart.jsp">Giỏ hàng - <span class="cart-amunt"><%=Products.priceFormat(total)%></span> <i class="fa fa-shopping-cart"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End site branding area -->
-
-    <div class="mainmenu-area">
-        <div class="container">
-            <div class="row">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.jsp">Trang chủ</a></li>
-                        <li><a href="shop.jsp">Sản phẩm</a></li>
-                        <li><a href="cart.jsp">Giỏ hàng</a></li>
-                        <li><a href="#">Liên Hệ</a></li>
-                    </ul>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm...">
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End mainmenu area -->
+    <jsp:include page="header.jsp"/>
+    <jsp:include page="menu.jsp"/>
 
     <div class="product-big-title-area">
         <div class="container">
@@ -195,37 +96,16 @@
                         </div>
                     </div>
 
-                    <div class="single-sidebar">
-                        <h2 class="sidebar-title">Bài đăng gần đây</h2>
-                        <ul>
-                            <li><a href="single-product.jsp">AdGuard VPN</a></li>
-                            <li><a href="single-product.jsp">Windscribe VPN</a></li>
-                            <li><a href="single-product.jsp">Windows 11 Pro Max</a></li>
-                            <li><a href="single-product.jsp">Windows 11 Education</a></li>
-                            <li><a href="single-product.jsp">Factory Design Utilities</a></li>
-                        </ul>
-                    </div>
                 </div>
 
                 <div class="col-md-8">
                     <div class="product-content-right">
                         <div class="woocommerce">
 
-
-
-
-                            <p class="form-row form-row-first">
-                                <input type="text" value="" id="coupon_code" placeholder="Mã giảm giá" class="input-text" name="coupon_code">
-                            </p>
-
-                            <p class="form-row form-row-last">
-                                <input type="submit" value="Xác nhận" name="apply_coupon" class="button">
-                            </p>
-
                             <div class="clear"></div>
 
 
-                            <form enctype="multipart/form-data" action="#" class="checkout" method="post" name="checkout">
+                            <form enctype="multipart/form-data" action="./Oder" class="checkout" method="post" name="checkout">
 
                                 <div id="customer_details" class="col2-set">
                                     <div class="col-1">
@@ -236,73 +116,19 @@
                                             <p id="billing_first_name_field" class="form-row form-row-first validate-required">
                                                 <label class="" for="billing_first_name">Họ và Tên <abbr title="required" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="<%=user.getName()%>" placeholder="" id="billing_first_name" name="billing_first_name" class="input-text ">
+                                                <input type="text" value="${sessionScope.currentUser.name}" placeholder="" id="billing_first_name" name="billing_first_name" class="input-text ">
                                             </p>
                                             <p id="billing_address_1_field" class="form-row form-row-wide address-field validate-required">
                                                 <label class="" for="billing_address_1">Địa chỉ <abbr title="required" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="<%=user.getAddress()%>" placeholder="Địa chỉ" id="billing_address_1" name="billing_address" class="input-text ">
+                                                <input type="text" value="${sessionScope.currentUser.address}" placeholder="Địa chỉ" id="billing_address_1" name="billing_address" class="input-text ">
                                             </p>
-
-
-<%--                                            <p id="billing_country_field" class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">--%>
-<%--                                                <label class="" for="billing_country">Tỉnh thành <abbr title="required" class="required">*</abbr>--%>
-<%--                                                </label>--%>
-<%--                                                <select  class="country_to_state country_select" id="billing_country" name="billing_country">--%>
-<%--                                                    <option value="">Chọn tỉnh thành</option>--%>
-<%--                                                    <option value="AG">An Giang</option>--%>
-<%--                                                    <option value="AF">Bà Rịa-Vũng Tàu</option>--%>
-<%--                                                    <option value="BL">Bạc Liêu</option>--%>
-<%--                                                    <option value="DZ">Bắc Giang</option>--%>
-<%--                                                    <option value="AD">Bắc Kạn</option>--%>
-<%--                                                    <option value="AO">Bắc Ninh</option>--%>
-<%--                                                    <option value="AI">Bến Tre</option>--%>
-<%--                                                    <option value="AQ">Bình Dương</option>--%>
-<%--                                                    <option value="AG">Bình Định</option>--%>
-<%--                                                    <option value="AR">Bình Phước</option>--%>
-<%--                                                    <option value="AM">Bình Thuận</option>--%>
-<%--                                                    <option value="AW">Cà Mau</option>--%>
-<%--                                                    <option value="AU">Cao Bằng</option>--%>
-<%--                                                    <option value="AT">Cần Thơ</option>--%>
-<%--                                                    <option value="AZ">Đà Nẵng</option>--%>
-<%--                                                    <option value="BS">Đắk Lắk</option>--%>
-<%--                                                    <option value="BH">Đắk Mông</option>--%>
-<%--                                                    <option value="BD">Điện Biên</option>--%>
-<%--                                                    <option value="BB">Đồng Nai</option>--%>
-<%--                                                    <option value="BY">Đồng Tháp</option>--%>
-<%--                                                    <option value="PW">Gia Lai</option>--%>
-<%--                                                    <option value="BE">Hà Giang</option>--%>
-<%--                                                    <option value="BZ">Hà Nam</option>--%>
-<%--                                                    <option value="BJ">Hà Nội</option>--%>
-<%--                                                    <option value="BM">Hà Tĩnh</option>--%>
-<%--                                                    <option value="BT">Hải Dương</option>--%>
-<%--                                                    <option value="BO">Hải Phòng</option>--%>
-<%--                                                    <option value="BQ">Hậu Giang</option>--%>
-<%--                                                    <option value="BA">Hòa Bình</option>--%>
-<%--                                                    <option value="BW">Hưng Yên</option>--%>
-<%--                                                    <option value="BV">Khánh Hòa</option>--%>
-<%--                                                    <option value="BR">Kiên Giang</option>--%>
-<%--                                                    <option value="IO">Kon Tum</option>--%>
-<%--                                                    <option value="VG">Lai Châu</option>--%>
-<%--                                                    <option value="BN">Lạng Sơn</option>--%>
-<%--                                                    <option value="BG">Lào Cai</option>--%>
-<%--                                                    <option value="BF">Lâm Đồng</option>--%>
-<%--                                                    <option value="BI">Long An</option>--%>
-<%--                                                    <option value="KH">Nam Định</option>--%>
-<%--                                                    <option value="CM">Nghệ An</option>--%>
-<%--                                                    <option value="CA">Ninh Bình</option>--%>
-<%--                                                    <option value="CV">Ninh Thuận</option>--%>
-<%--                                                    <option value="KY">Phú Thọ</option>--%>
-<%--                                                </select>--%>
-<%--                                            </p>--%>
-
-
                                             <div class="clear"></div>
 
                                             <p id="billing_phone_field" class="form-row form-row-last validate-required validate-phone">
                                                 <label class="" for="billing_phone">Số điện thoại <abbr title="required" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="<%=user.getPhone()%>" placeholder="" id="billing_phone" name="billing_phone" class="input-text ">
+                                                <input type="text" value="${sessionScope.currentUser.phone}" placeholder="" id="billing_phone" name="billing_phone" class="input-text ">
                                             </p>
                                             <div class="clear"></div>
 
@@ -325,26 +151,18 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <%
-                                            Set<String> keySet = list.keySet();
-                                            for (String k: keySet){
-                                                Products product = ProductsDao.getProduct(k);%>
+                                        <c:forEach var="p" items="${sessionScope.cart}">
                                         <tr class="cart_item">
                                             <td class="product-name">
-                                                <strong class="product-quantity"><%=product.getName()+" "+product.getVersion()%></strong> </td>
+                                                <strong class="product-quantity">${p.productName}</strong> </td>
                                             <td class="product-total">
-                                                <span class="amount"><%=Products.priceFormat(product.getPrice()*list.get(k))%></span> </td>
+                                                <span class="amount">${p.price * p.quantity}</span> </td>
                                         </tr>
-                                        <%}%>
+                                        </c:forEach>
 
                                         </tbody>
                                         <tfoot>
 
-                                        <tr class="cart-subtotal">
-                                            <th>Giảm giá</th>
-                                            <td><span class="amount"><%=Products.priceFormat(0)%></span>
-                                            </td>
-                                        </tr>
 
                                         <tr class="shipping">
                                             <th>Phí ship và xử lí</th>
@@ -359,7 +177,7 @@
                                         <tr class="order-total">
                                             <th>Tổng cộng</th>
 
-                                            <td><strong><span class="amount"><%=Products.priceFormat(total)%></span></strong> </td>
+                                            <td><strong><span class="amount"><c:out value="${sessionScope.totalAmount}"/></span></strong> </td>
                                         </tr>
 
                                         </tfoot>
@@ -381,15 +199,6 @@
                                                 <div style="display:none;" class="payment_box payment_method_cheque">
                                                     <p>Vui lòng gửi cheque của bạn tới tên cửa hàng, tên đường, tên xã, tên huyện / thành phố, mã bưu điện cửa hàng.</p>
                                                 </div>
-                                                <!--                                        </li>-->
-                                                <!--&lt;!&ndash;                                        <li class="payment_method_paypal">&ndash;&gt;-->
-                                                <!--                                            <input type="radio" data-order_button_text="Proceed to PayPal" value="paypal" name="payment_method" class="input-radio" id="payment_method_paypal">-->
-                                                <!--                                            <label for="payment_method_paypal">PayPal <img alt="PayPal Acceptance Mark" src="https://www.paypalobjects.com/webstatic/mktg/Logo/AM_mc_vs_ms_ae_UK.png"><a title="What is Paypal?" onclick="javascript:window.open('https://www.paypal.com/gb/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;" class="about_paypal" href="https://www.paypal.com/gb/webapps/mpp/paypal-popup">Paypal là cái gì?</a>-->
-                                                <!--                                            </label>-->
-                                                <!--                                            <div style="display:none;" class="payment_box payment_method_paypal">-->
-                                                <!--                                                <p>Thanh toán qua PayPal; bạn có thể thanh toán bằng thẻ tín dụng nếu bạn không có tài khoản PayPal.</p>-->
-                                                <!--                                            </div>-->
-                                                <!--                                        </li>-->
                                         </ul>
 
                                         <div class="form-row place-order">

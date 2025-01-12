@@ -27,13 +27,13 @@
 //                        int n = Integer.parseInt(number[i]);
 //                        cart.update(id[i], n);
 //                    }
-//                    req.getRequestDispatcher("./cart.jsp").forward(req,resp);
+//                    req.getRequestDispatcher("./Order.jsp").forward(req,resp);
 //                }
 //            }
 //        }catch (Exception e){
 //
 //        }
-//        req.getRequestDispatcher("./cart.jsp").forward(req,resp);
+//        req.getRequestDispatcher("./Order.jsp").forward(req,resp);
 //    }
 //
 //    @Override
