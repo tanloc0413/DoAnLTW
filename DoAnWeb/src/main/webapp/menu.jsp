@@ -67,7 +67,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.jsp">Trang chủ</a></li>
+                    <li class=""><a href="index.jsp">Trang chủ</a></li>
+<%--                    <li class="active"><a href="index.jsp">Trang chủ</a></li>--%>
                     <li><a href="./Shop">Sản phẩm</a></li>
                     <li><a href="cart.jsp">Giỏ hàng</a></li>
                     <li><a href="#">Liên hệ</a></li>

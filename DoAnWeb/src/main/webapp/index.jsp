@@ -99,38 +99,16 @@
         <div class="row">
             <%
                 for (Categories cate: categories){%>
+            <form action="./ShopCategory" method="post">
             <div class="col-md-3 col-sm-6">
                 <div class="single-promo promo1">
-                    <p><%=cate.getName()%></p>
+<%--                    <p><%=cate.getName()%></p>--%>
+                    <input name="categoryId" value="<%= cate.getId()%>" style="display: none">
+                    <button type="submit"><a style="color: white"><%=cate.getName()%></a></button>
                 </div>
             </div>
+            </form>
             <%   }%>
-
-
-<%--            <div class="col-md-3 col-sm-6">--%>
-<%--                <div class="single-promo promo1">--%>
-<%--                    <i class="fa fa-refresh"></i>--%>
-<%--                    <p>30 Ngày Đổi trả</p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-md-3 col-sm-6">--%>
-<%--                <div class="single-promo promo2">--%>
-<%--                    <i class="fa fa-truck"></i>--%>
-<%--                    <p>Miễn phí ship</p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-md-3 col-sm-6">--%>
-<%--                <div class="single-promo promo3">--%>
-<%--                    <i class="fa fa-lock"></i>--%>
-<%--                    <p>Thanh toán an toàn</p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-md-3 col-sm-6">--%>
-<%--                <div class="single-promo promo4">--%>
-<%--                    <i class="fa fa-gift"></i>--%>
-<%--                    <p>Sản phẩm mới</p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
         </div>
     </div>
 </div> <!-- End promo area -->
@@ -142,37 +120,37 @@
 <div class="maincontent-area">
     <div class="zigzag-bottom"></div>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="latest-product">
-                    <h2 class="section-title">Sản phẩm mới nhất</h2>
-                    <div class="product-carousel">
-                        <%
-                            for (Products p: newProduct){%>
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="<%=p.getImage()%>" alt="">
-                                <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"
-                                       style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"
-                                       style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
-                                </div>
-                            </div>
+<%--        <div class="row">--%>
+<%--            <div class="col-md-12">--%>
+<%--                <div class="latest-product">--%>
+<%--                    <h2 class="section-title">Sản phẩm mới nhất</h2>--%>
+<%--                    <div class="product-carousel">--%>
+<%--                        <%--%>
+<%--                            for (Products p: newProduct){%>--%>
+<%--                        <div class="single-product">--%>
+<%--                            <div class="product-f-image">--%>
+<%--                                <img src="<%=p.getImage()%>" alt="">--%>
+<%--                                <div class="product-hover">--%>
+<%--                                    <a href="#" class="add-to-cart-link" style="font-size: 11px"--%>
+<%--                                       style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>--%>
+<%--                                    <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"--%>
+<%--                                       style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
-                            <h2><a href="single-product.jsp"><%=p.getName()%></a></h2>
+<%--                            <h2><a href="single-product.jsp"><%=p.getName()%></a></h2>--%>
 
-                            <div class="product-carousel-price">
-                                <ins><%=p.getPrice()%></ins>
-                                <del>799.000&#x20AB</del>
-                            </div>
-                        </div>
-                        <%    }%>
+<%--                            <div class="product-carousel-price">--%>
+<%--                                <ins><%=p.getPrice()%></ins>--%>
+<%--                                <del>799.000&#x20AB</del>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <%    }%>--%>
 
-                    </div>
-                </div>
-            </div>
-        </div>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
         <br>
         <h2 class="section-title">Danh Sách Sản phẩm</h2>
         <%

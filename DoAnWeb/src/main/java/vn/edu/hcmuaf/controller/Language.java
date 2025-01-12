@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Locale;
 
@@ -18,15 +19,24 @@ public class Language extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
         String lang = req.getParameter("lang");
-        if (lang == null) {
+        System.out.println(lang);
+
+        if (lang == null || lang.isEmpty()) {
             lang = "vi"; // Mặc định là Tiếng Viet
         }
         Locale locale = new Locale(lang);
-        req.getSession().setAttribute("lang", locale);
+        session.setAttribute("lang", locale);
+        System.out.println(locale);
 
-        // Chuyển hướng lại về trang chủ (hoặc trang bất kỳ)
-        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        // Chuyển hướng về trang trước (hoặc trang chủ)
+        String referer = req.getHeader("Referer");
+        if (referer != null) {
+            resp.sendRedirect(referer); // Quay về trang trước
+        } else {
+            resp.sendRedirect("index.jsp"); // Quay về trang chủ nếu không có trang trước
+        }
     }
 
 }

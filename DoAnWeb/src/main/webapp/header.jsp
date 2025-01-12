@@ -1,10 +1,16 @@
-<%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html>
+<!-- Cấu hình bundle -->
+<fmt:setBundle basename="messages" var="bundle"/>
+
+<!-- Lấy Locale từ session -->
+<fmt:setLocale value="${sessionScope.lang != null ? sessionScope.lang : 'vi'}"/>
+
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,59 +43,80 @@
 </head>
 <body>
 
-<fmt:setLocale value="${sessionScope.lang}" />
-<div class="header-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="user-menu">
-                    <ul>
-                        <%--                        <li><a href="<%=url%>"><i class="fa fa-user"></i> Tài khoản của tôi</a></li>--%>
-                        <li><a href="#"><i class="fa fa-heart"></i> <fmt:message key="wishlist"/></a></li>
-                        <li><a href="cart.jsp"><i class="fa fa-user"></i> <fmt:message key="cart" /> </a></li>
-                        <li><a href="checkout.jsp"><i class="fa fa-user"></i><fmt:message key="checkout" /></a></li>
-                        <c:choose>
-                            <c:when test="${ not empty  sessionScope.currentUser}">
-                                <li><a href="#"><i class="fa fa-user"></i> ${sessionScope.currentUser.name}</a></li>
-                                <li><a href="./logOut"><i class="fa fa-sign-out"></i> <fmt:message key="logout" /></a></li>
-                            </c:when>
-                            <c:otherwise>
-                                <li><a href="Login.jsp"><i class="fa fa-user"></i> <fmt:message key="login" /></a></li>
-                            </c:otherwise>
-                        </c:choose>
-                        <%--                        <li><a href="<%=log%>"><i class="fa fa-user"></i> Đăng xuất</a></li>--%>
-                    </ul>
+<fmt:setLocale value="${sessionScope.lang}"/>
+<form action="./Language" method="post">
+    <div class="header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="user-menu">
+                        <ul>
+                            <%--                        <li><a href="<%=url%>"><i class="fa fa-user"></i> Tài khoản của tôi</a></li>--%>
+                                <li><a href="#"><i class="fa fa-heart"></i> <c:out value="${sessionScope.lang}"/>
+                                </a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i> <fmt:message key="wishlist" bundle="${bundle}"/>
+                            </a></li>
+                            <li><a href="cart.jsp"><i class="fa fa-user"></i> <fmt:message key="cart"
+                                                                                           bundle="${bundle}"/> </a>
+                            </li>
+                            <li><a href="checkout.jsp"><i class="fa fa-user"></i><fmt:message key="checkout"
+                                                                                              bundle="${bundle}"/></a>
+                            </li>
+                            <c:choose>
+                                <c:when test="${ not empty  sessionScope.currentUser}">
+                                    <li><a href="#"><i class="fa fa-user"></i> ${sessionScope.currentUser.name}</a></li>
+                                    <li><a href="./logOut"><i class="fa fa-sign-out"></i> <fmt:message key="logout"
+                                                                                                       bundle="${bundle}"/></a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li><a href="Login.jsp"><i class="fa fa-user"></i> <fmt:message key="login"
+                                                                                                    bundle="${bundle}"/></a>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
+                            <%--                        <li><a href="<%=log%>"><i class="fa fa-user"></i> Đăng xuất</a></li>--%>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="header-right">
-                    <ul class="list-unstyled list-inline">
-                        <li class="dropdown dropdown-small">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span
-                                    class="key">Tiền tệ :</span><span class="value">VNĐ </span><b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">VNĐ</a></li>
-                                <li><a href="#">INR</a></li>
-                            </ul>
-                        </li>
+                <div class="col-md-4">
+                    <div class="header-right">
+                        <ul class="list-unstyled list-inline">
+                            <li class="dropdown dropdown-small">
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span
+                                        class="key">Tiền tệ :</span><span class="value">VNĐ </span><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">VNĐ</a></li>
+                                    <li><a href="#">USD</a></li>
+                                </ul>
+                            </li>
 
-                        <li class="dropdown dropdown-small">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span
-                                    class="key">Ngôn ngữ :</span><span class="value">Tiếng việt</span><b
-                                    class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="./Language?lang=vi">Tiếng Việt</a></li>
-                                <li><a href="./Language?lang=en">Tiếng Anh</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                            <li class="dropdown dropdown-small">
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">
+                                    <span class="key">Ngôn ngữ :</span>
+                                    <!-- Hiển thị ngôn ngữ hiện tại -->
+                                    <span class="value">
+                                     <c:choose>
+                                        <c:when test="${sessionScope.lang.language == 'vi'}">Tiếng Việt</c:when>
+                                        <c:when test="${sessionScope.lang.language == 'en'}">English</c:when>
+                                        <c:otherwise>Tiếng Việt</c:otherwise>
+                                    </c:choose>
+                                    </span>
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="./Language?lang=vi">Tiếng Việt</a></li>
+                                    <li><a href="./Language?lang=en">Tiếng Anh</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<fmt:setLocale value="${sessionScope.lang}" />
+</form>
 
 <!-- Latest jQuery form server -->
 <script src="https://code.jquery.com/jquery.min.js"></script>
