@@ -163,7 +163,11 @@
                     <img src="<%=p.getImage()%>" alt="" style="height: 40%; width: 100%">
                 </div>
 <%--                <input name="maview" value="<%=p.getId()%>" style="display: none">--%>
-                <h2 class="h2-product"><a href="#"><%=p.getName()%></a></h2>
+                <h2 class="h2-product">
+                    <a href="./View?maview=<%= p.getId() %>">
+                        <%=p.getName()%>
+                    </a>
+                </h2>
                 <div class="product-carousel-price">
                     <%
                         double price = p.getPrice();
@@ -185,8 +189,6 @@
         </div>
 
         <%    }%>
-
-
 
     </div>
 </div> <!-- End main content area -->
