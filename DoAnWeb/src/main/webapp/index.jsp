@@ -97,7 +97,7 @@
 <div class="promo-area">
     <div class="zigzag-bottom"></div>
     <div class="container" style="width: 100%; height: 10rem">
-        <div class="row" style="width: 100%; height: 100%">
+        <div class="row" style="height: 100%; display: flex; justify-content: center;">
             <%
                 for (Categories cate: categories){%>
             <form action="./ShopCategory" method="post" style="height: 100%">
@@ -169,7 +169,10 @@
                         double price = p.getPrice();
                         request.setAttribute("price", price);
                     %>
-                    <ins><fmt:formatNumber value="${price}" type="currency" currencySymbol="₫" groupingUsed="true" /></ins>
+                    <ins>
+<%--                        <fmt:formatNumber value="${price}" type="currency" currencySymbol="₫" groupingUsed="true" />--%>
+                        <fmt:formatNumber value="${price - (price % 1)}" type="currency" currencySymbol="₫" groupingUsed="true" minFractionDigits="0" maxFractionDigits="0" />
+                    </ins>
                 </div>
 
                 <div class="product-option-shop" style="padding-bottom: 0">

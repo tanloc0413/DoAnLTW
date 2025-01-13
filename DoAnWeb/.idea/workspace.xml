@@ -5,100 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="03e70eea-4765-4bdc-ba7d-5831a6b140f6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/AddProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/AddProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/AdminControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/CartRemove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/CartRemove.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/CartServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/CartServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/CartUpdate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/OderDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/OderDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/OderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/OderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/ProductDetail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/UpdateStatusOder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/UpdateStatusOder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/VerifyOTP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/VerifyOTP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/controller/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/CategoriesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/CategoriesDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/OderDetailDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/OderDetailDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/OdersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/OdersDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/ProductCategoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/ProductCategoryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/ProductsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/ProductsDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/StatusDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/StatusDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/model/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/model/OderItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vn/edu/hcmuaf/model/OderItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/accuracy.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/accuracy.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/ManagerProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/ManagerProduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/addcategory.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/addcategory.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/addproduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/addproduct.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/adminAccount.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/adminAccount.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/analytics.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/analytics.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/blog-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/buttons.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/buttons.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/cart.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/menu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/accordion.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/accordion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/advance-form-element.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/advance-form-element.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/alerts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/alerts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/area-charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/area-charts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/bar-charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/bar-charts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/basic-form-element.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/basic-form-element.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/blog-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/buttons.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/buttons.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/c3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/c3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/data-maps.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/data-maps.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/data-table.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/data-table.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/file-manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/file-manager.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/google-map.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/google-map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/images-cropper.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/images-cropper.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/index-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/index-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/line-charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/line-charts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/modals.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/modals.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/notifications.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/notifications.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/password-meter.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/password-meter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/pdf-viewer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/pdf-viewer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/peity.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/peity.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/preloader.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/preloader.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/product-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/product-detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/rounded-chart.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/rounded-chart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/sparkline.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/sparkline.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/static-table.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/static-table.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/tabs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/tabs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/tree-view.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/tree-view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/not use file/widgets.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/not use file/widgets.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/product-cart.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/product-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/product-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/product-type.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/product-type.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/updateOder.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/updateOder.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/checkout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/forgot_password.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/forgot_password.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/infeo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/infeo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/notification.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/notification.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/shop-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/shop-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/shop.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/shop.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/single-product-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/single-product-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/single-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/single-product.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/controller/AddProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/controller/AddProduct.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/controller/Register.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/controller/Register.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/controller/VerifyOTP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/controller/VerifyOTP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/dao/CategoriesDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/dao/CategoriesDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/dao/ProductCategoryDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/dao/ProductCategoryDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/dao/ProductsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/dao/ProductsDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/dao/StatusDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/dao/StatusDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/dao/UserDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/model/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/model/Cart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/model/OderItems.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vn/edu/hcmuaf/model/OderItems.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,21 +44,21 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Smart Tomcat.Tomcat: DoAnWeb.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;TanLoc&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/DoAnLTW/DoAnWeb&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Smart Tomcat.Tomcat: DoAnWeb.executor": "Run",
+    "git-widget-placeholder": "TanLoc",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/LTW/project2/DoAnLTW/DoAnWeb",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Tomcat: DoAnWeb" type="com.poratu.idea.plugins.tomcat" temporary="true">
       <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
@@ -202,6 +110,7 @@
       <workItem from="1736081435439" duration="281000" />
       <workItem from="1736081746318" duration="612000" />
       <workItem from="1736648333476" duration="1201000" />
+      <workItem from="1736763113342" duration="1263000" />
     </task>
     <servers />
   </component>
