@@ -1,65 +1,76 @@
-//package vn.edu.hcmuaf.service;
+package vn.edu.hcmuaf.controller;
+
+
+import vn.edu.hcmuaf.dao.ProductsDao;
+import vn.edu.hcmuaf.model.Cart;
+import vn.edu.hcmuaf.model.Products;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+@WebServlet(name = "CartServlet", value = "/CartServlet")
+public class CartServlet extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Lấy session hiện tại
+        HttpSession session = req.getSession();
+        List<Cart> cart = (List<Cart>) session.getAttribute("cart");
+
+        // Lấy thông tin sản phẩm từ request
+        int productId = Integer.parseInt(req.getParameter("productId"));
+        Products products = ProductsDao.getProduct(productId);
+        int quantity = Integer.parseInt(req.getParameter("quantity"));
+
+
+        // Tạo đối tượng CartItem
+        Cart newItem = new Cart(productId, products.getName(), products.getImage(), products.getPrice(), quantity);
+
+
+
+        // Nếu giỏ hàng chưa tồn tại, tạo mới
+        if (cart == null) {
+            cart = new ArrayList<>();
+            session.setAttribute("cart", cart);
+        }
+
+        // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+        boolean itemExists = false;
+        for (Cart item : cart) {
+            if (item.getProductId() == productId) {
+                // Cập nhật số lượng sản phẩm
+                item.setQuantity(quantity);
+                itemExists = true;
+                break;
+            }
+        }
+
+        // Nếu sản phẩm chưa có trong giỏ hàng, thêm mới
+        if (!itemExists) {
+            cart.add(newItem);
+        }
+        double totalAmount = 0.0;
+        for (Cart item : cart) {
+            totalAmount += item.getPrice() * item.getQuantity();
+        }
+
+        // Cập nhật giỏ hàng vào session
+        session.setAttribute("cart", cart);
+        session.setAttribute("totalAmount", totalAmount);
 //
-//import vn.edu.hcmuaf.dao.KhoDao;
-//import vn.edu.hcmuaf.dao.ProductsDao;
-//import vn.edu.hcmuaf.model.Cart;
-//import vn.edu.hcmuaf.model.Products;
-//import vn.edu.hcmuaf.model.User;
-//
-//import javax.servlet.ServletException;
-//import javax.servlet.annotation.WebServlet;
-//import javax.servlet.http.HttpServlet;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//import javax.servlet.http.HttpSession;
-//import java.io.IOException;
-//
-//@WebServlet(name = "CartServlet", value = "/CartServlet")
-//public class CartServlet extends HttpServlet {
-//    @Override
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        HttpSession session = req.getSession();
-//        User user = (User) session.getAttribute("auth");
-//        if (user==null){
-//            req.getRequestDispatcher("/Login.jsp").forward(req,resp);
-//        }else {
-//            Cart cart = (Cart) session.getAttribute("cart");
-//            String id = req.getParameter("ma");
-//
-//            int number = Integer.parseInt(req.getParameter("quan"));
-//            int quantil = KhoDao.getNumberProduct(id);
-//            String command = req.getParameter("command");
-//            if (number <= quantil){
-//                try {
-//
-//                    switch (command){
-//
-//                        case "insert":
-//                            if (cart == null) {
-//                                cart = new Cart();
-//                            }
-//                            if (number !=0){
-//                                cart.inserCart(id, number);
-//                                KhoDao.updateQuantilyProduct(id, number, true);
-//                                session.setAttribute("cart", cart);
-//                            }
-//                            break;
-//                    }
-//
-//                }catch (Exception e){
-//
-//                }
-//            }
-//            Products products = (Products) session.getAttribute("de");
-//            products = ProductsDao.getProduct(id);
-//            session.setAttribute("de", products);
-//            req.getRequestDispatcher("./single-product.jsp").forward(req,resp);
-//        }
-//
-//    }
-//
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        doPost(req, resp);
-//    }
-//}
+//        // Chuyển hướng về trang giỏ hàng
+        req.getRequestDispatcher("./Order.jsp").forward(req,resp);
+    }
+
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
+}

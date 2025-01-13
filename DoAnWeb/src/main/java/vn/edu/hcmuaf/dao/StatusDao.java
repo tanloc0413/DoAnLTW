@@ -76,6 +76,39 @@ public class StatusDao {
         }
         return  statusList;
     }
+
+    public static Status getStatusById(String id) {
+        Status status = null;
+
+        // Kiểm tra ID có hợp lệ không
+        if (id == null || id.isEmpty()) {
+            return null;
+        }
+
+        // Query sử dụng tham số đặt tên
+        String query = "SELECT id, status_name, `create` FROM status WHERE id = ?";
+
+        try (Handle handle = JDBIConnector.me().open()) {
+            status = handle.createQuery(query)
+                    .bind(0, id) // Bind giá trị ID theo tên
+                    .map((rs, ctx) -> new Status(
+                            rs.getString("id"),
+                            rs.getString("status_name"),
+                            rs.getTimestamp("create")
+                    ))
+                    .one(); // Lấy một kết quả duy nhất
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Trả về null nếu có lỗi
+            return null;
+        }
+
+        return status;
+    }
+
+
+
+
     public  static String getName(String id){
         String result="";
         try (Handle handle = JDBIConnector.me().open()){

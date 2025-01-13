@@ -107,7 +107,7 @@
                     <div class="product-status-wrap">
                         <h4>Tài khoản quản trị</h4>
                         <div class="add-product">
-                            <a href="product-edit.jsp">Thêm Tài khoản</a>
+                            <a href="addAccount.jsp">Thêm Tài khoản</a>
                         </div>
                         <table>
                             <tr>
@@ -140,15 +140,6 @@
                                 </tr>
                             </c:forEach>
                         </table>
-                        <!--                        <div class="custom-pagination">-->
-                        <!--                            <ul class="pagination">-->
-                        <!--                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
-                        <!--                                <li class="page-item"><a class="page-link" href="#">1</a></li>-->
-                        <!--                                <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-                        <!--                                <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-                        <!--                                <li class="page-item"><a class="page-link" href="#">Next</a></li>-->
-                        <!--                            </ul>-->
-                        <!--                        </div>-->
                     </div>
                 </div>
             </div>

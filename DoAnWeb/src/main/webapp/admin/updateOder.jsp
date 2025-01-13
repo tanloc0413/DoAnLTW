@@ -1,12 +1,5 @@
-<%@ page import="vn.edu.hcmuaf.dao.StatusDao" %>
-<%@ page import="vn.edu.hcmuaf.model.Status" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: THINH
-  Date: 1/25/2024
-  Time: 12:01 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -75,19 +68,10 @@
 <body>
 
 
-<form action="./ProductDetail" method="post">
-    <%
-//        HttpSession sessioan = request.getSession();
-//        Products products = (Products) sessioan.getAttribute("pro");
-//        List<Directorys> dire =  DirectorysDao.getDirectorysAdmin();
-        List<Status> statusList = StatusDao.getStatusByOderNew();
-//        List<Image> images = ImageDao.getImageProductByID(products.getMaSP());
-
-    %>
    <jsp:include page="menu.jsp"/>
     <!-- Start Welcome area -->
     <div class="all-content-wrapper">
-        <jsp:include page="header.jsp"/>
+<%--        <jsp:include page="header.jsp"/>--%>
         <!-- Single pro tab start-->
         <div class="single-product-tab-area mg-b-30">
             <!-- Single pro tab review Start-->
@@ -103,21 +87,26 @@
                                 <div id="myTabContent" class="tab-content custom-product-edit">
                                     <div class="product-tab-list tab-pane fade active in" id="description">
                                         <div class="row">
+                                            <form action="./UpdateStatus" method="post">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"></div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                    <p>Trạng thái: </p>
+                                                <c:set var="o" value="${requestScope.order}"/>
+                                                <p style="color: white">Mã Đơn hàng: ${o.id}</p>
+                                                    <p style="color: white">Trạng thái: </p>
                                                     <div class="input-group mg-b-pro-edt" style="width: 100%">
                                                         <select name="select" class="form-control pro-edt-select form-control-primary">
-                                                            <option value="<%=products.getStatus()%>" > <%=StatusDao.getName(products.getStatus())%></option>
-                                                            <%
-                                                                for (Status s : statusList){%>
-                                                            <option value="<%=s.getId()%>"><%=s.getName()%></option>
-                                                            <% }%>
+                                                            <c:set var="oder" value="${requestScope.dao}"/>
+                                                            <option value="${oder.id}" >${oder.name}</option>
+                                                            <c:forEach var="st" items="${requestScope.statusList}">
+                                                                <option value="${st.id}">${st.name}</option>
+                                                            </c:forEach>
+
                                                         </select>
                                                     </div>
-
-                                                </div>
+                                                <input name="id" value="${o.id}" style="display: none">
+                                                <button type="submit">Xác Nhận</button>
                                             </div>
+                                            </form>
                                         </div>
 
                                     </div>
@@ -130,7 +119,6 @@
             </div>
         </div>
     </div>
-</form>
 
 
 <!-- jquery

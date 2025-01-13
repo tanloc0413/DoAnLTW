@@ -82,6 +82,7 @@
 <jsp:include page="menu.jsp"/>
 <!-- Start Welcome area -->
 <div class="all-content-wrapper">
+    <jsp:include page="header.jsp"/>
     <div class="breadcome-area" style="margin-top: 50px">
         <div class="container-fluid">
             <div class="row">
@@ -116,7 +117,8 @@
                     <div class="product-status-wrap">
                         <h4>Danh mục</h4>
                         <div class="add-product">
-                            <a href="addcategory.jsp">Thêm danh mục</a>
+                            <button href="addcategory.jsp"> <a href="addcategory.jsp">Thêm danh mục</a></button>
+<%--                            <a href="addcategory.jsp">Thêm danh mục</a>--%>
                         </div>
                         <table>
                             <tr>

@@ -30,19 +30,6 @@
 <!--===============================================================================================-->
 </head>
 <body>
-<%--<%--%>
-<%--	String err = (String) request.getAttribute("err");--%>
-<%--	if (err==null) err="";--%>
-
-<%--%>--%>
-<%--<c:choose>--%>
-<%--	<c:when test="${requestScope.err == null}">--%>
-<%--		<c:set var="err" value="" scope="request" />--%>
-<%--	</c:when>--%>
-<%--	<c:otherwise>--%>
-<%--		<c:set var="err" value="${requestScope.err}" scope="request" />--%>
-<%--	</c:otherwise>--%>
-<%--</c:choose>--%>
 
 <c:set var="err" value="${requestScope.err}" />
 <c:if test="${err == null}">

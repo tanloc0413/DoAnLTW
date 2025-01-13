@@ -207,9 +207,9 @@ public class UserDao {
             Update update = handle.createUpdate(query)
                     .bind(0, id)          // ID người dùng
                     .bind(1, name)        // Tên
-                    .bind(2, address)     // Địa chỉ
-                    .bind(3, email)       // Email
-                    .bind(4, phone)       // Số điện thoại
+                    .bind(2, email)     // Địa chỉ
+                    .bind(3, phone)       // Email
+                    .bind(4, address)       // Số điện thoại
                     .bind(5, password)    // Mật khẩu
                     .bind(6, roler)       // Vai trò
                     .bind(7, status);     // Trạng thái
@@ -231,6 +231,19 @@ public class UserDao {
                     .bind(2, phone)
                     .bind(3, address)
                     .bind(4, id);
+            update.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void updateUserAddress(int id, String address) {
+        try (Handle handle = JDBIConnector.me().open()) {
+            String query = "UPDATE user SET  address = ? WHERE user_id = ?";
+            Update update = handle.createUpdate(query)
+                    .bind(0, address)
+                    .bind(1, id);
             update.execute();
         } catch (Exception e) {
             e.printStackTrace();

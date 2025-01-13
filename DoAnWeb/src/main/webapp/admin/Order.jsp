@@ -1,10 +1,5 @@
-<%@ page import="java.util.List" %>
-<%@ page import="vn.edu.hcmuaf.model.Oders" %>
-<%@ page import="vn.edu.hcmuaf.dao.OdersDao" %>
-<%@ page import="vn.edu.hcmuaf.dao.UserDao" %>
-<%@ page import="vn.edu.hcmuaf.dao.StatusDao" %>
-<%@ page import="vn.edu.hcmuaf.model.Products" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html class="no-js" lang="en">
 
@@ -73,14 +68,6 @@
 
 <body>
 
-<%
-    List<Oders> oders1 = OdersDao.getOdersAdmin();
-    if (oders1 == null) oders1 = new ArrayList<>();
-    List<Oders> oders2 = OdersDao.getOdersStatusNews();
-    if (oders2 == null) oders2 = new ArrayList<>();
-    List<Oders> oders3 = OdersDao.getOdersStatusCanel();
-    if (oders3 == null) oders3 = new ArrayList<>();
-%>
 
 <jsp:include page="menu.jsp"/>
 <!-- Start Welcome area -->
@@ -101,6 +88,7 @@
                             <li><a href="#all"><i class="" aria-hidden="true"></i> Tất cả đơn hàng</a></li>
                             <li><a href="#cancel"><i class="" aria-hidden="true"></i> Đã hủy</a></li>
                         </ul>
+
                         <div id="myTabContent" class="tab-content custom-product-edit">
                             <div class="product-tab-list tab-pane fade active in" id="description">
                                 <div class="row">
@@ -115,45 +103,45 @@
                                             <th>Thanh toán</th>
                                             <th>Cài đặt</th>
                                         </tr>
-                                        <%
-                                            for (Oders o : oders2) {%>
-                                        <tr>
-                                            <td><%=o.getId()%>
-                                            </td>
-                                            <td><%=UserDao.getName(o.getMaKH())%>
-                                            </td>
-                                            <td><%=StatusDao.getName(o.getStatus())%>
-                                            </td>
-                                            <td><%=o.getDate()%>
-                                            </td>
-                                            <td><%=Products.priceFormat(o.getTotal())%>
-                                            </td>
-                                            <td>
-                                                <form action="./OderDetail" method="post">
-                                                    <input name="id" value="<%=o.getId()%>" style="display: none">
-                                                    <button data-toggle="tooltip" title="submit" class="pd-setting-ed">
-                                                        <a
-                                                                href="updateOder.jsp"><i class="fa fa-pencil-square-o"
-                                                                                         aria-hidden="true"></i></a>
-                                                    </button>
-                                                </form>
+                                        <c:forEach var="o" items="${requestScope.odersListDH05}">
+                                            <tr>
+                                                <td>${o.id}</td>
+                                                <td>${o.userId}
+                                                </td>
+                                                <td>${o.status}
+                                                </td>
+                                                <td>${o.orderDate}
+                                                </td>
+                                                <td>
+                                                    <fmt:formatNumber value="${o.totalPrice}" type="currency" currencySymbol="₫" groupingUsed="true" />
+                                                </td>
+                                                <td>
+                                                    <form action="./OderDetail" method="post">
+                                                        <input name="id" value="${o.id}" style="display: none">
+                                                        <button data-toggle="tooltip" title="submit" class="pd-setting-ed">
+                                                            <a
+                                                                    href="updateOder.jsp"><i class="fa fa-pencil-square-o"
+                                                                                             aria-hidden="true"></i></a>
+                                                        </button>
+                                                    </form>
 
-                                            </td>
-                                            <td><%=StatusDao.getName(o.getThanhtoan())%>
-                                            </td>
-                                            <td>
-                                                <form action="./UpdateStatusOder" method="post">
-                                                    <input name="madh" value="<%=o.getId()%>" style="display: none">
-                                                    <button data-toggle="tooltip" title="submit" class="pd-setting-ed">
-                                                        <a
-                                                                href="updateOder.jsp"><i class="fa fa-pencil-square-o"
-                                                                                         aria-hidden="true"></i></a>
-                                                    </button>
-                                                </form>
+                                                </td>
+                                                <td>Tien Mat
+                                                </td>
+                                                <td>
+                                                    <form action="./UpdateStatusOder" method="post">
+                                                        <input name="madh" value="${o.id}" style="display: none">
+                                                        <button data-toggle="tooltip" title="submit" class="pd-setting-ed">
+                                                            <a
+                                                                    href="#"><i class="fa fa-pencil-square-o"
+                                                                                             aria-hidden="true"></i></a>
+                                                        </button>
+                                                    </form>
 
-                                            </td>
-                                        </tr>
-                                        <% }%>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+
                                     </table>
 
                                 </div>
@@ -172,26 +160,44 @@
                                             <th>Thanh toán</th>
 
                                         </tr>
-                                        <%
-                                            for (Oders oders : oders1) {%>
+                                        <c:forEach var="o" items="${requestScope.odersList}">
+                                            <tr>
+                                                <td>${o.id}</td>
+                                                <td>${o.userId}
+                                                </td>
+                                                <td>${o.status}
+                                                </td>
+                                                <td>${o.orderDate}
+                                                </td>
+                                                <td>${o.totalPrice}
+                                                </td>
+                                                <td>
+                                                    <form action="./OderDetail" method="post">
+                                                        <input name="id" value="${o.id}" style="display: none">
+                                                        <button data-toggle="tooltip" title="submit" class="pd-setting-ed">
+                                                            <a
+                                                                    href="#"><i class="fa fa-pencil-square-o"
+                                                                                             aria-hidden="true"></i></a>
+                                                        </button>
+                                                    </form>
 
+                                                </td>
+                                                <td>Tien Mat
+                                                </td>
+                                                <td>
+                                                    <form action="./UpdateStatusOder" method="post">
+                                                        <input name="madh" value="${o.id}" style="display: none">
+                                                        <button data-toggle="tooltip" title="submit" class="pd-setting-ed">
+                                                            <a
+                                                                    href="3"><i class="fa fa-pencil-square-o"
+                                                                                             aria-hidden="true"></i></a>
+                                                        </button>
+                                                    </form>
 
-                                        <tr>
-                                            <td><%=oders.getId()%>
-                                            </td>
-                                            <td><%=UserDao.getName(oders.getId())%>
-                                            </td>
-                                            <td><%=StatusDao.getName(oders.getStatus())%>
-                                            </td>
-                                            <td><%=oders.getDate()%>></td>
-                                            <td><%=Products.priceFormat(oders.getTotal())%>
-                                            </td>
-                                            <td><a href="product-cart.jsp">xem chi tiết</a></td>
-                                            <td><%=StatusDao.getName(oders.getThanhtoan())%>
-                                            </td>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
 
-                                        </tr>
-                                        <% }%>
                                     </table>
                                 </div>
                             </div>
@@ -207,25 +213,44 @@
                                             <th>Thông tin</th>
                                             <th>Thanh toán</th>
                                         </tr>
-                                        <%
-                                            for (Oders oders : oders3) {%>
+                                        <c:forEach var="o" items="${requestScope.odersListDH08}">
+                                            <tr>
+                                                <td>${o.id}</td>
+                                                <td>${o.userId}
+                                                </td>
+                                                <td>${o.status}
+                                                </td>
+                                                <td>${o.orderDate}
+                                                </td>
+                                                <td>${o.totalPrice}
+                                                </td>
+                                                <td>
+                                                    <form action="./OderDetail" method="post">
+                                                        <input name="id" value="${o.id}" style="display: none">
+                                                        <button data-toggle="tooltip" title="submit" class="pd-setting-ed">
+<%--                                                            <a--%>
+<%--                                                                    href="updateOder.jsp"><i class="fa fa-pencil-square-o"--%>
+<%--                                                                                             aria-hidden="true"></i></a>--%>
+                                                        </button>
+                                                    </form>
 
+                                                </td>
+                                                <td>Tien Mat
+                                                </td>
+                                                <td>
+                                                    <form action="./UpdateStatusOder" method="post">
+                                                        <input name="madh" value="${o.id}" style="display: none">
+                                                        <button data-toggle="tooltip" title="submit" class="pd-setting-ed">
+                                                            <a
+                                                                    href="updateOder.jsp"><i class="fa fa-pencil-square-o"
+                                                                                             aria-hidden="true"></i></a>
+                                                        </button>
+                                                    </form>
 
-                                        <tr>
-                                            <td><%=oders.getId()%>
-                                            </td>
-                                            <td><%=UserDao.getName(oders.getId())%>
-                                            </td>
-                                            <td><%=StatusDao.getName(oders.getStatus())%>
-                                            </td>
-                                            <td><%=oders.getDate()%>></td>
-                                            <td><%=Products.priceFormat(oders.getTotal())%>
-                                            </td>
-                                            <td><a href="product-cart.jsp">xem chi tiết</a></td>
-                                            <td><%=StatusDao.getName(oders.getThanhtoan())%>
-                                            </td>
-                                        </tr>
-                                        <% }%>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+
                                     </table>
                                 </div>
                             </div>

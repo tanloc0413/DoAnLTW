@@ -65,11 +65,11 @@ public class Register extends HttpServlet {
         String hashedPassword = PasswordUtils.encodePassword(pass);
 
         // Lưu người dùng mới vào cơ sở dữ liệu
-        boolean isInserted = UserDao.insertUser(uniqueId, name,"", email, phone, hashedPassword, 2, "1");
+        boolean isInserted = UserDao.insertUser(uniqueId, name,"",phone, email, hashedPassword, 2, "1");
 
         if (isInserted) {
             resp.getWriter().write("Đăng ký thành công!");
-            req.getRequestDispatcher("/Login.jsp").forward(req, resp);
+            req.getRequestDispatcher("./Login.jsp").forward(req, resp);
         } else {
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             req.setAttribute("err","Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại.");

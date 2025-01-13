@@ -4,13 +4,8 @@
 <%@ page import="vn.edu.hcmuaf.model.ProductImages" %>
 <%@ page import="vn.edu.hcmuaf.dao.StatusDao" %>
 <%@ page import="vn.edu.hcmuaf.dao.CategoriesDao" %>
-<%@ page import="vn.edu.hcmuaf.model.Categories" %><%--
-  Created by IntelliJ IDEA.
-  User: THINH
-  Date: 1/21/2024
-  Time: 9:00 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="vn.edu.hcmuaf.model.Categories" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -90,9 +85,38 @@
     <div class="all-content-wrapper">
         <jsp:include page="header.jsp"/>
         <!-- Single pro tab start-->
+        <!-- Mobile Menu end -->
+        <div class="breadcome-area" style="margin-top: 50px">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="breadcome-list">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="breadcomb-wp">
+                                        <div class="breadcomb-icon">
+                                            <i class="icon nalika-home"></i>
+                                        </div>
+                                        <div class="breadcomb-ctn" style="margin-top: 13px">
+                                            <h2>Thêm sản phẩm</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="breadcomb-report">
+                                        <button type="submit" name="button" value="them" data-toggle="tooltip" data-placement="left" title="Lưu" class="btn" style="color: white"><i class="icon nalika-upload" style="margin-right: 10px; margin-top: 10px"></i>Thêm sản phẩm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="single-product-tab-area mg-b-30">
+
             <!-- Single pro tab review Start-->
-            <div class="single-pro-review-area">
+            <div class="single-pro-review-area" >
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -123,21 +147,11 @@
                                                         <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
                                                         <input type="text" class="form-control" name="price" placeholder="Giá bán" value=" ">
                                                     </div>
-<%--                                                    <p>Bảo hành: </p>--%>
-<%--                                                    <div class="input-group mg-b-pro-edt">--%>
-<%--                                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>--%>
-<%--                                                        <input type="text" class="form-control" name="tgbh" placeholder="Thời gian bảo hành" value=" ">--%>
-<%--                                                    </div>--%>
                                                     <p>Hãng sản xuất: </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-home" aria-hidden="true"></i></span>
                                                         <input type="text" class="form-control" name="hang" placeholder="Hãng sản xuất" value=" ">
                                                     </div>
-<%--                                                    <p>Phiên bản sản phẩm: </p>--%>
-<%--                                                    <div class="input-group mg-b-pro-edt">--%>
-<%--                                                        <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>--%>
-<%--                                                        <input type="text" class="form-control" name="version" placeholder="Phiên bản" value=" ">--%>
-<%--                                                    </div>--%>
                                                     <p>Số lượng: </p>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
@@ -147,16 +161,6 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
-                                                    <p>Loại sản phẩm: </p>
-                                                    <div class="input-group mg-b-pro-edt">
-                                                        <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="type" placeholder="Loại sản phẩm" value=" ">
-                                                    </div>
-<%--                                                    <p>Hạng sử dụng: </p>--%>
-<%--                                                    <div class="input-group mg-b-pro-edt">--%>
-<%--                                                        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>--%>
-<%--                                                        <input type="text" class="form-control" name="time" placeholder="Hạng sử dụng" value=" ">--%>
-<%--                                                    </div>--%>
                                                     <p>Trạng thái: </p>
                                                     <div class="input-group mg-b-pro-edt" style="width: 100%">
                                                         <select name="select" class="form-control pro-edt-select form-control-primary">
@@ -177,51 +181,6 @@
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                                         <input type="file" class="form-control" name="url" placeholder="url" value=" ">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="product-tab-list tab-pane fade" id="reviews">
-                                        <div class="row">
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <div class="review-content-section ">
-                                                    <div class="text-center custom-pro-edt-ds" >
-
-                                                        <form action="./ImageSerive" method="post">
-                                                            <input name="masp"  style="display: none;" value="">
-                                                            <input type="file" name="url" class="form-control" placeholder="Đường dẫn hình ảnh " style="width: 1200px; float: left">
-                                                            <button type="submit" class="btn btn-ctl-bt waves-effect waves-light" style="margin-bottom: 30px; margin-left:30px;float: left">Thêm ảnh
-                                                            </button>
-                                                        </form>
-
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="pro-edt-img">
-                                                                <img src="" alt="" />
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="col-lg-8">
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    <div class="product-edt-pix-wrap">
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6">
-                                                                                <div class="product-edt-remove">
-                                                                                    <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Xóa
-                                                                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                                                                    </button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

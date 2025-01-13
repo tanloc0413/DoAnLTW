@@ -49,6 +49,35 @@ public class ProductsDao {
         return productsList;
     }
 
+    public static List<Products> getNewProduct() {
+        List<Products> productsList= new ArrayList<Products>();
+        try (Handle handle = JDBIConnector.me().open()) {
+            // Thực hiện truy vấn để lấy dữ liệu ID từ bảng staging
+            String query = "SELECT  product.product_id, product.product_name, product.brand, product.price, product.description, product.create,  status.`status_name`, product.image FROM product JOIN status  ON product.status = status.id LIMIT 5";
+
+            Query queryObj = handle.createQuery(query);
+            productsList = queryObj.map((rs, ctx) ->
+                    new Products(
+                            rs.getInt("product_id"),
+                            rs.getString("product_name"),
+                            rs.getString("brand"),
+                            rs.getDouble("price"),
+                            rs.getString("description"),
+                            rs.getTimestamp("create"),
+                            rs.getString("status_name"),
+                            rs.getString("image")
+                    )
+            ).list();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Nếu có lỗi, trả về một danh sách trống
+            return List.of();
+        }
+        return productsList;
+    }
+
 //    public static List<Products> getProducts() {
 //        List<Products> productsList= new ArrayList<Products>();
 //        try (Handle handle = JDBIConnector.me().open()) {
@@ -106,34 +135,80 @@ public class ProductsDao {
         }
         return productsList;
     }
-///*
-//loc danh sach san pham theo danh muc : 10 san pham
+
+    public static List<Products> getProductSearch(String search) {
+        List<Products> productsList = new ArrayList<>();
+        try (Handle handle = JDBIConnector.me().open()) {
+            // Sử dụng từ khóa LIKE với CONCAT để tìm kiếm
+            String query = "SELECT product.product_id, product.product_name, product.brand, product.price, " +
+                    "product.description, product.create, status.status_name, product.image " +
+                    "FROM product " +
+                    "JOIN status ON product.status = status.id " +
+                    "WHERE product.product_name LIKE CONCAT('%', :search, '%')";
+
+            productsList = handle.createQuery(query)
+                    .bind("search", search) // Truyền giá trị tìm kiếm
+                    .map((rs, ctx) ->
+                            new Products(
+                                    rs.getInt("product_id"),
+                                    rs.getString("product_name"),
+                                    rs.getString("brand"),
+                                    rs.getDouble("price"),
+                                    rs.getString("description"),
+                                    rs.getTimestamp("create"),
+                                    rs.getString("status_name"),
+                                    rs.getString("image")
+                            )
+                    ).list();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Nếu có lỗi, trả về một danh sách trống
+            return List.of();
+        }
+        return productsList;
+    }
+
+
+
+
+
+    ///*
+//loc danh sach san pham theo danh muc : 5 san pham
 // */
 //
-//
-//public static List<Products> getProductByDiretoryTop(String diretory) {
-//    List<Products> productsList= new ArrayList<Products>();
-//    try (Handle handle = JDBIConnector.me().open()) {
-//        String query = "SELECT  sanpham.masp,sanpham.tensp, sanpham.hinhanh, sanpham.giaban, sanpham.phienban, statu.`name` FROM sanpham JOIN statu ON sanpham.trangthai = statu.id WHERE sanpham.danhmuc=? GROUP BY sanpham.tensp, sanpham.hinhanh, sanpham.giaban,sanpham.phienban, statu.`name` LIMIT 8";
-//        Query queryObj = handle.createQuery(query).bind(0,diretory);
-//        productsList = queryObj.map((rs, ctx) ->
-//                new Products(
-//                        rs.getString("hinhanh"),
-//                        rs.getString("masp"),
-//                        rs.getString("tenSP"),
-//                        rs.getString("name"),
-//                        rs.getLong("giaban"),
-//                        rs.getString("phienban")
-//                )
-//        ).list();
-//
-//    } catch (Exception e) {
-//        e.printStackTrace();
-//        // Nếu có lỗi, trả về một danh sách trống
-//        return List.of();
-//    }
-//    return productsList;
-//}
+public static List<Products> getProductByNumDiretory(int diretory) {
+    List<Products> productsList= new ArrayList<Products>();
+    try (Handle handle = JDBIConnector.me().open()) {
+        // Thực hiện truy vấn để lấy dữ liệu ID từ bảng staging
+        String query = "SELECT  product.product_id, product.product_name, product.brand, product.price, product.description, product.create,  status.`status_name`, product.image FROM product JOIN status  ON product.status = status.id  where product.product_id IN (SELECT product_id from product_categories where categories_id = ?)";
+
+        Query queryObj = handle.createQuery(query)
+                .bind(0, diretory);
+        productsList = queryObj.map((rs, ctx) ->
+                new Products(
+                        rs.getInt("product_id"),
+                        rs.getString("product_name"),
+                        rs.getString("brand"),
+                        rs.getDouble("price"),
+                        rs.getString("description"),
+                        rs.getTimestamp("create"),
+                        rs.getString("status_name"),
+                        rs.getString("image")
+                )
+        ).list();
+
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        // Nếu có lỗi, trả về một danh sách trống
+        return List.of();
+    }
+    return productsList;
+}
+
+
+
 //
 //    /*
 //    tổng số sản phẩm thuộc 1 danh mục
@@ -173,7 +248,7 @@ public class ProductsDao {
                             rs.getDouble("price"),
                             rs.getString("description"),
                             rs.getTimestamp("create"),
-                            rs.getString("status_name"),
+                            rs.getString("status"),
                             rs.getString("image")
                     )).findOne().orElse(null);
         }

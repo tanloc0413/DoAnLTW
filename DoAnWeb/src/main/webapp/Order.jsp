@@ -1,10 +1,11 @@
+<%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.model.Cart" %>
-<%@ page import="java.util.TreeMap" %>
-<%@ page import="java.util.Set" %>
-<%@ page import="vn.edu.hcmuaf.model.Products" %>
-<%@ page import="vn.edu.hcmuaf.dao.ProductsDao" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +13,8 @@
     <title>Giỏ hàng</title>
 
     <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet'
+          type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
 
@@ -35,281 +37,163 @@
     <![endif]-->
 </head>
 <body>
+
+
 <%
-    Cart cart = (Cart) session.getAttribute("cart");
-    if (cart == null) cart = new Cart();
-    TreeMap<String, Integer> list = cart.getList();
-    long total=0;
-    Set<String> setkey = list.keySet();
-    for (String k:setkey){
-        total += ProductsDao.getPriceProduct(k) * list.get(k);
+    List<Cart> cartList = (List<Cart>) session.getAttribute("cart");
+    if (cartList == null) {
+        cartList = new java.util.ArrayList<>();
+        session.setAttribute("cart", cartList);
     }
 %>
-<form action="./CartRemove" method="post">
+<jsp:include page="header.jsp"/>
+<jsp:include page="menu.jsp"/>
 
 
-
-    <div class="header-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="user-menu">
-                        <ul>
-                            <li><a href="user.jsp"><i class="fa fa-user"></i> Tài khoản của tôi</a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i> Danh sách mong muốn</a></li>
-                            <li><a href="cart.jsp"><i class="fa fa-user"></i> Giỏ hàng </a></li>
-                            <li><a href="checkout.jsp"><i class="fa fa-user"></i> Thanh toán</a></li>
-                            <li><a href="Login.jsp"><i class="fa fa-user"></i> Đăng nhập</a></li>
-                            <li><a href="Login.jsp"><i class="fa fa-user"></i> Đăng xuất</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="header-right">
-                        <ul class="list-unstyled list-inline">
-                            <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">Tiền tệ :</span><span class="value">VNĐ </span><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">VNĐ</a></li>
-                                    <li><a href="#">INR</a></li>
-                                    <li><a href="#">GBP</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown dropdown-small">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">Ngôn ngữ :</span><span class="value">Tiếng việt</span><b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Tiếng Việt</a></li>
-                                    <li><a href="#">Tiếng Anh</a></li>
-                                    <li><a href="#">Tiếng Pháp</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Giỏ Hàng</h2>
                 </div>
             </div>
         </div>
-    </div> <!-- End header area -->
+    </div>
+</div> <!-- End Page title area -->
 
-    <div class="site-branding-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="logo">
-                        <h1><a href="index.jsp"><img src="admin/img/logo/logo.png"></a></h1>
-                    </div>
-                </div>
 
-                <div class="col-sm-6">
-                    <div class="shopping-item">
-                        <a href="cart.jsp">Giỏ hàng - <span class="cart-amunt"><%=Products.priceFormat(total)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=list.size()%></span></a>
-                    </div>
-                </div>
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+
+
+<%--                <div class="single-sidebar">--%>
+<%--                    <h2 class="sidebar-title">Sản phẩm</h2>--%>
+<%--                    <div class="thubmnail-recent">--%>
+<%--                        <img src="img/Tiện Ích_2/navicat-premium.png" class="recent-thumb" alt="">--%>
+<%--                        <h2><a href="single-product.jsp">Navicat Premium</a></h2>--%>
+<%--                        <div class="product-sidebar-price">--%>
+<%--                            <ins>790.000đ</ins>--%>
+<%--                            <del>820.000đ</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="thubmnail-recent">--%>
+<%--                        <img src="img/Windows_1/win_server/windows-server-2022-datacenter.png" class="recent-thumb"--%>
+<%--                             alt="">--%>
+<%--                        <h2><a href="single-product.jsp">Windows Server 2022 Datacenter</a></h2>--%>
+<%--                        <div class="product-sidebar-price">--%>
+<%--                            <ins>549.000đ</ins>--%>
+<%--                            <del>4.490.000đ</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="thubmnail-recent">--%>
+<%--                        <img src="img/Giải trí_3/discord-nitro-basic.png" class="recent-thumb" alt="">--%>
+<%--                        <h2><a href="single-product.jsp">Discord Nitro</a></h2>--%>
+<%--                        <div class="product-sidebar-price">--%>
+<%--                            <ins>949.000đ</ins>--%>
+<%--                            <del>1.130.000đ</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="thubmnail-recent">--%>
+<%--                        <img src="img/Tiện Ích_2/PDF-Reader-Pro-for-Mac.png" class="recent-thumb" alt="">--%>
+<%--                        <h2><a href="single-product.jsp">PDF Reader Pro for MAC</a></h2>--%>
+<%--                        <div class="product-sidebar-price">--%>
+<%--                            <ins>1.490.000đ</ins>--%>
+<%--                            <del>1.999.000đ</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
             </div>
-        </div>
-    </div> <!-- End site branding area -->
-
-    <div class="mainmenu-area">
-        <div class="container">
-            <div class="row">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.jsp">Trang chủ</a></li>
-                        <li><a href="shop.jsp">Sản phẩm</a></li>
-                        <li class="active"><a href="cart.jsp">Giỏ hàng</a></li>
-                        <li><a href="#">Liên Hệ</a></li>
-                    </ul>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm...">
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End mainmenu area -->
-
-    <div class="product-big-title-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="product-bit-title text-center">
-                        <h2>Giỏ Hàng</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End Page title area -->
-
-
-    <div class="single-product-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-
-
-                    <div class="single-sidebar">
-                        <h2 class="sidebar-title">Sản phẩm</h2>
-                        <div class="thubmnail-recent">
-                            <img src="img/Tiện Ích_2/navicat-premium.png" class="recent-thumb" alt="">
-                            <h2><a href="single-product.jsp">Navicat Premium</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>790.000đ</ins> <del>820.000đ</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/Windows_1/win_server/windows-server-2022-datacenter.png" class="recent-thumb" alt="">
-                            <h2><a href="single-product.jsp">Windows Server 2022 Datacenter</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>549.000đ</ins> <del>4.490.000đ</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/Giải trí_3/discord-nitro-basic.png" class="recent-thumb" alt="">
-                            <h2><a href="single-product.jsp">Discord Nitro</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>949.000đ</ins> <del>1.130.000đ</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="img/Tiện Ích_2/PDF-Reader-Pro-for-Mac.png" class="recent-thumb" alt="">
-                            <h2><a href="single-product.jsp">PDF Reader Pro for MAC</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>1.490.000đ</ins> <del>1.999.000đ</del>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-
+            <form action="./CartServlet" method="post">
                 <div class="col-md-8">
                     <div class="product-content-right">
                         <div class="woocommerce">
-                            <form method="" action="#">
-                                <table cellspacing="0" id="table" class="shop_table cart">
-                                    <thead>
-                                    <tr>
-                                        <th class="product-remove">&nbsp;</th>
-                                        <th class="product-thumbnail">&nbsp;</th>
-                                        <th class="product-name">Sản phẩm</th>
-                                        <th class="product-price">Giá</th>
-                                        <th class="product-quantity">Số lượng</th>
-                                        <th class="product-subtotal">Tổng</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    <%
-                                        Set<String> keySet = list.keySet();
-                                        for (String k: keySet){
-                                            Products product = ProductsDao.getProduct(k);
-                                    %>
+                            <table cellspacing="0" id="table" class="shop_table cart">
+                                <thead>
+                                <tr>
+                                    <th class="product-remove">&nbsp;</th>
+                                    <th class="product-thumbnail">&nbsp;</th>
+                                    <th class="product-name">Sản phẩm</th>
+                                    <th class="product-price">Giá</th>
+                                    <th class="product-quantity">Số lượng</th>
+                                    <th class="product-subtotal">Tổng</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="p" items="${sessionScope.cart}">
+                                    <form action="./CartRemove" method="post">
                                         <tr class="cart_item">
                                             <td class="product-remove">
-                                                <form action="./CartRemove" method="post">
-                                                    <input name="masp" value="<%=k%>" style="display: none">
-                                                    <input type="submit" value="X" name="com" class="button">
-                                                </form>
+
+                                                <input name="Id" value="${p.productId}" style="display: none">
+                                                    <%--                                                    <input type="submit" value="X" name="com" class="button">--%>
+                                                <button type="submit">X</button>
 
 
                                             </td>
 
                                             <td class="product-thumbnail">
-                                                <input name="url[]" value="<%=product.getUrl()%>" style="display: none">
-                                                <a href=""><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="<%=product.getUrl()%>"></a>
+                                                <input name="url[]" value="${p.imageUrl}" style="display: none">
+                                                <a href=""><img width="145" height="145" alt="poster_1_up"
+                                                                class="shop_thumbnail" src="${p.imageUrl}"></a>
                                             </td>
 
                                             <td class="product-name">
-                                                <input name="id[]" value="<%=product.getMaSP()%>" style="display: none">
-                                                <a href=""><%=product.getName()+" "+product.getVersion()%></a>
+                                                <input name="productId" value="${p.productId}" style="display: none">
+                                                <a href="">${p.productName}</a>
                                             </td>
 
                                             <td class="product-price">
-                                                <span class="amount"><%=product.priceFormat(product.getPrice())%></span>
+                                                <span class="amount">
+                                                <fmt:formatNumber value="${p.price}" type="currency" currencySymbol="₫" groupingUsed="true" /></span>
                                             </td>
 
                                             <td class="product-quantity">
                                                 <div class="quantity buttons_added">
                                                     <input type="button" class="minus" value="-" style="display: none">
-                                                    <input name="so[]" type="number" size="4" class="input-text qty text" title="Qty" value="<%=list.get(k)%>" min="0" step="1">
+                                                    <input name="quantity" type="number" size="4"
+                                                           class="input-text qty text" title="Qty" value="${p.quantity}"
+                                                           min="0" step="1">
                                                     <input type="button" class="plus" value="+" style="display: none">
                                                 </div>
                                             </td>
 
                                             <td class="product-subtotal">
-                                                <span class="amount"><%=product.priceFormat(product.getPrice()*list.get(k))%></span>
+                                                <span class="amount">
+                                                <fmt:formatNumber value="${p.price * p.quantity}" type="currency" currencySymbol="₫" groupingUsed="true" /></span>
                                             </td>
                                         </tr>
-                                        <%}%>
+                                    </form>
+                                </c:forEach>
 
-                                        <tr>
-                                            <td class="actions" colspan="6">
-                                                <div class="coupon">
-                                                    <label for="coupon_code">Giảm giá:</label>
-                                                    <input type="text" placeholder="Mã giảm giá" value="" id="coupon_code" class="input-text" name="coupon_code">
-                                                    <input type="submit" value="Xác nhận" name="apply_coupon" class="button">
-                                                </div>
-                                                <input type="submit" value="Cập nhật" name="com" class="button">
+                                <tr>
+                                    <td class="actions" colspan="6">
+                                        <input type="submit" value="Cập nhật" name="com" class="button">
 
 
-                                                <input  type="submit" value="Thanh toán" name="proceed" onclick="window.location.href='checkout.jsp'; return false;" class="checkout-button button alt wc-forward">
+                                        <input type="submit" value="Thanh toán" name="proceed"
+                                               onclick="window.location.href='checkout.jsp'; return false;"
+                                               class="checkout-button button alt wc-forward">
 
-                                            </td>
-                                        </tr>
+                                    </td>
+                                </tr>
 
-                                    </tbody>
-                                </table>
-                            </form>
+                                </tbody>
+                            </table>
 
                             <div class="cart-collaterals">
 
 
-                                <div class="cross-sells">
-                                    <h2>Bạn có thể thích...</h2>
-                                    <ul class="products">
-                                        <li class="product">
-                                            <a href="single-product.jsp">
-                                                <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="img/Visual Studio_1/visual-studio-2022.jpg">
-                                                <h3>Visual Studio</h3>
-                                                <span class="price"><span class="amount">640.000đ</span></span>
-                                            </a>
 
-                                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.jsp">Thêm vào giỏ hàng</a>
-                                        </li>
-
-                                        <li class="product">
-                                            <a href="single-product.jsp">
-                                                <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="img/VPN_1/Kaspersky-VPN.png">
-                                                <h3>Kaspersky</h3>
-                                                <span class="price"><span class="amount">490.000đ</span></span>
-                                            </a>
-
-                                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.jsp">Thêm vào giỏ hàng</a>
-                                        </li>
-                                    </ul>
-                                </div>
 
                                 <div class="cart_totals ">
                                     <h2>Tổng giỏ hàng</h2>
 
                                     <table cellspacing="0">
                                         <tbody>
-                                        <tr class="cart-subtotal">
-                                            <th>Tổng giảm giá</th>
-                                            <td><span class="amount"><%=Products.priceFormat(total)%></span></td>
-                                        </tr>
 
                                         <tr class="shipping">
                                             <th>Vận chuyển và xử lí</th>
@@ -317,8 +201,8 @@
                                         </tr>
 
                                         <tr class="order-total">
-                                            <th>Tổng tiền </th>
-                                            <td><strong><span class="amount"><%=Products.priceFormat(total)%></span></strong> </td>
+                                            <th>Tổng tiền</th>
+                                            <td><strong><span class="amount"><fmt:formatNumber value="${sessionScope.totalAmount}" type="currency" currencySymbol="₫" groupingUsed="true" /></span></strong></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -331,7 +215,8 @@
                                     <section id="calcalute-shipping-wrap" class="shipping-calculator-form collapse">
 
                                         <p class="form-row form-row-wide">
-                                            <select rel="calc_shipping_state" class="country_to_state" id="calc_shipping_country" name="calc_shipping_country">
+                                            <select rel="calc_shipping_state" class="country_to_state"
+                                                    id="calc_shipping_country" name="calc_shipping_country">
                                                 <option value="">Select a country…</option>
                                                 <option value="AX">Åland Islands</option>
                                                 <option value="AF">Afghanistan</option>
@@ -580,26 +465,33 @@
                                             </select>
                                         </p>
 
-                                        <p class="form-row form-row-wide"><input type="text" id="calc_shipping_state" name="calc_shipping_state" placeholder="Tỉnh / Thành phố" value="" class="input-text"> </p>
+                                        <p class="form-row form-row-wide"><input type="text" id="calc_shipping_state"
+                                                                                 name="calc_shipping_state"
+                                                                                 placeholder="Tỉnh / Thành phố" value=""
+                                                                                 class="input-text"></p>
 
-                                        <p class="form-row form-row-wide"><input type="text" id="calc_shipping_postcode" name="calc_shipping_postcode" placeholder="Mã bưu điện / Mã zip" value="" class="input-text"></p>
+                                        <p class="form-row form-row-wide"><input type="text" id="calc_shipping_postcode"
+                                                                                 name="calc_shipping_postcode"
+                                                                                 placeholder="Mã bưu điện / Mã zip"
+                                                                                 value="" class="input-text"></p>
 
 
-                                        <p><button class="button" value="1" name="calc_shipping" type="submit">Cập nhật tổng thể</button></p>
+                                        <p>
+                                            <button class="button" value="1" name="calc_shipping" type="submit">Cập nhật
+                                                tổng thể
+                                            </button>
+                                        </p>
 
                                     </section>
                                 </form>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-
-</form>
+</div>
 
 
 <div class="footer-top-area">
@@ -623,7 +515,7 @@
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">Thông tin</h2>
                     <ul>
-                        <li><a href="#">Chính sách giao hàng  </a></li>
+                        <li><a href="#">Chính sách giao hàng </a></li>
                         <li><a href="#">Điều khoản và điêù kiện</a></li>
                         <li><a href="#">Chính sách bảo hành</a></li>
                         <li><a href="#">Liên hệ với chúng tôi</a></li>
@@ -648,7 +540,8 @@
             <div class="col-md-3 col-sm-6">
                 <div class="footer-newsletter">
                     <h2 class="footer-wid-title">Tin tức</h2>
-                    <p>Đăng ký nhận bản tin của chúng tôi và nhận các ưu đãi độc quyền mà bạn sẽ không tìm thấy ở bất kỳ nơi nào khác trực tiếp vào hộp thư đến của mình!</p>
+                    <p>Đăng ký nhận bản tin của chúng tôi và nhận các ưu đãi độc quyền mà bạn sẽ không tìm thấy ở bất kỳ
+                        nơi nào khác trực tiếp vào hộp thư đến của mình!</p>
                     <div class="newsletter-form">
                         <form action="#">
                             <input type="email" placeholder="Nhập email của bạn">
@@ -666,7 +559,8 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="copyright">
-                    <p> © Thương mại điện tử 2023. Đã đăng ký Bản quyền. <a href="http://www.freshdesignweb.com" target="_blank"></a></p>
+                    <p> © Thương mại điện tử 2023. Đã đăng ký Bản quyền. <a href="http://www.freshdesignweb.com"
+                                                                            target="_blank"></a></p>
                 </div>
             </div>
 
