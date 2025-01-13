@@ -1,5 +1,7 @@
 
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -112,7 +114,9 @@
                                 <img src="${list.image}" class="recent-thumb" alt="">
                                 <h2><a href="">${list.name}</a></h2>
                                 <div class="product-sidebar-price">
-                                    <ins>${list.price}</ins> <del></del>
+                                    <ins><fmt:formatNumber value="${list.price}" type="currency" currencySymbol="₫" groupingUsed="true" />
+                                           </ins> <del></del>
+
                                 </div>
                             </div>
                         </c:forEach>

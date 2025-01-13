@@ -96,12 +96,12 @@
 
 <div class="promo-area">
     <div class="zigzag-bottom"></div>
-    <div class="container">
-        <div class="row">
+    <div class="container" style="width: 100%; height: 10rem">
+        <div class="row" style="height: 100%; display: flex; justify-content: center;">
             <%
                 for (Categories cate: categories){%>
-            <form action="./ShopCategory" method="post">
-            <div class="col-md-3 col-sm-6">
+            <form action="./ShopCategory" method="post" style="height: 100%">
+            <div class="col-md-3 col-sm-6" style="height: 100%; display: flex; justify-content: center; align-items: center">
                 <div class="single-promo promo1">
 <%--                    <p><%=cate.getName()%></p>--%>
                     <input name="categoryId" value="<%= cate.getId()%>" style="display: none">
@@ -163,13 +163,18 @@
                     <img src="<%=p.getImage()%>" alt="" style="height: 40%; width: 100%">
                 </div>
 <%--                <input name="maview" value="<%=p.getId()%>" style="display: none">--%>
-                <h2><a href="single-product.jsp" style="color: black" ><%=p.getName()%></a></h2>
+                <h2 class="h2-product"><a href="#"><%=p.getName()%></a></h2>
+
                 <div class="product-carousel-price">
                     <%
                         double price = p.getPrice();
                         request.setAttribute("price", price);
                     %>
-                    <ins><fmt:formatNumber value="${price}" type="currency" currencySymbol="₫" groupingUsed="true" /></ins>
+                    <ins>
+<%--                        <fmt:formatNumber value="${price}" type="currency" currencySymbol="₫" groupingUsed="true" />--%>
+                        <fmt:formatNumber value="${price - (price % 1)}" type="currency" currencySymbol="₫" groupingUsed="true" minFractionDigits="0" maxFractionDigits="0" />
+                    </ins>
+
                 </div>
 
                 <div class="product-option-shop" style="padding-bottom: 0">
@@ -358,6 +363,7 @@
 <%--        </div>--%>
 <%--    </div>--%>
 <%--</div> <!-- End product widget area -->--%>
+
 
 <div class="footer-top-area">
     <div class="zigzag-bottom"></div>

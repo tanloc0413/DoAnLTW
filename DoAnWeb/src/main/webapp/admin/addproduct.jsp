@@ -185,51 +185,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                    </div>
-                                    <div class="product-tab-list tab-pane fade" id="reviews">
-                                        <div class="row">
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <div class="review-content-section ">
-                                                    <div class="text-center custom-pro-edt-ds" >
-
-                                                        <form action="./ImageSerive" method="post">
-                                                            <input name="masp"  style="display: none;" value="">
-                                                            <input type="file" name="url" class="form-control" placeholder="Đường dẫn hình ảnh " style="width: 1200px; float: left">
-                                                            <button type="submit" class="btn btn-ctl-bt waves-effect waves-light" style="margin-bottom: 30px; margin-left:30px;float: left">Thêm ảnh
-                                                            </button>
-                                                        </form>
-
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="pro-edt-img">
-                                                                <img src="" alt="" />
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="col-lg-8">
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    <div class="product-edt-pix-wrap">
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6">
-                                                                                <div class="product-edt-remove">
-                                                                                    <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Xóa
-                                                                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                                                                    </button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="product-tab-list tab-pane fade" id="INFORMATION">
                                         <div class="row">

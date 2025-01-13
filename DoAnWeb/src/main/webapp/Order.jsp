@@ -202,7 +202,9 @@
 
                                         <tr class="order-total">
                                             <th>Tổng tiền</th>
-                                            <td><strong><span class="amount"><c:out value="${sessionScope.totalAmount}"/></span></strong></td>
+
+                                            <td><strong><span class="amount"><fmt:formatNumber value="${sessionScope.totalAmount}" type="currency" currencySymbol="₫" groupingUsed="true" /></span></strong></td>
+
                                         </tr>
                                         </tbody>
                                     </table>

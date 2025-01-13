@@ -59,7 +59,8 @@
                     <div class="col-md-3 col-sm-6 ">
                         <div class="single-shop-product">
                             <div class="product-upper">
-                                <img src="${p.image}" alt="">
+                                <img src="${p.image}" alt="" style="height: 40%; width: 100%">
+
                             </div>
                             <h2 class="h2-product"><a href="#">${p.name}</a></h2>
                             <div class="product-carousel-price">

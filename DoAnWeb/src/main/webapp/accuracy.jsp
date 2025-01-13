@@ -31,8 +31,8 @@
 </head>
 <body>
 
-<c:set var="err" value="${requestScope.errCode}">
-<form action="./VeriyOTP" method="post">
+<c:set var="err" value="${requestScope.errCode}"/>
+<form action="./VerifyOTP" method="post">
   <div class="limiter">
     <div class="container-login100" style="background-image: url('img/bg-01.jpg');">
       <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
@@ -62,7 +62,6 @@
               </button>
             </div>
           </div>
-
         </form>
       </div>
     </div>

@@ -1,14 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
-<%@ page import="java.util.Set" %>
-<%@ page import="vn.edu.hcmuaf.dao.ProductsDao" %>
-<%@ page import="vn.edu.hcmuaf.model.Products" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!--
-	ustora by freshdesignweb.com
-	Twitter: https://twitter.com/freshdesignweb
-	URL: https://www.freshdesignweb.com/ustora/
--->
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -105,23 +98,27 @@
                             <div class="clear"></div>
 
 
+                            <form  action="./Oder"  method="post" >
+
                             <form enctype="multipart/form-data" action="./Oder" class="checkout" method="post" name="checkout">
 
                                 <div id="customer_details" class="col2-set">
                                     <div class="col-1">
                                         <div class="woocommerce-billing-fields">
                                             <h3>Phần thanh toán</h3>
-
-
+                                            <c:set var="err" value="${requestScope.err}"/>
+                                            <p>${err}</p><br/>
                                             <p id="billing_first_name_field" class="form-row form-row-first validate-required">
                                                 <label class="" for="billing_first_name">Họ và Tên <abbr title="required" class="required">*</abbr>
                                                 </label>
                                                 <input type="text" value="${sessionScope.currentUser.name}" placeholder="" id="billing_first_name" name="billing_first_name" class="input-text ">
                                             </p>
                                             <p id="billing_address_1_field" class="form-row form-row-wide address-field validate-required">
-                                                <label class="" for="billing_address_1">Địa chỉ <abbr title="required" class="required">*</abbr>
+                                                <label class="" >Địa chỉ <abbr title="required" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="${sessionScope.currentUser.address}" placeholder="Địa chỉ" id="billing_address_1" name="billing_address" class="input-text ">
+                                                <input type="text" value="" placeholder="Địa chỉ"  name="billing_address" class="input-text">
+
+
                                             </p>
                                             <div class="clear"></div>
 
@@ -186,13 +183,13 @@
 
                                     <div id="payment">
                                         <ul class="payment_methods methods">
-                                            <li class="payment_method_bacs">
-                                                <input type="radio" data-order_button_text="" checked="checked" value="bacs" name="payment_method" class="input-radio" id="payment_method_bacs">
-                                                <label for="payment_method_bacs">Chuyển khoản </label>
-                                                <div class="payment_box payment_method_bacs">
-                                                    <p>Thực hiện thanh toán trực tiếp vào tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng ID đơn hàng của bạn làm tài liệu tham khảo thanh toán. Đơn đặt hàng của bạn sẽ không được giao cho đến khi tiền đã được xóa trong tài khoản của chúng tôi.</p>
-                                                </div>
-                                            </li>
+<%--                                            <li class="payment_method_bacs">--%>
+<%--                                                <input type="radio" data-order_button_text="" checked="checked" value="bacs" name="payment_method" class="input-radio" id="payment_method_bacs">--%>
+<%--                                                <label for="payment_method_bacs">Chuyển khoản </label>--%>
+<%--                                                <div class="payment_box payment_method_bacs">--%>
+<%--                                                    <p>Thực hiện thanh toán trực tiếp vào tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng ID đơn hàng của bạn làm tài liệu tham khảo thanh toán. Đơn đặt hàng của bạn sẽ không được giao cho đến khi tiền đã được xóa trong tài khoản của chúng tôi.</p>--%>
+<%--                                                </div>--%>
+<%--                                            </li>--%>
                                             <li class="payment_method_cheque">
                                                 <input type="radio" data-order_button_text="" value="cheque" name="payment_method" class="input-radio" id="payment_method_cheque">
                                                 <label for="payment_method_cheque">Thanh toán khi nhận hàng </label>

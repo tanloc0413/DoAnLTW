@@ -1146,3 +1146,11 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     height: auto;
     width: 200px;
 }
+
+.container_cate {
+    width: 100%;
+    height: 10rem!important;
+    display: flex!important;
+    justify-items: center!important;
+    align-items: center!important;
+}
