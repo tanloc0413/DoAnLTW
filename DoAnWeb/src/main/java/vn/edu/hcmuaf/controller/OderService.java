@@ -4,6 +4,7 @@ import vn.edu.hcmuaf.dao.OderDetailDao;
 import vn.edu.hcmuaf.dao.OdersDao;
 import vn.edu.hcmuaf.dao.ProductsDao;
 import vn.edu.hcmuaf.dao.UserDao;
+
 import vn.edu.hcmuaf.model.Cart;
 import vn.edu.hcmuaf.model.OderItems;
 import vn.edu.hcmuaf.model.Oders;
@@ -86,6 +87,7 @@ public class OderService extends HttpServlet {
                 // Cập nhật trạng thái đơn hàng sau khi đã xử lý
                 OdersDao.updateOder( "DH05", uniqueId);
             }
+
 
 
         } catch (Exception e) {

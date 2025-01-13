@@ -164,6 +164,7 @@
                 </div>
 <%--                <input name="maview" value="<%=p.getId()%>" style="display: none">--%>
                 <h2 class="h2-product"><a href="#"><%=p.getName()%></a></h2>
+
                 <div class="product-carousel-price">
                     <%
                         double price = p.getPrice();
@@ -173,6 +174,7 @@
 <%--                        <fmt:formatNumber value="${price}" type="currency" currencySymbol="₫" groupingUsed="true" />--%>
                         <fmt:formatNumber value="${price - (price % 1)}" type="currency" currencySymbol="₫" groupingUsed="true" minFractionDigits="0" maxFractionDigits="0" />
                     </ins>
+
                 </div>
 
                 <div class="product-option-shop" style="padding-bottom: 0">
@@ -190,6 +192,177 @@
 
     </div>
 </div> <!-- End main content area -->
+
+
+<%--<div class="product-widget-area">--%>
+<%--    <div class="zigzag-bottom"></div>--%>
+<%--    <div class="container">--%>
+<%--        <div class="row">--%>
+<%--            <div class="col-md-4">--%>
+<%--                <div class="single-product-widget">--%>
+<%--                    <h2 class="product-wid-title">Top bán chạy</h2>--%>
+<%--                    <a href="" class="wid-view-more">xem tất cả</a>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Thiết kế_2/figma.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Figma</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Thiết kế_2/canva.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Canva</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Office_3/office-2021-professional-plus-win.jpg"--%>
+<%--                                                          alt="" class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Office 2021 professional</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-4">--%>
+<%--                <div class="single-product-widget">--%>
+<%--                    <h2 class="product-wid-title">Xem gần &#x20ABây</h2>--%>
+<%--                    <a href="#" class="wid-view-more">xem tất cả</a>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Office_3/outlook-2021.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Outlook 2021</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Windows_1/win/windows-11-home.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Win 11 home</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/navicat-premium.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Navicat premium</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-md-4">--%>
+<%--                <div class="single-product-widget">--%>
+<%--                    <h2 class="product-wid-title">Sản phẩm mới</h2>--%>
+<%--                    <a href="#" class="wid-view-more">xem tất cả</a>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/VPN_1/Hotspot-VPN-1nam.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Hotspot VPN</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/PDF-Reader-Pro-for-Mac.png" alt=""--%>
+<%--                                                          class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">PDF Reader Pro for Mac</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="single-wid-product">--%>
+<%--                        <a href="single-product.jsp"><img src="img/Tiện Ích_2/linkedin-Careers-premium-6 thang.png"--%>
+<%--                                                          alt="" class="product-thumb"></a>--%>
+<%--                        <h2><a href="single-product.jsp">Linkedin Careers Premium</a></h2>--%>
+<%--                        <div class="product-wid-rating">--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                            <i class="fa fa-star"></i>--%>
+<%--                        </div>--%>
+<%--                        <div class="product-wid-price">--%>
+<%--                            <ins>400.000&#x20AB</ins>--%>
+<%--                            <del>425.000&#x20AB</del>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div> <!-- End product widget area -->--%>
 
 
 <div class="footer-top-area">

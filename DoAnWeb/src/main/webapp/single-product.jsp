@@ -1,6 +1,7 @@
 
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -115,6 +116,7 @@
                                 <div class="product-sidebar-price">
                                     <ins><fmt:formatNumber value="${list.price}" type="currency" currencySymbol="₫" groupingUsed="true" />
                                            </ins> <del></del>
+
                                 </div>
                             </div>
                         </c:forEach>

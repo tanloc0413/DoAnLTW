@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -99,6 +100,8 @@
 
                             <form  action="./Oder"  method="post" >
 
+                            <form enctype="multipart/form-data" action="./Oder" class="checkout" method="post" name="checkout">
+
                                 <div id="customer_details" class="col2-set">
                                     <div class="col-1">
                                         <div class="woocommerce-billing-fields">
@@ -114,6 +117,7 @@
                                                 <label class="" >Địa chỉ <abbr title="required" class="required">*</abbr>
                                                 </label>
                                                 <input type="text" value="" placeholder="Địa chỉ"  name="billing_address" class="input-text">
+
 
                                             </p>
                                             <div class="clear"></div>
