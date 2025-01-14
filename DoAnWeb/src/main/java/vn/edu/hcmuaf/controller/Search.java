@@ -27,8 +27,6 @@ public class Search extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String text = req.getParameter("search");
 
-
-
         List<Products> products = ProductsDao.getProductSearch(text);
         req.setAttribute("shop", products);
         req.getRequestDispatcher("/shop.jsp").forward(req,resp);

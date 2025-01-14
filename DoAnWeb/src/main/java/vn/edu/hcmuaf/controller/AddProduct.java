@@ -2,6 +2,8 @@ package vn.edu.hcmuaf.controller;
 
 import vn.edu.hcmuaf.dao.*;
 import vn.edu.hcmuaf.db.ConfigProperties;
+import vn.edu.hcmuaf.model.Categories;
+import vn.edu.hcmuaf.model.Products;
 import vn.edu.hcmuaf.uniti.FileUtil;
 
 import javax.servlet.ServletException;
@@ -14,6 +16,7 @@ import javax.servlet.http.Part;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 
 @WebServlet(name = "AddProduct", value = "/admin/AddProduct")
@@ -68,6 +71,14 @@ public class AddProduct extends HttpServlet {
 
         InventoryDao.insertInventory( id, number);
 
+        List<Categories> categories = CategoriesDao.getDirectorysAdmin();
+        List<Products> productsDaoList = ProductsDao.getProductAdmin();
+
+
+        req.setAttribute("categories", categories);
+
+        req.setAttribute("productsDaoList", productsDaoList);
+        req.setAttribute("catego", "all");
         req.getRequestDispatcher("./ListManagerProduct").forward(req,resp);
 
 

@@ -37,54 +37,7 @@
 
     <c:set var="p" value="${requestScope.de}" />
     <jsp:include page="header.jsp"/>
-
-    <div class="site-branding-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="logo">
-                        <h1><a href="index.jsp"><img src="admin/img/logo/logo.png"></a></h1>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="shopping-item">
-<%--                        <a href="Order.jsp">Giỏ hàng - <span class="cart-amunt"><%=Products.priceFormat(total)%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%=list.size()%></span></a>--%>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End site branding area -->
-
-    <div class="mainmenu-area">
-        <div class="container">
-            <div class="row">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.jsp">Trang chủ</a></li>
-                        <li><a href="shop.jsp">Sản phẩm</a></li>
-                        <li><a href="Order.jsp">Giỏ hàng</a></li>
-                        <li><a href="#">Liên Hệ</a></li>
-
-                    </ul>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm...">
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End mainmenu area -->
+    <jsp:include page="menu.jsp"/>
 
     <div class="product-big-title-area">
         <div class="container">
@@ -104,8 +57,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-
-
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Sản phẩm</h2>
                         <c:forEach var="list" items="${requestScope.listP}">
@@ -125,7 +76,7 @@
                     <div class="product-content-right">
                         <div class="product-breadcroumb">
                             <a href="">Trang chủ</a>
-                            <a href="">Sản pẩm</a>
+                            <a href="">Sản phẩm</a>
                             <a href="">${p.name}</a>
                         </div>
 
@@ -207,31 +158,31 @@
                         </div>
 
 
-                        <div class="related-products-wrapper">
-                            <h2 class="related-products-title">Các sản phẩm tương tự</h2>
-                            <div class="product-carousel">
-                                <c:forEach var="list" items="${requestScope.listCate}">
-                                    <div class="single-product">
-                                        <div class="product-f-image">
-                                            <img src="${list.image}" alt="">
-                                            <div class="product-hover">
-                                                <a href="#" class="add-to-cart-link" style="font-size: 11px"
-                                                   style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>
-                                                <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"
-                                                   style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>
-                                            </div>
-                                        </div>
+<%--                        <div class="related-products-wrapper">--%>
+<%--                            <h2 class="related-products-title">Các sản phẩm tương tự</h2>--%>
+<%--                            <div class="product-carousel">--%>
+<%--                                <c:forEach var="list" items="${requestScope.listCate}">--%>
+<%--                                    <div class="single-product">--%>
+<%--                                        <div class="product-f-image">--%>
+<%--                                            <img src="${list.image}" alt="">--%>
+<%--                                            <div class="product-hover">--%>
+<%--                                                <a href="#" class="add-to-cart-link" style="font-size: 11px"--%>
+<%--                                                   style="font-size: 11px"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</a>--%>
+<%--                                                <a href="single-product.jsp" class="view-details-link" style="font-size: 11px"--%>
+<%--                                                   style="font-size: 11px"><i class="fa fa-link"></i> Xem chi tiết</a>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
 
-                                        <h2><a href="single-product.jsp">${list.name}</a></h2>
+<%--                                        <h2><a href="single-product.jsp">${list.name}</a></h2>--%>
 
-                                        <div class="product-carousel-price">
-                                            <ins>${list.price}</ins>
-                                            <del>799.000&#x20AB</del>
-                                        </div>
-                                    </div>
-                                </c:forEach>
-                            </div>
-                        </div>
+<%--                                        <div class="product-carousel-price">--%>
+<%--                                            <ins>${list.price}</ins>--%>
+<%--                                            <del>799.000&#x20AB</del>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
+<%--                                </c:forEach>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                     </div>
                 </div>
             </div>

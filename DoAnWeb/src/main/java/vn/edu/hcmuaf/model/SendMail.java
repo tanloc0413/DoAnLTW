@@ -49,12 +49,4 @@ public class SendMail {
         }
     }
 
-    public static void main(String[] args) {
-        String text = "Đặt lich kham benh thanh cong \n" +
-                "kinh gui: "+"anh/chi" +
-                "\nma so: "+"87182" +
-                "\nthoi gian: " + "09:00:00" +" ngay " +"19/6/2024"+
-                "\nbac si: " +"Phuong";
-        sendMail("huuthinh19593@gmail.com","Thành công", text);
-    }
 }

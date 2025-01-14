@@ -72,8 +72,10 @@
 <div class="left-sidebar-pro">
     <nav id="sidebar" class="">
         <div class="sidebar-header" style="height: 90px">
-            <a href="index.jsp"><img class="main-logo" src="img/logo/logo.png" alt=""/></a>
-            <strong><img src="img/logo/logo.png" alt=""/></strong>
+            <a href="index.jsp">
+                <img class="main-logo" src="img/logo/logo.png" alt="logo"/>
+            </a>
+            <strong><img src="img/logo/logo.png" alt="logo"/></strong>
         </div>
         <div class="nalika-profile">
             <div class="profile-dtl">

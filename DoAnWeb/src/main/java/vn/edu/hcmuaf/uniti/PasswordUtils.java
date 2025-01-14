@@ -15,7 +15,6 @@ public class PasswordUtils {
         return encoder.matches(rawPassword, encodedPassword);
     }
 
-
     public static void main(String[] args) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 

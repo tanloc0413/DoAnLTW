@@ -60,7 +60,6 @@ public class Register extends HttpServlet {
             }
         }
 
-
         // Mã hóa mật khẩu
         String hashedPassword = PasswordUtils.encodePassword(pass);
 
@@ -76,12 +75,10 @@ public class Register extends HttpServlet {
             req.getRequestDispatcher("/sign_up.jsp").forward(req,resp);
         }
 
-
-
     }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
     }
-
 }

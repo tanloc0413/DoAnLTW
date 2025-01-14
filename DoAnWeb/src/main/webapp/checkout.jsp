@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -149,7 +150,10 @@
                                             <td class="product-name">
                                                 <strong class="product-quantity">${p.productName}</strong> </td>
                                             <td class="product-total">
-                                                <span class="amount">${p.price * p.quantity}</span> </td>
+                                                <span class="amount">
+                                                    <fmt:formatNumber value="${p.price * p.quantity}" type="currency" currencySymbol="₫" groupingUsed="true" />
+                                                </span>
+                                            </td>
                                         </tr>
                                         </c:forEach>
 
@@ -170,7 +174,11 @@
                                         <tr class="order-total">
                                             <th>Tổng cộng</th>
 
-                                            <td><strong><span class="amount"><c:out value="${sessionScope.totalAmount}"/></span></strong> </td>
+                                            <td><strong>
+                                                <span class="amount">
+                                                    <fmt:formatNumber value="${sessionScope.totalAmount}" type="currency" currencySymbol="₫" groupingUsed="true" />
+                                                </span>
+                                            </strong> </td>
                                         </tr>
 
                                         </tfoot>

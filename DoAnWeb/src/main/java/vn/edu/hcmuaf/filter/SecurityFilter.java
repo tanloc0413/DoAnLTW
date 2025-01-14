@@ -21,13 +21,13 @@ public class SecurityFilter implements Filter {
 
         // Nếu người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
         if (user == null) {
-            resp.sendRedirect("/Login.jsp");
+            resp.sendRedirect(((HttpServletRequest) request).getContextPath()+"/Login.jsp");
             return;
         }
 
         // Nếu người dùng không phải là admin, chuyển hướng đến trang đăng nhập
         if (user.getRoler() != Role.ADMIN && user.getRoler() != Role.ADMIN1) {
-            resp.sendRedirect("/Login.jsp");
+            resp.sendRedirect(((HttpServletRequest) request).getContextPath()+"/Login.jsp");
             return;
         }
 

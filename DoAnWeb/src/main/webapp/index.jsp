@@ -46,49 +46,23 @@
 <div class="slider-area">
     <!-- Slider -->
     <div class="block-slider block-slider4">
-        <ul class="" id="bxslider-home4">
-            <li>
-                <img src="img/OIP.jpg" alt="Slide">
-<%--                <div class="caption-group">--%>
-<%--                    <h2 class="caption title">--%>
-<%--                        <span class="primary"> <strong>Google Drive</strong></span>--%>
-<%--                    </h2>--%>
-<%--                    <h4 class="caption subtitle">2TB</h4>--%>
-<%--                    <a class="caption button-radius" href="single-product.jsp"><span class="icon"></span>Mua ngay</a>--%>
-<%--                </div>--%>
-            </li>
-            <li><img src="img/OIP (1).jpg" alt="Slide">
-<%--                <div class="caption-group">--%>
-<%--                    <h2 class="caption title">--%>
-<%--                        Microsoft <span class="primary">30% <strong>Off</strong></span>--%>
-<%--                    </h2>--%>
-<%--                    <h4 class="caption subtitle">Microsoft Office 2021 professional</h4>--%>
-<%--                    <a class="caption button-radius" href="single-product.jsp"><span class="icon"></span>Mua ngay</a>--%>
-<%--                </div>--%>
-            </li>
-            <li><img src="img/download.jpg" alt="Slide">
-<%--                <div class="caption-group">--%>
-<%--                    <h2 class="caption title">--%>
-<%--                        <span class="primary"><strong>Win 11 </strong></span>--%>
-<%--                    </h2>--%>
-<%--                    <h4 class="caption subtitle">Home</h4>--%>
-<%--                    <a class="caption button-radius" href="single-product.jsp"><span class="icon"></span>Mua ngay</a>--%>
-<%--                </div>--%>
-            </li>
-            <li><img src="img/OIP (1).jpg" alt="Slide">
-<%--                <div class="caption-group">--%>
-<%--                    <h2 class="caption title">--%>
-<%--                        Netflix <span class="primary"> <strong>Movie</strong></span>--%>
-<%--                    </h2>--%>
-<%--                    <h4 class="caption subtitle"></h4>--%>
-<%--                    <a class="caption button-radius" href="single-product.jsp"><span class="icon"></span>Mua ngay</a>--%>
-<%--                </div>--%>
-            </li>
-        </ul>
+            <ul id="bxslider-home4" style="height: 700px">
+                <li style="height: 100%">
+                    <img src="https://images6.alphacoders.com/136/thumb-1920-1362719.png" alt="Slide">
+                </li>
+                <li style="height: 100%">
+                    <img src="https://images.alphacoders.com/576/thumb-1920-576712.jpg" alt="Slide">
+                </li>
+                <li style="height: 100%">
+                    <img src="https://images3.alphacoders.com/136/thumb-1920-1362718.png" alt="Slide">
+                </li>
+                <li style="height: 100%">
+                    <img src="https://images5.alphacoders.com/404/thumb-1920-404716.png" alt="Slide">
+                </li>
+            </ul>
     </div>
     <!-- ./Slider -->
 </div> <!-- End slider area -->
-
 
 <%
     List<Categories> categories = CategoriesDao.getDirectorysAdmin();
@@ -160,7 +134,10 @@
         <div class="col-md-3 col-sm-6 " style="margin-bottom: 50px">
             <div class="single-shop-product">
                 <div class="product-upper" >
-                    <img src="<%=p.getImage()%>" alt="" style="height: 40%; width: 100%">
+
+                    <a href="./View?maview=<%= p.getId() %>">
+                        <img src="<%=p.getImage()%>" alt="" style="height: 40%; width: 100%">
+                    </a>
                 </div>
 <%--                <input name="maview" value="<%=p.getId()%>" style="display: none">--%>
                 <h2 class="h2-product">
@@ -182,7 +159,7 @@
                 <div class="product-option-shop" style="padding-bottom: 0">
                     <form action="./View" method="post">
                         <input name="maview" value="<%=p.getId()%>" style="display: none">
-                        <button   type="submit" style="width: 250px; color: white; background: #00acee; ">Xem</button>
+                        <button type="submit" style="width: 250px; color: white; background: #00acee; ">Xem</button>
                     </form>
                 </div>
             </div>
